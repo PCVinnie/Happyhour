@@ -8,12 +8,48 @@
     x:Class="Happyhour.MainPage"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="10,416,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="285,416,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="150,416,0,0" VerticalAlignment="Top"/>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
+        <!-- Maps -->
 
-        <Maps:MapControl HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="310" Width="340"/>
 
+
+        <!-- Stackpanel-->
+        <StackPanel Width="330" Height="320">
+            <!-- Stackpanel background-->
+            <StackPanel.Background>
+                <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
+            </StackPanel.Background>
+            <!-- Buttonpanel -->
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!-- Happyhour -->
+                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" BorderThickness="0" Click="happyHour_Click">
+                    <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
+                </Button>
+                <!-- Kroegen -->
+                <Button x:Name="Pub" Grid.Row="0" Grid.Column="1" Width="150" Height="150" BorderThickness="0" Click="pub_Click">
+                    <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
+                </Button>
+                <!-- Route -->
+                <Button x:Name="Route" Grid.Row="1" Grid.Column="0" Width="150" Height="150" BorderThickness="0" Click="route_Click">
+                    <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
+                </Button>
+                <!-- Settings -->
+                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" BorderThickness="0" Click="settings_Click">
+                    <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
+                </Button>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>
