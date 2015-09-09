@@ -12,10 +12,6 @@
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
-        <!-- Maps -->
-
-
-
         <!-- Stackpanel-->
         <StackPanel Width="330" Height="320">
             <!-- Stackpanel background-->
@@ -34,20 +30,20 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <!-- Happyhour -->
-                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" BorderThickness="0" Click="happyHour_Click">
+                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" BorderThickness="0">
                     <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
                 </Button>
                 <!-- Kroegen -->
-                <Button x:Name="Pub" Grid.Row="0" Grid.Column="1" Width="150" Height="150" BorderThickness="0" Click="pub_Click">
-                    <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
+                <Button x:Name="Pub" Grid.Row="0" Grid.Column="1" Width="150" Height="150" BorderThickness="0">
+                    <Image Stretch="Fill" Source="../Assets/Images/bar.png" />
                 </Button>
                 <!-- Route -->
-                <Button x:Name="Route" Grid.Row="1" Grid.Column="0" Width="150" Height="150" BorderThickness="0" Click="route_Click">
-                    <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
+                <Button x:Name="Route" Grid.Row="1" Grid.Column="0" Width="150" Height="150" BorderThickness="0">
+                    <Image Stretch="Fill" Source="../Assets/Images/route.png" />
                 </Button>
                 <!-- Settings -->
-                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" BorderThickness="0" Click="settings_Click">
-                    <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
+                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" BorderThickness="0">
+                    <Image Stretch="Fill" Source="../Assets/Images/settings.png" />
                 </Button>
             </Grid>
         </StackPanel>

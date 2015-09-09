@@ -26,5 +26,10 @@ namespace Happyhour
         {
             this.InitializeComponent();
         }
+
+        private void Pub_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
