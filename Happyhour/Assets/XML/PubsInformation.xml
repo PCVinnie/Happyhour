@@ -22,7 +22,7 @@
       <sunday>1000</sunday>
     </opentimes>
     <closetimes>
-      <monday>closed</monday>
+      <monday>1000</monday>
       <tuesday>1900</tuesday>
       <wednesday>closed</wednesday>
       <thursday>2330</thursday>
