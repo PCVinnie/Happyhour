@@ -12,14 +12,17 @@
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
+
+            <Image Source="../Assets/Images/logo.png" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" Height="100"/>
+        
         <!-- Stackpanel-->
-        <StackPanel Width="330" Height="320">
+        <StackPanel MaxWidth="330" MaxHeight="340">
             <!-- Stackpanel background-->
             <StackPanel.Background>
                 <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
             </StackPanel.Background>
             <!-- Buttonpanel -->
-            <Grid Margin="10">
+            <Grid Column="0" Row="1" Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
@@ -30,19 +33,19 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <!-- Happyhour -->
-                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" BorderThickness="0">
+                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0">
                     <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
                 </Button>
                 <!-- Kroegen -->
-                <Button x:Name="Pub" Grid.Row="0" Grid.Column="1" Width="150" Height="150" BorderThickness="0">
+                <Button x:Name="Pub" Grid.Row="0" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0">
                     <Image Stretch="Fill" Source="../Assets/Images/bar.png" />
                 </Button>
                 <!-- Route -->
-                <Button x:Name="Route" Grid.Row="1" Grid.Column="0" Width="150" Height="150" BorderThickness="0">
+                <Button x:Name="Route" Grid.Row="1" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0">
                     <Image Stretch="Fill" Source="../Assets/Images/route.png" />
                 </Button>
                 <!-- Settings -->
-                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" BorderThickness="0">
+                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0">
                     <Image Stretch="Fill" Source="../Assets/Images/settings.png" />
                 </Button>
             </Grid>
