@@ -42,7 +42,7 @@ public class LocationData
             }
         }
 
-        if (contains)
+        if (!contains)
         {
             openTimes.Add(new ClockTime(hour, minutes, day));
             return "Added new open time";
@@ -62,7 +62,7 @@ public class LocationData
             }
         }
 
-        if (contains)
+        if (!contains)
         {
             closeTimes.Add(new ClockTime(hour, minutes, day));
             return "Added new close time";

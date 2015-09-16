@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pubs>
+  <pub>
+    <name>Cafe Den Paard</name>
+    <street>Kalverstraat</street>
+    <streetnumber>5</streetnumber>
+    <postcode>0000AB</postcode>
+    <city>Amsterdam</city>
+    <country>Nederland</country>
+    <rating>7.5</rating>
+    <position>
+      <latitude>4.321</latitude>
+      <longitude>7.264</longitude>
+    </position>
+    <opentimes>
+      <monday>closed</monday>
+      <tuesday>1000</tuesday>
+      <wednesday>closed</wednesday>
+      <thursday>1300</thursday>
+      <friday>1600</friday>
+      <saterday>1000</saterday>
+      <sunday>1000</sunday>
+    </opentimes>
+    <closetimes>
+      <monday>closed</monday>
+      <tuesday>1900</tuesday>
+      <wednesday>closed</wednesday>
+      <thursday>2330</thursday>
+      <friday>2330</friday>
+      <saterday>2330</saterday>
+      <sunday>2100</sunday>
+    </closetimes>
+  </pub>
+</pubs>
