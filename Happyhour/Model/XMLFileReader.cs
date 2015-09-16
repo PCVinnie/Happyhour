@@ -16,6 +16,11 @@ namespace Happyhour
             List<LocationData> test = readXMLFile();
         }
 
+        public void writeToXMLFile(List<LocationData> locations)
+        {
+            
+        }
+
         public List<LocationData> readXMLFile()
         {
             XElement element;
