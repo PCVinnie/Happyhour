@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using View;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -36,7 +35,7 @@ namespace Happyhour
 
         private void Route_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Map));
+           // Frame.Navigate(new Map());
         }
     }
 }

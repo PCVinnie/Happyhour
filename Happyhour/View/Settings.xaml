@@ -8,10 +8,71 @@
     mc:Ignorable="d">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
-        
-      
+
+        <Grid Column="0" Row="0" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- New pub -->
+            <TextBlock Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Nieuwe kroeg"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Foreground="White" Text="Naam: "/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Foreground="White" Text="Straat: "/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Foreground="White" Text="Huisnummer: "/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Margin="5" Foreground="White" Text="Postcode: "/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Margin="5" Foreground="White" Text="Plaats: "/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Margin="5" Foreground="White" Text="Land: "/>
+            <TextBlock Grid.Row="7" Grid.Column="0" Margin="5" Foreground="White" Text="Openingstijden: "/>
+            <TextBlock Grid.Row="8" Grid.Column="0" Margin="5" Foreground="White" Text="Waardering: "/>
+
+            <TextBox Grid.Row="1" Grid.Column="1" Width="210" Margin="5"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Width="210" Margin="5"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Width="210" Margin="5"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Width="210" Margin="5"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Width="210" Margin="5"/>
+            <TextBox Grid.Row="6" Grid.Column="1" Width="210" Margin="5"/>
+            <TextBox Grid.Row="7" Grid.Column="1" Width="210" Margin="5"/>
+            <TextBox Grid.Row="8" Grid.Column="1" Width="210" Margin="5"/>
+        </Grid>
+
+        <!-- Buttons -->
+        <Grid Column="0" Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" Content="Annuleren" />
+                <Button Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" Content="Opslaan" />
+        </Grid>
+
     </Grid>
 </Page>

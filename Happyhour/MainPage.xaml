@@ -33,7 +33,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <!-- Happyhour -->
-                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0" Click="_Click">
+                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0">
                     <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
                 </Button>
                 <!-- Kroegen -->
