@@ -22,7 +22,7 @@
                 <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
             </StackPanel.Background>
             <!-- Buttonpanel -->
-            <Grid Column="0" Row="1" Margin="10">
+            <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />

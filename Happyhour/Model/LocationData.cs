@@ -9,6 +9,7 @@ public class LocationData
     public string postcode;
     public string place;
     public string country;
+    public string happyHour;
 
     private List<ClockTime> openTimes;
     private List<ClockTime> closeTimes;
@@ -24,6 +25,7 @@ public class LocationData
         postcode = "0000AA";
         place = "Amsterdam";
         country = "Nederland";
+        happyHour = "";
 
         position = new BasicGeoposition();
         rating = 0;
