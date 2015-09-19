@@ -11,8 +11,25 @@
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
-        
-        
-        
+
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Stackpanel-->
+            <StackPanel Grid.Row="0" Grid.Column="0" Width="330" Height="560">
+                <!-- Stackpanel background-->
+                <StackPanel.Background>
+                    <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
+                </StackPanel.Background>
+                <ScrollViewer></ScrollViewer>
+            </StackPanel>
+            <Button Grid.Row="1" Grid.Column="0" Foreground="White" Content="Terug"/>
+        </Grid>
     </Grid>
 </Page>

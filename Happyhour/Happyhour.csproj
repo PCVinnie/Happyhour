@@ -108,16 +108,22 @@
     <Compile Include="View\Bar.xaml.cs">
       <DependentUpon>Bar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChangePub.xaml.cs">
+      <DependentUpon>ChangePub.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HappyHour.xaml.cs">
       <DependentUpon>HappyHour.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Map.xaml.cs">
       <DependentUpon>Map.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NewPub.xaml.cs">
+      <DependentUpon>NewPub.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\XMLFileReader.cs" />
     <Compile Include="View\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\XMLFileReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -154,11 +160,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ChangePub.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HappyHour.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Map.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewPub.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
