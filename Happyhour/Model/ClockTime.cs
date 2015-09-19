@@ -3,19 +3,22 @@
     public int hour;
     public int minutes;
     public int day;
+    public bool closed;
 
     public ClockTime()
     {
         hour = 0;
         minutes = 0;
         int day = 0;
+        bool closed = false;
     }
 
-    public ClockTime(int hour, int minutes, int day)
+    public ClockTime(int hour, int minutes, int day, bool closed)
     {
         this.hour = hour;
         this.minutes = minutes;
         this.day = day;
+        this.closed = closed;
     }
 
     public string getDay()

@@ -44,7 +44,27 @@ public class LocationData
 
         if (!contains)
         {
-            openTimes.Add(new ClockTime(hour, minutes, day));
+            openTimes.Add(new ClockTime(hour, minutes, day, false));
+            return "Added new open time";
+        }
+        else
+            return "This day already has a open time";
+    }
+
+    public string addOpenTime(ClockTime time)
+    {
+        bool contains = false;
+        foreach (ClockTime t in openTimes)
+        {
+            if (time.day == t.day)
+            {
+                contains = true;
+            }
+        }
+
+        if (!contains)
+        {
+            openTimes.Add(time);
             return "Added new open time";
         }
         else
@@ -64,7 +84,27 @@ public class LocationData
 
         if (!contains)
         {
-            closeTimes.Add(new ClockTime(hour, minutes, day));
+            closeTimes.Add(new ClockTime(hour, minutes, day, false));
+            return "Added new close time";
+        }
+        else
+            return "This day already has a close time";
+    }
+
+    public string addCloseTime(ClockTime time)
+    {
+        bool contains = false;
+        foreach (ClockTime t in closeTimes)
+        {
+            if (time.day == t.day)
+            {
+                contains = true;
+            }
+        }
+
+        if (!contains)
+        {
+            closeTimes.Add(time);
             return "Added new close time";
         }
         else
