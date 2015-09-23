@@ -108,8 +108,8 @@
     <Compile Include="View\AppSettings.xaml.cs">
       <DependentUpon>AppSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Bar.xaml.cs">
-      <DependentUpon>Bar.xaml</DependentUpon>
+    <Compile Include="View\Pub.xaml.cs">
+      <DependentUpon>Pub.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChangePub.xaml.cs">
       <DependentUpon>ChangePub.xaml</DependentUpon>
@@ -163,7 +163,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Bar.xaml">
+    <Page Include="View\Pub.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

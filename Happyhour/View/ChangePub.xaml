@@ -9,111 +9,125 @@
 
     <!-- Change pub -->
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
+        <!-- ScrollViewer -->
+        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <!-- Stackpanel -->
+            <StackPanel MinWidth="360" MinHeight="640" MaxWidth="380" MaxHeight="680" Padding="10">
+                <!-- Stackpanel background-->
+                <StackPanel.Background>
+                    <SolidColorBrush Color="#DCDCDC" Opacity="0.2"/>
+                </StackPanel.Background>
+                <!-- Fields -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-        <Grid Column="0" Row="0" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+                    <TextBlock x:Name="ErrorMessage_TextBlock" Foreground="Red" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Margin="20,0,0,0"/>
 
-            <TextBlock Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Aanpassen"/>
+                    <Grid Column="0" Row="1" Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Foreground="White" Text="Naam: "/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Foreground="White" Text="Straat: "/>
-            <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Foreground="White" Text="Huisnummer: "/>
-            <TextBlock Grid.Row="4" Grid.Column="0" Margin="5" Foreground="White" Text="Postcode: "/>
-            <TextBlock Grid.Row="5" Grid.Column="0" Margin="5" Foreground="White" Text="Plaats: "/>
-            <TextBlock Grid.Row="6" Grid.Column="0" Margin="5" Foreground="White" Text="Land: "/>
-            <TextBlock Grid.Row="7" Grid.Column="0" Margin="5" Foreground="White" Text="Openingstijden: "/>
-            <TextBlock Grid.Row="8" Grid.Column="0" Margin="5" Foreground="White" Text="Waardering: "/>
-            <TextBlock Grid.Row="9" Grid.Column="0" Margin="5" Foreground="White" Text="Happyhour: "/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Aanpassen"/>
 
-            <TextBox Grid.Row="1" Grid.Column="1" Width="210" Margin="5"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Width="210" Margin="5"/>
-            <TextBox Grid.Row="3" Grid.Column="1" Width="210" Margin="5"/>
-            <TextBox Grid.Row="4" Grid.Column="1" Width="210" Margin="5"/>
-            <TextBox Grid.Row="5" Grid.Column="1" Width="210" Margin="5"/>
-            <TextBox Grid.Row="6" Grid.Column="1" Width="210" Margin="5"/>
-            <TextBox Grid.Row="7" Grid.Column="1" Width="210" Margin="5"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Foreground="White" Text="Naam: "/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Foreground="White" Text="Straat: "/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Foreground="White" Text="Huisnummer: "/>
+                        <TextBlock Grid.Row="4" Grid.Column="0" Margin="5" Foreground="White" Text="Postcode: "/>
+                        <TextBlock Grid.Row="5" Grid.Column="0" Margin="5" Foreground="White" Text="Plaats: "/>
+                        <TextBlock Grid.Row="6" Grid.Column="0" Margin="5" Foreground="White" Text="Land: "/>
+                        <TextBlock Grid.Row="7" Grid.Column="0" Margin="5" Foreground="White" Text="Openingstijden: "/>
+                        <TextBlock Grid.Row="8" Grid.Column="0" Margin="5" Foreground="White" Text="Waardering: "/>
+                        <TextBlock Grid.Row="9" Grid.Column="0" Margin="5" Foreground="White" Text="Happyhour: "/>
 
-            <!-- Rating -->
-            <Grid Grid.Row="8" Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <RadioButton Grid.Row="0" Grid.Column="0" Content="1" Foreground="White"/>
-                <RadioButton Grid.Row="0" Grid.Column="1" Content="2" Foreground="White"/>
-                <RadioButton Grid.Row="1" Grid.Column="0" Content="3" Foreground="White"/>
-                <RadioButton Grid.Row="1" Grid.Column="1" Content="4" Foreground="White"/>
-                <RadioButton Grid.Row="2" Grid.Column="0" Content="5" Foreground="White"/>
-            </Grid>
+                        <TextBox x:Name="Name_TextBox" Grid.Row="1" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
+                        <TextBox x:Name="Street_TextBox" Grid.Row="2" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
+                        <TextBox x:Name="Housenumber_TextBox" Grid.Row="3" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
+                        <TextBox x:Name="Zipcode_TextBox" Grid.Row="4" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
+                        <TextBox x:Name="Place_TextBox" Grid.Row="5" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
+                        <TextBox x:Name="Country_TextBox" Grid.Row="6" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
+                        <TextBox x:Name="Openinghours_TextBox" Grid.Row="7" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
 
-            <!-- Happyhour -->
-            <Grid Grid.Row="9" Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Row="0" Grid.Column="0" Content="Ma" Foreground="White"/>
-                <CheckBox Grid.Row="0" Grid.Column="1" Content="Di" Foreground="White"/>
-                <CheckBox Grid.Row="1" Grid.Column="0" Content="Wo" Foreground="White"/>
-                <CheckBox Grid.Row="1" Grid.Column="1" Content="Do" Foreground="White"/>
-                <CheckBox Grid.Row="2" Grid.Column="0" Content="Vr" Foreground="White"/>
-                <CheckBox Grid.Row="2" Grid.Column="1" Content="Za" Foreground="White"/>
-                <CheckBox Grid.Row="3" Grid.Column="0" Content="Zo" Foreground="White"/>
-            </Grid>
-        </Grid>
+                        <!-- Rating -->
+                        <Grid Grid.Row="8" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <RadioButton Grid.Row="0" Grid.Column="0" Content="1" Foreground="White"/>
+                            <RadioButton Grid.Row="0" Grid.Column="1" Content="2" Foreground="White"/>
+                            <RadioButton Grid.Row="1" Grid.Column="0" Content="3" Foreground="White"/>
+                            <RadioButton Grid.Row="1" Grid.Column="1" Content="4" Foreground="White"/>
+                            <RadioButton Grid.Row="2" Grid.Column="0" Content="5" Foreground="White"/>
+                        </Grid>
 
-        <!-- Buttons -->
-        <Grid Column="0" Row="1" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+                        <!-- Happyhour -->
+                        <Grid Grid.Row="9" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <CheckBox Grid.Row="0" Grid.Column="0" Content="Ma" Foreground="White"/>
+                            <CheckBox Grid.Row="0" Grid.Column="1" Content="Di" Foreground="White"/>
+                            <CheckBox Grid.Row="1" Grid.Column="0" Content="Wo" Foreground="White"/>
+                            <CheckBox Grid.Row="1" Grid.Column="1" Content="Do" Foreground="White"/>
+                            <CheckBox Grid.Row="2" Grid.Column="0" Content="Vr" Foreground="White"/>
+                            <CheckBox Grid.Row="2" Grid.Column="1" Content="Za" Foreground="White"/>
+                            <CheckBox Grid.Row="3" Grid.Column="0" Content="Zo" Foreground="White"/>
+                        </Grid>
+                    </Grid>
 
-            <Button Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" Content="Annuleren" />
-            <Button Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" Content="Opslaan" />
-        </Grid>
+                    <!-- Buttons -->
+                    <Grid Column="0" Row="2" Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
+                        <Button Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" Content="Opslaan" Click="Save_Click" />
+                        <Button Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" Content="Annuleren" Click="Cancel_Click"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Happyhour.View.Bar"
+    x:Class="Happyhour.View.Pub"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Happyhour.View"
@@ -25,11 +25,11 @@
             <StackPanel Grid.Row="0" Grid.Column="0" Width="330" Height="560">
                 <!-- Stackpanel background-->
                 <StackPanel.Background>
-                    <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
+                    <SolidColorBrush Color="#DCDCDC" Opacity="0.1"/>
                 </StackPanel.Background>
                 <ScrollViewer></ScrollViewer>
             </StackPanel>
-            <Button Grid.Row="1" Grid.Column="0" Foreground="White" Content="Terug"/>
+            <Button Grid.Row="1" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click"/>
         </Grid>
     </Grid>
 </Page>
