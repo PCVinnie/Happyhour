@@ -1,27 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using Windows.Storage;
 
 namespace Happyhour
 {
-    class XMLFileReader
+    class XMLFileHandler
     {
-        public XMLFileReader()
+        private const string dataFileName = "PubAppData.txt";
+        public XMLFileHandler()
         {
-            List<LocationData> test = readXMLFile();
+            List<LocationData> test = new List<LocationData>();
+            LocationData l = new LocationData();
+            l.name = "BierCafe";
+            test.Add(l);
+
+            writePubXMLFile(test);
+
+            test = readPubXMLFile();
         }
 
-        public void writeToXMLFile(List<LocationData> locations)
+        public void writePubXMLFile(List<LocationData> locations)
         {
-            
+            StringBuilder sb = new StringBuilder("Assets/XML/PubsInformation.xml");
+            XmlWriterSettings ws = new XmlWriterSettings();
+
+            XDocument doc = XDocument.Load("Assets/XML/PubsInformation.xml");
+            List<XElement> pubs = doc.Root.Elements().ToList();
+            List<String> pubnames = new List<String>();
+            foreach(XElement element in pubs)
+            {
+                pubnames.Add(element.Element("name").Value);
+            }
+
+            foreach (LocationData l in locations)
+            {
+                if (!pubnames.Contains(l.name))
+                {
+                    XElement pub = new XElement("pub");
+                    XElement name = new XElement("name", l.name);
+                    pub.Add(name);
+                    doc.Root.Add(pub);
+                }
+            }
+
+            File.WriteAllText("Assets/XML/PubsInformation.xml", doc.ToString());
+
+            Debug.WriteLine(File.ReadAllText("Assets/XML/PubsInformation.xml"));
         }
 
-        public List<LocationData> readXMLFile()
+        public List<LocationData> readPubXMLFile()
         {
             XElement element;
             List<LocationData> locations = new List<LocationData>();
@@ -67,11 +102,11 @@ namespace Happyhour
                                 Double.TryParse(element.Value.ToString(), out location.rating);
                                 break;
                             case "OPENTIMES":
-                                readTimes(reader, true, location);
+                                readPubTimes(reader, true, location);
                                 
                                 break;
                             case "CLOSETIMES":
-                                readTimes(reader, false, location);
+                                readPubTimes(reader, false, location);
                                 break;
                             case "LONGITUDE":
                                 element = XElement.ReadFrom(reader) as XElement;
@@ -90,7 +125,7 @@ namespace Happyhour
             return locations;
         }
 
-        private void readTimes(XmlReader reader, Boolean isOpentime, LocationData location)
+        private void readPubTimes(XmlReader reader, Boolean isOpentime, LocationData location)
         {
             ClockTime time = new ClockTime();
             XElement element;
@@ -109,7 +144,7 @@ namespace Happyhour
                         case "MONDAY":
                             time.day = 0;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillHoursAndMinutes(time, element);
+                            FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
                                 location.addOpenTime(time);
                             else
@@ -118,7 +153,7 @@ namespace Happyhour
                         case "TUESDAY":
                             time.day = 1;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillHoursAndMinutes(time, element);
+                            FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
                                 location.addOpenTime(time);
                             else
@@ -127,7 +162,7 @@ namespace Happyhour
                         case "WEDNESDAY":
                             time.day = 2;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillHoursAndMinutes(time, element);
+                            FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
                                 location.addOpenTime(time);
                             else
@@ -136,12 +171,12 @@ namespace Happyhour
                         case "THURSDAY":
                             time.day = 3;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillHoursAndMinutes(time, element);
+                            FillPubHoursAndMinutes(time, element);
                             break;
                         case "FRIDAY":
                             time.day = 4;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillHoursAndMinutes(time, element);
+                            FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
                                 location.addOpenTime(time);
                             else
@@ -150,7 +185,7 @@ namespace Happyhour
                         case "SATERDAY":
                             time.day = 5;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillHoursAndMinutes(time, element);
+                            FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
                                 location.addOpenTime(time);
                             else
@@ -159,7 +194,7 @@ namespace Happyhour
                         case "SUNDAY":
                             time.day = 6;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillHoursAndMinutes(time, element);
+                            FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
                                 location.addOpenTime(time);
                             else
@@ -171,7 +206,7 @@ namespace Happyhour
             }
         }
 
-        private void FillHoursAndMinutes(ClockTime time, XElement element)
+        private void FillPubHoursAndMinutes(ClockTime time, XElement element)
         {
             string hoursminutes = element.Value.ToString();
             if (hoursminutes == "closed")

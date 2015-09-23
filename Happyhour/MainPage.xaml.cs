@@ -25,7 +25,7 @@ namespace Happyhour
         public MainPage()
         {
             this.InitializeComponent();
-            XMLFileReader reader = new XMLFileReader();
+            XMLFileHandler reader = new XMLFileHandler();
         }
 
         private void Pub_Click(object sender, RoutedEventArgs e)
