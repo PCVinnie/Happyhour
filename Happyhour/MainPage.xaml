@@ -33,11 +33,11 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <!-- Happyhour -->
-                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0">
+                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Happyhour_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
                 </Button>
                 <!-- Kroegen -->
-                <Button x:Name="Pub" Grid.Row="0" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0">
+                <Button x:Name="Pub" Grid.Row="0" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Pub_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/bar.png" />
                 </Button>
                 <!-- Route -->            
@@ -45,7 +45,7 @@
                     <Image Stretch="Fill" Source="../Assets/Images/route.png" />
                 </Button>
                 <!-- Settings -->
-                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0">
+                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Settings_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/settings.png" />
                 </Button>
             </Grid>

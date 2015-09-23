@@ -32,8 +32,8 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" Margin="5" Width="155" Foreground="White" Content="Nieuw"/>
-                <Button Grid.Row="0" Grid.Column="1" Margin="5" Width="155" Foreground="White" Content="Aanpassen"/>
+                <Button Grid.Row="0" Grid.Column="0" Margin="5" Width="155" Foreground="White" Content="Nieuw" Click="NewPub_Click"/>
+                <Button Grid.Row="0" Grid.Column="1" Margin="5" Width="155" Foreground="White" Content="Aanpassen" Click="ChangePub_Click"/>
 
                 <ComboBox Grid.Row="1" Grid.Column="0" Margin="5,5,0,0" Width="150">
                     <ComboBoxItem>Item 1</ComboBoxItem>
@@ -42,7 +42,7 @@
                 </ComboBox>
                 <Button Grid.Row="1" Grid.Column="1" Margin="5" Width="155" Foreground="White" Content="Verwijderen"/>
 
-                <Button Grid.Row="2" Grid.Column="0" Margin="5" Width="155" Foreground="White" Content="Terug"/>
+                <Button Grid.Row="2" Grid.Column="0" Margin="5" Width="155" Foreground="White" Content="Terug" Click="Back_Click"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -20,11 +20,21 @@ namespace Happyhour.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Settings : Page
+    public sealed partial class NewPub : Page
     {
-        public Settings()
+        public NewPub()
         {
             this.InitializeComponent();
+        }
+
+        public void checkFields()
+        {
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(View.AppSettings));
         }
     }
 }

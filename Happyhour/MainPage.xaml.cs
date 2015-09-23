@@ -27,15 +27,24 @@ namespace Happyhour
             this.InitializeComponent();
             XMLFileReader reader = new XMLFileReader();
         }
+        private void Happyhour_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(View.HappyHour));
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(View.AppSettings));
+        }
 
         private void Pub_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(View.Pub));
         }
 
         private void Route_Click(object sender, RoutedEventArgs e)
         {
-           // Frame.Navigate(new Map());
+            Frame.Navigate(typeof(View.Map));
         }
     }
 }
