@@ -7,29 +7,45 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <!-- Pub -->
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
-
-        <Grid Margin="20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <!-- Stackpanel-->
-            <StackPanel Grid.Row="0" Grid.Column="0" Width="330" Height="560">
+        
+        <!-- ScrollViewer -->
+        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <!-- Stackpanel -->
+            <StackPanel MinWidth="360" MinHeight="640" MaxWidth="380" MaxHeight="680" Padding="10">
                 <!-- Stackpanel background-->
                 <StackPanel.Background>
-                    <SolidColorBrush Color="#DCDCDC" Opacity="0.1"/>
+                    <SolidColorBrush Color="#DCDCDC" Opacity="0.2"/>
                 </StackPanel.Background>
-                <ScrollViewer></ScrollViewer>
+
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Kroegen"/>
+
+                    <!-- Stackpanel-->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Width="330" Height="520">
+                        <!-- Stackpanel background-->
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
+                        </StackPanel.Background>
+                        <ScrollViewer></ScrollViewer>
+                    </StackPanel>
+                    
+                    <Button Grid.Row="2" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>
+                </Grid>
             </StackPanel>
-            <Button Grid.Row="1" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click"/>
-        </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>
