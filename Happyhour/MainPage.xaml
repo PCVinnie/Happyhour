@@ -45,7 +45,7 @@
                     <Image Stretch="Fill" Source="../Assets/Images/route.png" />
                 </Button>
                 <!-- Settings -->
-                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Settings_Click">
+                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0" Click="AppSettings_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/settings.png" />
                 </Button>
             </Grid>

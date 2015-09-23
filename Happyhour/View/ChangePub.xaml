@@ -82,11 +82,11 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <RadioButton Grid.Row="0" Grid.Column="0" Content="1" Foreground="White"/>
-                            <RadioButton Grid.Row="0" Grid.Column="1" Content="2" Foreground="White"/>
-                            <RadioButton Grid.Row="1" Grid.Column="0" Content="3" Foreground="White"/>
-                            <RadioButton Grid.Row="1" Grid.Column="1" Content="4" Foreground="White"/>
-                            <RadioButton Grid.Row="2" Grid.Column="0" Content="5" Foreground="White"/>
+                            <RadioButton x:Name="Rating_1" Grid.Row="0" Grid.Column="0" Content="1" Foreground="White"/>
+                            <RadioButton x:Name="Rating_2" Grid.Row="0" Grid.Column="1" Content="2" Foreground="White"/>
+                            <RadioButton x:Name="Rating_3" Grid.Row="1" Grid.Column="0" Content="3" Foreground="White"/>
+                            <RadioButton x:Name="Rating_4" Grid.Row="1" Grid.Column="1" Content="4" Foreground="White"/>
+                            <RadioButton x:Name="Rating_5" Grid.Row="2" Grid.Column="0" Content="5" Foreground="White"/>
                         </Grid>
 
                         <!-- Happyhour -->
@@ -101,13 +101,13 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <CheckBox Grid.Row="0" Grid.Column="0" Content="Ma" Foreground="White"/>
-                            <CheckBox Grid.Row="0" Grid.Column="1" Content="Di" Foreground="White"/>
-                            <CheckBox Grid.Row="1" Grid.Column="0" Content="Wo" Foreground="White"/>
-                            <CheckBox Grid.Row="1" Grid.Column="1" Content="Do" Foreground="White"/>
-                            <CheckBox Grid.Row="2" Grid.Column="0" Content="Vr" Foreground="White"/>
-                            <CheckBox Grid.Row="2" Grid.Column="1" Content="Za" Foreground="White"/>
-                            <CheckBox Grid.Row="3" Grid.Column="0" Content="Zo" Foreground="White"/>
+                            <CheckBox x:Name="Happyhour_1" Grid.Row="0" Grid.Column="0" Content="Ma" Foreground="White"/>
+                            <CheckBox x:Name="Happyhour_2" Grid.Row="0" Grid.Column="1" Content="Di" Foreground="White"/>
+                            <CheckBox x:Name="Happyhour_3" Grid.Row="1" Grid.Column="0" Content="Wo" Foreground="White"/>
+                            <CheckBox x:Name="Happyhour_4" Grid.Row="1" Grid.Column="1" Content="Do" Foreground="White"/>
+                            <CheckBox x:Name="Happyhour_5" Grid.Row="2" Grid.Column="0" Content="Vr" Foreground="White"/>
+                            <CheckBox x:Name="Happyhour_6" Grid.Row="2" Grid.Column="1" Content="Za" Foreground="White"/>
+                            <CheckBox x:Name="Happyhour_7" Grid.Row="3" Grid.Column="0" Content="Zo" Foreground="White"/>
                         </Grid>
                     </Grid>
 

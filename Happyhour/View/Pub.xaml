@@ -30,20 +30,49 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Kroegen"/>
 
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBox Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" FontWeight="Bold" />
+                        <Button Grid.Row="0" Grid.Column="1" Content="Zoeken" Foreground="White" FontWeight="Bold" />
+                    </Grid>
+
                     <!-- Stackpanel-->
-                    <StackPanel Grid.Row="1" Grid.Column="0" Width="330" Height="520">
+                    <StackPanel Grid.Row="2" Grid.Column="0" Width="330" Height="470">
                         <!-- Stackpanel background-->
                         <StackPanel.Background>
                             <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
                         </StackPanel.Background>
-                        <ScrollViewer></ScrollViewer>
+                        <!-- ScrollViewer -->
+                        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            
+                        </ScrollViewer>
                     </StackPanel>
-                    
-                    <Button Grid.Row="2" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>
+
+                    <!-- Buttons -->
+                    <Grid Grid.Row="3" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Row="0" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>
+                        <Button Grid.Row="0" Grid.Column="1" Foreground="White" Content="Toevoegen" Click="PubMenu_Click" Margin="5"/>
+                    </Grid>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

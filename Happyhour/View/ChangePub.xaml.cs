@@ -38,34 +38,38 @@ namespace Happyhour.View
             string openinghours = Openinghours_TextBox.Text;
 
             if (string.IsNullOrEmpty(name))
-            {
                 ErrorMessage_TextBlock.Text = "Er is geen naam opgegeven.";
-            }
             else if (string.IsNullOrEmpty(street))
-            {
                 ErrorMessage_TextBlock.Text = "Er is geen straat opgegeven.";
-            }
             else if (string.IsNullOrEmpty(houseNumber))
-            {
                 ErrorMessage_TextBlock.Text = "Er is geen huisnummer opgegeven.";
-            }
             else if (string.IsNullOrEmpty(zipCode))
-            {
                 ErrorMessage_TextBlock.Text = "Er is geen postcode opgegeven.";
-            }
             else if (string.IsNullOrEmpty(place))
-            {
                 ErrorMessage_TextBlock.Text = "Er is geen plaats opgegeven.";
-            }
             else if (string.IsNullOrEmpty(country))
-            {
                 ErrorMessage_TextBlock.Text = "Er is geen land opgegeven.";
-            }
             else if (string.IsNullOrEmpty(openinghours))
-            {
                 ErrorMessage_TextBlock.Text = "Er zijn geen openingstijden opgegeven.";
-            }
+            else if (Rating_1.IsChecked == false &&
+                     Rating_2.IsChecked == false &&
+                     Rating_3.IsChecked == false &&
+                     Rating_4.IsChecked == false &&
+                     Rating_5.IsChecked == false)
+                ErrorMessage_TextBlock.Text = "Er is geen waardering opgegeven.";
+            else if (Happyhour_1.IsChecked == false &&
+                     Happyhour_2.IsChecked == false &&
+                     Happyhour_3.IsChecked == false &&
+                     Happyhour_4.IsChecked == false &&
+                     Happyhour_5.IsChecked == false &&
+                     Happyhour_6.IsChecked == false &&
+                     Happyhour_7.IsChecked == false)
+                ErrorMessage_TextBlock.Text = "Er is geen dag opgegeven.";
+            else {
+                ErrorMessage_TextBlock.Text = "";
 
+                // Wegschrijven naar xml bestand.
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -75,7 +79,7 @@ namespace Happyhour.View
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(View.AppSettings));
+            Frame.Navigate(typeof(View.PubMenu));
         }
     }
 }

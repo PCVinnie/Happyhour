@@ -32,11 +32,6 @@ namespace Happyhour
             Frame.Navigate(typeof(View.HappyHour));
         }
 
-        private void Settings_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(View.AppSettings));
-        }
-
         private void Pub_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(View.Pub));
@@ -45,6 +40,11 @@ namespace Happyhour
         private void Route_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(View.Map));
+        }
+
+        private void AppSettings_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

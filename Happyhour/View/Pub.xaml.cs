@@ -27,6 +27,11 @@ namespace Happyhour.View
             this.InitializeComponent();
         }
 
+        private void PubMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(PubMenu));
+        }
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));

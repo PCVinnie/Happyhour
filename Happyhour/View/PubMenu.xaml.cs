@@ -20,9 +20,9 @@ namespace Happyhour.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AppSettings : Page
+    public sealed partial class PubMenu : Page
     {
-        public AppSettings()
+        public PubMenu()
         {
             this.InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace Happyhour.View
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(Pub));
         }
     }
 }
