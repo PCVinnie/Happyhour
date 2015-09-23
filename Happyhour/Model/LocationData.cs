@@ -7,7 +7,7 @@ public class LocationData
     public string street;
     public int streetNumber;
     public string postcode;
-    public string place;
+    public string city;
     public string country;
     public string happyHour;
 
@@ -23,7 +23,7 @@ public class LocationData
         street = "";
         streetNumber = 0;
         postcode = "0000AA";
-        place = "Amsterdam";
+        city = "Amsterdam";
         country = "Nederland";
         happyHour = "";
 

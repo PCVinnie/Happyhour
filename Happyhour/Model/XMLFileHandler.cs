@@ -17,38 +17,72 @@ namespace Happyhour
         private const string dataFileName = "PubAppData.txt";
         public XMLFileHandler()
         {
-            List<LocationData> test = new List<LocationData>();
+            List<LocationData> test = readPubXMLFile();
             LocationData l = new LocationData();
             l.name = "BierCafe";
-            test.Add(l);
+            l.city = "Rotterdam";
+            
+            test = checkIfListContains(test, l);
+
+            LocationData l2 = new LocationData();
+            l2.name = "BierCafe";
+            l2.city = "Delft";
+            test = checkIfListContains(test, l2); ;
 
             writePubXMLFile(test);
 
             test = readPubXMLFile();
         }
 
+        private List<LocationData> checkIfListContains(List<LocationData> list, LocationData data)
+        {
+            Boolean isIn = false;
+            foreach (LocationData ld in list)
+            {
+                if (ld.name == data.name && ld.city != data.city)
+                    isIn = false;
+                else if (ld.name == data.name)
+                {
+                    isIn = true;
+                    break;
+                }
+            }
+            if (!isIn)
+                list.Add(data);
+
+            return list;
+        }
+
         public void writePubXMLFile(List<LocationData> locations)
         {
-            StringBuilder sb = new StringBuilder("Assets/XML/PubsInformation.xml");
-            XmlWriterSettings ws = new XmlWriterSettings();
 
-            XDocument doc = XDocument.Load("Assets/XML/PubsInformation.xml");
-            List<XElement> pubs = doc.Root.Elements().ToList();
-            List<String> pubnames = new List<String>();
-            foreach(XElement element in pubs)
-            {
-                pubnames.Add(element.Element("name").Value);
-            }
+            //XDocument pubdoc = XDocument.Load("Assets/XML/PubsInformation.xml");
+            //List<XElement> pubs = pubdoc.Root.Elements().ToList();
+
+            XDocument doc = new XDocument();
+            doc.Add(new XElement("pubs"));
 
             foreach (LocationData l in locations)
             {
-                if (!pubnames.Contains(l.name))
+                /*Boolean inIt = true;
+                foreach (XElement filepub in pubs)
                 {
+                    if(filepub.Element("name").Value != l.name || (filepub.Element("name").Value == l.name && filepub.Element("city").Value != l.city))
+                    {
+                        inIt = false;
+                    }
+                }
+                if(!inIt)
+                {*/
                     XElement pub = new XElement("pub");
                     XElement name = new XElement("name", l.name);
+                    XElement city = new XElement("city", l.city);
                     pub.Add(name);
+                    pub.Add(city);
+
+                    //pubs.Add(pub);
                     doc.Root.Add(pub);
-                }
+                //}
             }
 
             File.WriteAllText("Assets/XML/PubsInformation.xml", doc.ToString());
@@ -91,7 +125,7 @@ namespace Happyhour
                                 break;
                             case "CITY":
                                 element = XElement.ReadFrom(reader) as XElement;
-                                location.place = element.Value.ToString();
+                                location.city = element.Value.ToString();
                                 break;
                             case "COUNTRY":
                                 element = XElement.ReadFrom(reader) as XElement;
