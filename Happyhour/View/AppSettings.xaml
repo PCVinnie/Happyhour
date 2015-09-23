@@ -16,7 +16,7 @@
         <StackPanel Width="330" Height="130">
             <!-- Stackpanel background-->
             <StackPanel.Background>
-                <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
+                <SolidColorBrush Color="#DCDCDC" Opacity="0.4"/>
             </StackPanel.Background>
 
             <Grid>

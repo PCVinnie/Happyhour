@@ -19,7 +19,7 @@
         <StackPanel MaxWidth="330" MaxHeight="340">
             <!-- Stackpanel background-->
             <StackPanel.Background>
-                <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
+                <SolidColorBrush Color="#DCDCDC" Opacity="0.4"/>
             </StackPanel.Background>
             <!-- Buttonpanel -->
             <Grid Margin="10">
