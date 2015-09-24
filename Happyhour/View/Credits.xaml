@@ -41,7 +41,7 @@
                             <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
                         </StackPanel.Background>
                         <!-- ScrollViewer -->
-                        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Foreground="White">
                             Patrick Bakx en Vincent Stout
                         </ScrollViewer>
                     </StackPanel>

@@ -13,11 +13,20 @@
         </Grid.Background>
 
         <!-- Stackpanel-->
-        <StackPanel Width="330" Height="130">
+        <StackPanel Width="330" Height="170">
             <!-- Stackpanel background-->
             <StackPanel.Background>
                 <SolidColorBrush Color="#DCDCDC" Opacity="0.4"/>
             </StackPanel.Background>
+            
+            <Button Margin="5" Width="320" Foreground="White" Content="Nieuw" Click="NewPub_Click"/>
+
+            <StackPanel Background="#C6C6C6">
+                <ComboBox Grid.Row="2" Grid.Column="0" Margin="5,5,0,0" Width="320">
+                    <ComboBoxItem>Item 1</ComboBoxItem>
+                    <ComboBoxItem>Item 2</ComboBoxItem>
+                    <ComboBoxItem>Item 3</ComboBoxItem>
+                </ComboBox>
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -29,21 +38,15 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" Margin="5" Width="155" Foreground="White" Content="Nieuw" Click="NewPub_Click"/>
-                <Button Grid.Row="0" Grid.Column="1" Margin="5" Width="155" Foreground="White" Content="Aanpassen" Click="ChangePub_Click"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="5" Width="155" Foreground="White" Content="Aanpassen" Click="ChangePub_Click"/>
 
-                <ComboBox Grid.Row="1" Grid.Column="0" Margin="5,5,0,0" Width="150">
-                    <ComboBoxItem>Item 1</ComboBoxItem>
-                    <ComboBoxItem>Item 2</ComboBoxItem>
-                    <ComboBoxItem>Item 3</ComboBoxItem>
-                </ComboBox>
                 <Button Grid.Row="1" Grid.Column="1" Margin="5" Width="155" Foreground="White" Content="Verwijderen"/>
-
-                <Button Grid.Row="2" Grid.Column="0" Margin="5" Width="155" Foreground="White" Content="Terug" Click="Back_Click"/>
             </Grid>
+            </StackPanel>
+
+            <Button Margin="5" Width="320" Foreground="White" Content="Terug" Click="Back_Click"/>
         </StackPanel>
     </Grid>
 </Page>
