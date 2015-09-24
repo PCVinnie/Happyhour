@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Happyhour.View.Pub"
+    x:Class="Happyhour.View.Credits"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Happyhour.View"
@@ -7,12 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <!-- Pub -->
+    <!-- Credits -->
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
-        
+
         <!-- ScrollViewer -->
         <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <!-- Stackpanel -->
@@ -30,49 +30,24 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Kroegen"/>
-
-                    <Grid Grid.Row="1" Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-
-                        <TextBox Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" />
-                        <Button Grid.Row="0" Grid.Column="1" Content="Zoeken" Foreground="White" />
-                    </Grid>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Credits"/>
 
                     <!-- Stackpanel-->
-                    <StackPanel Grid.Row="2" Grid.Column="0" Width="330" Height="470">
+                    <StackPanel Grid.Row="1" Grid.Column="0" Width="330" Height="520">
                         <!-- Stackpanel background-->
                         <StackPanel.Background>
                             <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
                         </StackPanel.Background>
                         <!-- ScrollViewer -->
                         <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                            
+                            Patrick Bakx en Vincent Stout
                         </ScrollViewer>
                     </StackPanel>
 
-                    <!-- Buttons -->
-                    <Grid Grid.Row="3" Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                    <Button Grid.Row="2" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>
 
-                        <Button Grid.Row="0" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>
-                        <Button Grid.Row="0" Grid.Column="1" Foreground="White" Content="Kroeg toevoegen" Click="PubMenu_Click" Margin="5"/>
-                    </Grid>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

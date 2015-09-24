@@ -42,9 +42,9 @@ namespace Happyhour
             Frame.Navigate(typeof(View.Map));
         }
 
-        private void AppSettings_Click(object sender, RoutedEventArgs e)
+        private void Credits_Click(object sender, RoutedEventArgs e)
         {
-            
+            Frame.Navigate(typeof(View.Credits));
         }
     }
 }
