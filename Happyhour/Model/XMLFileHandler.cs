@@ -85,7 +85,7 @@ namespace Happyhour
                 //}
             }
 
-            File.WriteAllText("Assets/XML/PubsInformation.xml", doc.ToString());
+            //File.WriteAllText("Assets/XML/PubsInformation.xml", doc.ToString());
 
             Debug.WriteLine(File.ReadAllText("Assets/XML/PubsInformation.xml"));
         }

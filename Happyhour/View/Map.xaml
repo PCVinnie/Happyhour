@@ -13,26 +13,30 @@
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
 
-        <Grid Margin="20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <!-- Stackpanel-->
-            <StackPanel Grid.Row="0" Grid.Column="0" Width="330" Height="560">
+        <!-- ScrollViewer -->
+        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <!-- Stackpanel -->
+            <StackPanel MinWidth="360" MinHeight="640" MaxWidth="380" MaxHeight="680" Padding="10">
                 <!-- Stackpanel background-->
                 <StackPanel.Background>
-                    <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
+                    <SolidColorBrush Color="#DCDCDC" Opacity="0.2"/>
                 </StackPanel.Background>
-                
-                <!--BING Maps-->
-                <maps:MapControl x:Name="InputMap" MapServiceToken="oYYcEWGPrYWLXl4w93yO~3lyv7GrrXTMi4V1Y3zz3PA~AuYFV2yvgpzaVAZ6cj_wKLFzD5641epPZNwBvcsD7ZENxzKeUgbVaZHNKv9dffjU" />     
+
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!--BING Maps-->
+                    <maps:MapControl x:Name="InputMap" Grid.Row="0" Grid.Column="0" Width="330" Height="560" MapServiceToken="oYYcEWGPrYWLXl4w93yO~3lyv7GrrXTMi4V1Y3zz3PA~AuYFV2yvgpzaVAZ6cj_wKLFzD5641epPZNwBvcsD7ZENxzKeUgbVaZHNKv9dffjU" />     
+ 
+                    <Button Grid.Row="1" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click"/>
+                </Grid>
             </StackPanel>
-            <Button Grid.Row="1" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click"/>
-        </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>
