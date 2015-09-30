@@ -35,7 +35,7 @@ namespace Happyhour.View
             string zipCode = Zipcode_TextBox.Text;
             string place = Place_TextBox.Text;
             string country = Country_TextBox.Text;
-            string openinghours = Openinghours_TextBox.Text;
+            //string openinghours = Openinghours_TextBox.Text;
 
             if (string.IsNullOrEmpty(name))
                 ErrorMessage_TextBlock.Text = "Er is geen naam opgegeven.";
@@ -49,8 +49,8 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "Er is geen plaats opgegeven.";
             else if (string.IsNullOrEmpty(country))
                 ErrorMessage_TextBlock.Text = "Er is geen land opgegeven.";
-            else if (string.IsNullOrEmpty(openinghours))
-                ErrorMessage_TextBlock.Text = "Er zijn geen openingstijden opgegeven.";
+           // else if (string.IsNullOrEmpty(openinghours))
+             //   ErrorMessage_TextBlock.Text = "Er zijn geen openingstijden opgegeven.";
             else if (Rating_1.IsChecked == false &&
                      Rating_2.IsChecked == false &&
                      Rating_3.IsChecked == false &&
@@ -69,6 +69,9 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "";
 
                 // Wegschrijven naar xml bestand.
+
+
+
             }
         }
 

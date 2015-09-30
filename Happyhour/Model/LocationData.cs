@@ -3,26 +3,28 @@ using Windows.Devices.Geolocation;
 
 public class LocationData
 {
-    public string name;
-    public string street;
-    public int streetNumber;
-    public string postcode;
-    public string city;
-    public string country;
-    public string happyHour;
+    public int id;
+    public string name { get; set; }
+    public string street { get; set; }
+    public int streetNumber { get; set; }
+    public string zipcode { get; set; }
+    public string city { get; set; }
+    public string country { get; set; }
+    public string happyHour { get; set; }
 
     private List<ClockTime> openTimes;
     private List<ClockTime> closeTimes;
-    public double rating;
+    public double rating { get; set; }
 
     public BasicGeoposition position;
 
     public LocationData()
     {
+        id = -1; 
         name = "";
         street = "";
         streetNumber = 0;
-        postcode = "0000AA";
+        zipcode = "0000AA";
         city = "Amsterdam";
         country = "Nederland";
         happyHour = "";

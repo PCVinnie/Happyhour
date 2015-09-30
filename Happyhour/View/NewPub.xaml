@@ -69,7 +69,29 @@
                         <TextBox x:Name="Zipcode_TextBox" Grid.Row="4" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
                         <TextBox x:Name="Place_TextBox" Grid.Row="5" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
                         <TextBox x:Name="Country_TextBox" Grid.Row="6" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
-                        <TextBox x:Name="Openinghours_TextBox" Grid.Row="7" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
+
+                        <!-- Openinghours -->
+                        <Grid Grid.Row="7" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <ComboBox Grid.Row="0" Grid.Column="0" SelectedIndex="0" Margin="5,5,0,0">
+                                <ComboBoxItem>Ma</ComboBoxItem>
+                                <ComboBoxItem>Di</ComboBoxItem>
+                                <ComboBoxItem>Wo</ComboBoxItem>
+                                <ComboBoxItem>Do</ComboBoxItem>
+                                <ComboBoxItem>Vr</ComboBoxItem>
+                                <ComboBoxItem>Za</ComboBoxItem>
+                                <ComboBoxItem>Zo</ComboBoxItem>
+                            </ComboBox>
+                            <TextBox Grid.Row="0" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox Grid.Row="0" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                        </Grid>
 
                         <!-- Rating -->
                         <Grid Grid.Row="8" Grid.Column="1">

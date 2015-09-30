@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pubs>
   <pub>
+    <id>0</id>
     <name>Cafe Den Paard</name>
     <street>Kalverstraat</street>
     <streetnumber>5</streetnumber>
-    <postcode>0000AB</postcode>
+    <postcode>6660AB</postcode>
     <city>Amsterdam</city>
     <country>Nederland</country>
     <rating>7.5</rating>
@@ -14,7 +15,7 @@
     </position>
     <opentimes>
       <monday>closed</monday>
-      <tuesday>1000</tuesday>
+      <tuesday>1000-2200</tuesday>
       <wednesday>closed</wednesday>
       <thursday>1300</thursday>
       <friday>1600</friday>
@@ -32,6 +33,7 @@
     </closetimes>
   </pub>
   <pub>
+    <id>1</id>
     <name>Cafe Den Koek</name>
     <street>Pastraat</street>
     <streetnumber>7</streetnumber>

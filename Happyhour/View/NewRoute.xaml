@@ -7,10 +7,90 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <!-- New route -->
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
+        <!-- ScrollViewer -->
+        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <!-- Stackpanel -->
+            <StackPanel MinWidth="360" MinHeight="640" MaxWidth="380" MaxHeight="680" Padding="10">
+                <!-- Stackpanel background-->
+                <StackPanel.Background>
+                    <SolidColorBrush Color="#DCDCDC" Opacity="0.2"/>
+                </StackPanel.Background>
+                <!-- Fields -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
+                    <TextBlock x:Name="ErrorMessage_TextBlock" Foreground="Red" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Margin="20,0,0,0"/>
+
+                    <Grid Column="0" Row="1" Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Route toevoegen"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Foreground="White" Text="Naam: "/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Foreground="White" Text="Van kroeg: "/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Foreground="White" Text="Naar kroeg: "/>
+
+                        <TextBox x:Name="Name_TextBox" Grid.Row="1" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
+                        <ComboBox x:Name="fromPub_ComboBox" Grid.Row="2" Grid.Column="1" Margin="5,5,0,0" Width="210">
+                            <ComboBoxItem>Item 1</ComboBoxItem>
+                            <ComboBoxItem>Item 2</ComboBoxItem>
+                            <ComboBoxItem>Item 3</ComboBoxItem>
+                        </ComboBox>
+                        <ComboBox x:Name="toPub_ComboBox" Grid.Row="3" Grid.Column="1" Margin="5,5,0,0" Width="210">
+                            <ComboBoxItem>Item 1</ComboBoxItem>
+                            <ComboBoxItem>Item 2</ComboBoxItem>
+                            <ComboBoxItem>Item 3</ComboBoxItem>
+                        </ComboBox>
+                        <Button Grid.Row="4" Grid.Column="1" Width="210" Margin="5,5,25,5" Foreground="White" Content="Toevoegen" Click="AddToList_Click"/>
+                    </Grid>
+
+                    <ScrollViewer Width="300" Height="300" BorderBrush="Black" Grid.Column="0" Grid.Row="2" Margin="0,5,30,0">
+
+                    </ScrollViewer>
+
+                    <!-- Buttons -->
+                    <Grid Column="0" Row="3" Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" Content="Opslaan" Click="Save_Click" />
+                        <Button Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" Content="Annuleren" Click="Cancel_Click"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

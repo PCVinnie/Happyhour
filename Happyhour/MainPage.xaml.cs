@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Happyhour.Control;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,7 +26,6 @@ namespace Happyhour
         public MainPage()
         {
             this.InitializeComponent();
-            XMLFileHandler reader = new XMLFileHandler();
         }
         private void Happyhour_Click(object sender, RoutedEventArgs e)
         {

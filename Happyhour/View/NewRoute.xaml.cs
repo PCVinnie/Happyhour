@@ -26,5 +26,20 @@ namespace Happyhour.View
         {
             this.InitializeComponent();
         }
+
+        private void AddToList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(View.Map));
+        }
     }
 }

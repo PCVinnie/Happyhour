@@ -54,10 +54,25 @@
                         <StackPanel.Background>
                             <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
                         </StackPanel.Background>
-                        <!-- ScrollViewer -->
-                        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <ListView Height="470" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,25,0">
+                            <ListViewItem BorderThickness="1" BorderBrush="Gray"  Width="288" Height="100" Margin="10,10,0,0">
+                                <Grid Grid.Row="1" Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
 
-                        </ScrollViewer>
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="Naam: " />
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="Adres: "/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="Openingstijden: "/>
+                                </Grid>
+                            </ListViewItem>
+                        </ListView>
                     </StackPanel>
 
                     <Button Grid.Row="3" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>

@@ -14,44 +14,6 @@ namespace Happyhour
 {
     class XMLFileHandler
     {
-        private const string dataFileName = "PubAppData.txt";
-        public XMLFileHandler()
-        {
-            List<LocationData> test = readPubXMLFile();
-            LocationData l = new LocationData();
-            l.name = "BierCafe";
-            l.city = "Rotterdam";
-            
-            test = checkIfListContains(test, l);
-
-            LocationData l2 = new LocationData();
-            l2.name = "BierCafe";
-            l2.city = "Delft";
-            test = checkIfListContains(test, l2); ;
-
-            writePubXMLFile(test);
-
-            test = readPubXMLFile();
-        }
-
-        private List<LocationData> checkIfListContains(List<LocationData> list, LocationData data)
-        {
-            Boolean isIn = false;
-            foreach (LocationData ld in list)
-            {
-                if (ld.name == data.name && ld.city != data.city)
-                    isIn = false;
-                else if (ld.name == data.name)
-                {
-                    isIn = true;
-                    break;
-                }
-            }
-            if (!isIn)
-                list.Add(data);
-
-            return list;
-        }
 
         public void writePubXMLFile(List<LocationData> locations)
         {
@@ -85,7 +47,7 @@ namespace Happyhour
                 //}
             }
 
-            //File.WriteAllText("Assets/XML/PubsInformation.xml", doc.ToString());
+            File.WriteAllText("Assets/XML/PubsInformation.xml", doc.ToString());
 
             Debug.WriteLine(File.ReadAllText("Assets/XML/PubsInformation.xml"));
         }
@@ -107,6 +69,10 @@ namespace Happyhour
                             case "PUB":
                                 location = new LocationData();
                                 break;
+                            case "ID":
+                                element = XElement.ReadFrom(reader) as XElement;
+                                location.id = int.Parse(element.Value);
+                                break;
                             case "NAME":
                                 element = XElement.ReadFrom(reader) as XElement;
                                 location.name = element.Value.ToString();
@@ -117,11 +83,13 @@ namespace Happyhour
                                 break;
                             case "STREETNUMBER":
                                 element = XElement.ReadFrom(reader) as XElement;
-                                Int32.TryParse(element.Value, out location.streetNumber);
+                                int streetNumber;
+                                Int32.TryParse(element.Value, out streetNumber);
+                                location.streetNumber = streetNumber;
                                 break;
                             case "POSTCODE":
                                 element = XElement.ReadFrom(reader) as XElement;
-                                location.postcode = element.Value.ToString();
+                                location.zipcode = element.Value.ToString();
                                 break;
                             case "CITY":
                                 element = XElement.ReadFrom(reader) as XElement;
@@ -133,7 +101,9 @@ namespace Happyhour
                                 break;
                             case "RATING":
                                 element = XElement.ReadFrom(reader) as XElement;
-                                Double.TryParse(element.Value.ToString(), out location.rating);
+                                Double rating;
+                                Double.TryParse(element.Value.ToString(), out rating);
+                                location.rating = rating;
                                 break;
                             case "OPENTIMES":
                                 readPubTimes(reader, true, location);
