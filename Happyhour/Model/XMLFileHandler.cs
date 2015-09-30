@@ -18,33 +18,26 @@ namespace Happyhour
         public void writePubXMLFile(List<LocationData> locations)
         {
 
-            //XDocument pubdoc = XDocument.Load("Assets/XML/PubsInformation.xml");
-            //List<XElement> pubs = pubdoc.Root.Elements().ToList();
-
             XDocument doc = new XDocument();
             doc.Add(new XElement("pubs"));
 
             foreach (LocationData l in locations)
             {
-                /*Boolean inIt = true;
-                foreach (XElement filepub in pubs)
-                {
-                    if(filepub.Element("name").Value != l.name || (filepub.Element("name").Value == l.name && filepub.Element("city").Value != l.city))
-                    {
-                        inIt = false;
-                    }
-                }
-                if(!inIt)
-                {*/
-                    XElement pub = new XElement("pub");
-                    XElement name = new XElement("name", l.name);
-                    XElement city = new XElement("city", l.city);
-                    pub.Add(name);
-                    pub.Add(city);
+                XElement pub = new XElement("pub");
+                XElement id = new XElement("id", l.id);
+                XElement name = new XElement("name", l.name);
+                XElement street = new XElement("street", l.street);
+                XElement streetNumber = new XElement("streetNumber", l.streetNumber);
+                XElement zipcode = new XElement("zipcode", l.zipcode);
+                XElement city = new XElement("city", l.city);
+                pub.Add(id);
+                pub.Add(name);
+                pub.Add(street);
+                pub.Add(streetNumber);
+                pub.Add(zipcode);
+                pub.Add(city);
 
-                    //pubs.Add(pub);
-                    doc.Root.Add(pub);
-                //}
+                doc.Root.Add(pub);
             }
 
             File.WriteAllText("Assets/XML/PubsInformation.xml", doc.ToString());
@@ -83,11 +76,9 @@ namespace Happyhour
                                 break;
                             case "STREETNUMBER":
                                 element = XElement.ReadFrom(reader) as XElement;
-                                int streetNumber;
-                                Int32.TryParse(element.Value, out streetNumber);
-                                location.streetNumber = streetNumber;
+                                location.streetNumber = element.Value;
                                 break;
-                            case "POSTCODE":
+                            case "ZIPCODE":
                                 element = XElement.ReadFrom(reader) as XElement;
                                 location.zipcode = element.Value.ToString();
                                 break;

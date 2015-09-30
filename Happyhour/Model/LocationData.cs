@@ -6,7 +6,7 @@ public class LocationData
     public int id;
     public string name { get; set; }
     public string street { get; set; }
-    public int streetNumber { get; set; }
+    public string streetNumber { get; set; }
     public string zipcode { get; set; }
     public string city { get; set; }
     public string country { get; set; }
@@ -23,7 +23,7 @@ public class LocationData
         id = -1; 
         name = "";
         street = "";
-        streetNumber = 0;
+        streetNumber = "0";
         zipcode = "0000AA";
         city = "Amsterdam";
         country = "Nederland";
@@ -31,6 +31,23 @@ public class LocationData
 
         position = new BasicGeoposition();
         rating = 0;
+        openTimes = new List<ClockTime>();
+        closeTimes = new List<ClockTime>();
+    }
+
+    public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating)
+    {
+        id = -1;
+        this.name = name;
+        this.street = street;
+        this.streetNumber = streetNumber;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.country = country;
+        happyHour = "";
+
+        position = new BasicGeoposition();
+        this.rating = rating;
         openTimes = new List<ClockTime>();
         closeTimes = new List<ClockTime>();
     }

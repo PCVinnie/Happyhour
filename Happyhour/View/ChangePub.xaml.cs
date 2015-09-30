@@ -22,9 +22,45 @@ namespace Happyhour.View
     /// </summary>
     public sealed partial class ChangePub : Page
     {
+        LocationData pub;
         public ChangePub()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            this.pub = (LocationData)e.Parameter;
+            fillTextFields();
+        }
+
+        private void fillTextFields()
+        {
+            Name_TextBox.Text = pub.name;
+            Street_TextBox.Text = pub.street;
+            Housenumber_TextBox.Text = pub.streetNumber;
+            Place_TextBox.Text = pub.city;
+            Zipcode_TextBox.Text = pub.zipcode;
+            Country_TextBox.Text = pub.country;
+
+            switch(pub.rating.ToString())
+            {
+                case "1":
+                    Rating_1.IsChecked = true;
+                    break;
+                case "2":
+                    Rating_2.IsChecked = true;
+                    break;
+                case "3":
+                    Rating_3.IsChecked = true;
+                    break;
+                case "4":
+                    Rating_4.IsChecked = true;
+                    break;
+                case "5":
+                    Rating_5.IsChecked = true;
+                    break;
+            }
         }
 
         public void inputData()

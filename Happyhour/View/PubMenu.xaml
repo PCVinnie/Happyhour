@@ -22,10 +22,12 @@
             <Button Margin="5" Width="320" Foreground="White" Content="Nieuw" Click="NewPub_Click"/>
 
             <StackPanel Background="#C6C6C6">
-                <ComboBox Grid.Row="2" Grid.Column="0" Margin="5,5,0,0" Width="320">
-                    <ComboBoxItem>Item 1</ComboBoxItem>
-                    <ComboBoxItem>Item 2</ComboBoxItem>
-                    <ComboBoxItem>Item 3</ComboBoxItem>
+                <ComboBox x:Name="pubList" Grid.Row="2" Grid.Column="0" Margin="5,5,0,0" Width="320">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
 
             <Grid>

@@ -33,7 +33,8 @@ namespace Happyhour.Control
         public void addPub(LocationData pub)
         {
             pub.id = pubList[pubList.Count -1].id + 1;
-            pubList.Add(pub);
+            checkIfListContains(pubList, pub);
+            xmlFileHandler.writePubXMLFile(pubList);
         }
         public void setPub(LocationData pub, int id)
         {

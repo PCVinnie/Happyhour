@@ -5,10 +5,10 @@
     <name>Cafe Den Paard</name>
     <street>Kalverstraat</street>
     <streetnumber>5</streetnumber>
-    <postcode>6660AB</postcode>
+    <zipcode>6660AB</zipcode>
     <city>Amsterdam</city>
     <country>Nederland</country>
-    <rating>7.5</rating>
+    <rating>3</rating>
     <position>
       <latitude>4.321</latitude>
       <longitude>7.264</longitude>
@@ -37,10 +37,10 @@
     <name>Cafe Den Koek</name>
     <street>Pastraat</street>
     <streetnumber>7</streetnumber>
-    <postcode>0040AB</postcode>
+    <zipcode>0040AB</zipcode>
     <city>Amsterdam</city>
     <country>Nederland</country>
-    <rating>6.5</rating>
+    <rating>4</rating>
     <position>
       <latitude>3.321</latitude>
       <longitude>5.264</longitude>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Happyhour.Control;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace Happyhour.View
         public PubMenu()
         {
             this.InitializeComponent();
+            pubList.ItemsSource = LocationHandler.Instance.pubList;
+            pubList.SelectedIndex = 0;
         }
 
         private void NewPub_Click(object sender, RoutedEventArgs e)
@@ -34,7 +37,8 @@ namespace Happyhour.View
 
         private void ChangePub_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(View.ChangePub));
+            LocationData chosenPub = (LocationData)pubList.SelectedItem;
+            Frame.Navigate(typeof(View.ChangePub), chosenPub);
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
