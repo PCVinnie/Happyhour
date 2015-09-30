@@ -40,6 +40,15 @@ namespace Happyhour.View
             LocationData chosenPub = (LocationData)pubList.SelectedItem;
             Frame.Navigate(typeof(View.ChangePub), chosenPub);
         }
+     
+        private void RemovePub_Click(object sender, RoutedEventArgs e)
+        {
+            LocationData chosenPub = (LocationData)pubList.SelectedItem;
+            LocationHandler.Instance.deletePub(chosenPub.id);
+
+            pubList.ItemsSource = LocationHandler.Instance.pubList;
+            pubList.SelectedIndex = 0;
+        }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {

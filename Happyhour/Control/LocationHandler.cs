@@ -36,21 +36,25 @@ namespace Happyhour.Control
             checkIfListContains(pubList, pub);
             xmlFileHandler.writePubXMLFile(pubList);
         }
-        public void setPub(LocationData pub, int id)
+        public void setPub(LocationData pub)
         {
             foreach (LocationData p in pubList)
             {
                 if(p.id == pub.id)
                 {
-                    pubList[id] = pub;
+                    int index = pubList.IndexOf(p);
+                    pubList[index] = pub;
                     break;
                 }
             }
+
+            xmlFileHandler.writePubXMLFile(pubList);
         }
 
         public void deletePub(int id)
         {
             pubList.RemoveAt(id);
+            xmlFileHandler.writePubXMLFile(pubList);
         }
 
         private List<LocationData> checkIfListContains(List<LocationData> list, LocationData data)

@@ -74,13 +74,15 @@ namespace Happyhour.View
 
                 LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, rating);
                 LocationHandler.Instance.addPub(pub);
+
+                Frame.Navigate(typeof(View.PubMenu));
             }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             inputData();
-            Frame.Navigate(typeof(View.PubMenu));
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

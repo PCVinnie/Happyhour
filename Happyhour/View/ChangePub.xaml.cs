@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Happyhour.Control;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -69,7 +70,7 @@ namespace Happyhour.View
             string street = Street_TextBox.Text;
             string houseNumber = Housenumber_TextBox.Text;
             string zipCode = Zipcode_TextBox.Text;
-            string place = Place_TextBox.Text;
+            string city = Place_TextBox.Text;
             string country = Country_TextBox.Text;
             //string openinghours = Openinghours_TextBox.Text;
 
@@ -81,7 +82,7 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "Er is geen huisnummer opgegeven.";
             else if (string.IsNullOrEmpty(zipCode))
                 ErrorMessage_TextBlock.Text = "Er is geen postcode opgegeven.";
-            else if (string.IsNullOrEmpty(place))
+            else if (string.IsNullOrEmpty(city))
                 ErrorMessage_TextBlock.Text = "Er is geen plaats opgegeven.";
             else if (string.IsNullOrEmpty(country))
                 ErrorMessage_TextBlock.Text = "Er is geen land opgegeven.";
@@ -105,9 +106,13 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "";
 
                 // Wegschrijven naar xml bestand.
+                int rating = 0;
 
+                LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, rating);
+                p.id = pub.id;
+                LocationHandler.Instance.setPub(p);
 
-
+                Frame.Navigate(typeof(View.PubMenu));
             }
         }
 
