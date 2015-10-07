@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Happyhour.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,15 @@ namespace Happyhour.Control
     {
         private static LocationHandler instance;
         public List<LocationData> pubList;
+        public List<PubRoute> routeList;
         private XMLFileHandler xmlFileHandler;
         private LocationHandler()
         {
             xmlFileHandler = new XMLFileHandler();
+            pubList = new List<LocationData>();
+            LocationData d = new LocationData();
             pubList = xmlFileHandler.readPubXMLFile();
+            routeList = xmlFileHandler.readRouteXMLFile(pubList);
         }
 
         public static LocationHandler Instance
@@ -76,6 +81,14 @@ namespace Happyhour.Control
             return list;
         }
 
-
+        public LocationData getLocationdataById(int id)
+        {
+            foreach(LocationData data in pubList)
+            {
+                if (data.id == id)
+                    return data;
+            }
+            return null;
+        }
     }
 }
