@@ -35,6 +35,12 @@ namespace Happyhour.Control
             }
         }
 
+        public void addRoute(PubRoute route)
+        {
+            routeList.Add(route);
+            xmlFileHandler.writeRouteXMLFile(routeList);
+        }
+
         public void addPub(LocationData pub)
         {
             pub.id = pubList[pubList.Count -1].id + 1;

@@ -122,6 +122,35 @@ namespace Happyhour
             return locations;
         }
 
+        public void writeRouteXMLFile(List<PubRoute> routes)
+        {
+
+            XDocument doc = new XDocument();
+            doc.Add(new XElement("routes"));
+
+            foreach (PubRoute p in routes)
+            {
+                XElement route = new XElement("route");
+                XElement name = new XElement("name", p.name);
+                route.Add(name);
+
+                foreach (LocationData data in p.pubs)
+                {
+                    XElement pub = new XElement("pub");
+                    XElement id = new XElement("id", data.id);
+
+                    pub.Add(id);
+                    route.Add(pub);
+                }
+
+                doc.Root.Add(route);
+            }
+
+            File.WriteAllText("Assets/XML/PubRoutes.xml", doc.ToString());
+
+            Debug.WriteLine(File.ReadAllText("Assets/XML/PubRoutes.xml"));
+        }
+
         public List<PubRoute> readRouteXMLFile(List<LocationData> pubList)
         {
             if (pubList.Count != 0)

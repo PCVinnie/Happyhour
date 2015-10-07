@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Happyhour.Control;
+using Happyhour.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,19 +25,38 @@ namespace Happyhour.View
     /// </summary>
     public sealed partial class NewRoute : Page
     {
+        ObservableCollection<LocationData> pubList;
         public NewRoute()
         {
             this.InitializeComponent();
+            pubList = new ObservableCollection<LocationData>();
+
+            fromPub_ComboBox.ItemsSource = LocationHandler.Instance.pubList;
+            fromPub_ComboBox.SelectedIndex = 0;
         }
 
         private void AddToList_Click(object sender, RoutedEventArgs e)
         {
-
+            LocationData selectedPub = (LocationData)fromPub_ComboBox.SelectedItem;
+            if (!pubList.Contains(selectedPub))
+                pubList.Add(selectedPub);
+            else
+                ErrorMessage_TextBlock.Text = "Lijst bevat deze pub al";
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-           
+           if(string.IsNullOrEmpty(Name_TextBox.Text))
+                ErrorMessage_TextBlock.Text = "Er is geen naam opgegeven";
+           else if(pubList.Count < 2)
+                ErrorMessage_TextBlock.Text = "Er zijn te weinig pubs opgegeven voor een route";
+           else
+            {
+                PubRoute route = new PubRoute(Name_TextBox.Text, pubList.ToList());
+                LocationHandler.Instance.addRoute(route);
+
+                Frame.Navigate(typeof(View.Map));
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

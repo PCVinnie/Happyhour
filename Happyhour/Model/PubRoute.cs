@@ -8,7 +8,7 @@ namespace Happyhour.Model
 {
     class PubRoute
     {
-        private List<LocationData> pubs;
+        public List<LocationData> pubs { get; }
         public string name { get; set; }
 
         public PubRoute()

@@ -55,26 +55,36 @@
                         <TextBlock Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Route toevoegen"/>
 
                         <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Foreground="White" Text="Naam: "/>
-                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Foreground="White" Text="Van kroeg: "/>
-                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Foreground="White" Text="Naar kroeg: "/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Foreground="White" Text="Kroeg: "/>
+                        <!--<TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Foreground="White" Text="Naar kroeg: "/>-->
 
                         <TextBox x:Name="Name_TextBox" Grid.Row="1" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
                         <ComboBox x:Name="fromPub_ComboBox" Grid.Row="2" Grid.Column="1" Margin="5,5,0,0" Width="210">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <!--<ComboBox x:Name="toPub_ComboBox" Grid.Row="3" Grid.Column="1" Margin="5,5,0,0" Width="210">
                             <ComboBoxItem>Item 1</ComboBoxItem>
                             <ComboBoxItem>Item 2</ComboBoxItem>
                             <ComboBoxItem>Item 3</ComboBoxItem>
-                        </ComboBox>
-                        <ComboBox x:Name="toPub_ComboBox" Grid.Row="3" Grid.Column="1" Margin="5,5,0,0" Width="210">
-                            <ComboBoxItem>Item 1</ComboBoxItem>
-                            <ComboBoxItem>Item 2</ComboBoxItem>
-                            <ComboBoxItem>Item 3</ComboBoxItem>
-                        </ComboBox>
+                        </ComboBox>-->
                         <Button Grid.Row="4" Grid.Column="1" Width="210" Margin="5,5,25,5" Foreground="White" Content="Toevoegen" Click="AddToList_Click"/>
                     </Grid>
 
-                    <ScrollViewer Width="300" Height="300" BorderBrush="Black" Grid.Column="0" Grid.Row="2" Margin="0,5,30,0">
+                    <!--<ScrollViewer Width="300" Height="300" BorderBrush="Black" Grid.Column="0" Grid.Row="2" Margin="0,5,30,0">
 
-                    </ScrollViewer>
+                    </ScrollViewer>-->
+
+                    <ListView x:Name="RoutesListView" ItemsSource="{x:Bind pubList}" Grid.Row="2" Grid.Column="0" Height="100" Width="300" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,5,30,0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="NameBlock" Width="220" Margin="0,5,5,5" Foreground="White" Text="{Binding name}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
                     <!-- Buttons -->
                     <Grid Column="0" Row="3" Margin="10">
