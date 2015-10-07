@@ -28,14 +28,14 @@ public class LocationData
         city = "Amsterdam";
         country = "Nederland";
         happyHour = "";
+        rating = 0;
 
         position = new BasicGeoposition();
-        rating = 0;
         openTimes = new List<ClockTime>();
         closeTimes = new List<ClockTime>();
     }
 
-    public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating)
+    public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating, int day, string openingtime, string closingtime)
     {
         id = -1;
         this.name = name;
@@ -44,12 +44,15 @@ public class LocationData
         this.zipcode = zipcode;
         this.city = city;
         this.country = country;
+        this.rating = rating;
         happyHour = "";
 
         position = new BasicGeoposition();
-        this.rating = rating;
         openTimes = new List<ClockTime>();
         closeTimes = new List<ClockTime>();
+
+        openTimes.Add(new ClockTime(splitStringToInt(openingtime)[0], splitStringToInt(openingtime)[1], day, true));
+        closeTimes.Add(new ClockTime(splitStringToInt(closingtime)[0], splitStringToInt(closingtime)[1], day, true));
     }
 
     public string addOpenTime(int day, int hour, int minutes)
@@ -156,5 +159,42 @@ public class LocationData
         }
 
         return null;
+    }
+
+    public string getOpeningTime()
+    {
+        string openingTime = "test";
+
+        foreach (ClockTime op in openTimes)
+        {
+           openingTime += op.getString() + "\n";
+        }
+
+        return openingTime;
+    }
+
+    public string getClosingTime()
+    {
+        string closingTime = "test";
+
+        foreach (ClockTime op in closeTimes)
+        {
+            closingTime += op.getString() + "\n";
+        }
+
+        return closingTime;
+    }
+
+    public int[] splitStringToInt(string value)
+    {
+        int[] time = new int[2];
+        string[] output = value.Split(':');
+
+        for (int i = 0; i < output.Length; i++)
+        {
+            time[i] = System.Convert.ToInt32(output[i]);
+        }
+
+        return time;
     }
 }

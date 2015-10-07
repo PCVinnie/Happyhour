@@ -71,12 +71,16 @@
 
                                             <TextBlock x:Name="NameBlock" Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="{Binding name}" />
                                             <TextBlock x:Name="OtherInfoBlock" Grid.Row="1" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White">
+
                                                 <Run Text="{Binding street}"/>
                                                 <Run Text="{Binding streetNumber}"/>
                                                 <Run Text="{Binding zipcode}"/>
                                                 <Run Text="{Binding city}"/>
                                             </TextBlock>
-                                            <TextBlock Grid.Row="2" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="Openingstijden: "/>
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="Openingstijden: ">
+                                                <Run Text="{Binding getOpeningTime}"/>
+                                                <Run Text="{Binding getClosingTime}"/>
+                                            </TextBlock>
                                         </Grid>
                                     </StackPanel>
                                 </DataTemplate>

@@ -80,7 +80,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ComboBox Grid.Row="0" Grid.Column="0" SelectedIndex="0" Margin="5,5,0,0">
+                            <ComboBox x:Name="Days_ComboBox" Grid.Row="0" Grid.Column="0" SelectedIndex="0" Margin="5,5,0,0">
                                 <ComboBoxItem>Ma</ComboBoxItem>
                                 <ComboBoxItem>Di</ComboBoxItem>
                                 <ComboBoxItem>Wo</ComboBoxItem>
@@ -89,8 +89,8 @@
                                 <ComboBoxItem>Za</ComboBoxItem>
                                 <ComboBoxItem>Zo</ComboBoxItem>
                             </ComboBox>
-                            <TextBox Grid.Row="0" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
-                            <TextBox Grid.Row="0" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="OpeningTime_TextBox" Grid.Row="0" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="ClosingTime_TextBox"  Grid.Row="0" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
                         </Grid>
 
                         <!-- Rating -->
