@@ -9,8 +9,8 @@
     {
         hour = 0;
         minutes = 0;
-        int day = 0;
-        bool closed = false;
+        day = 0;
+        closed = false;
     }
 
     public ClockTime(int hour, int minutes, int day, bool closed)
@@ -43,7 +43,7 @@
         return "";
     }
 
-    public string  getString()
+    public string getString()
     {
         string hourString;
         string minutesString;

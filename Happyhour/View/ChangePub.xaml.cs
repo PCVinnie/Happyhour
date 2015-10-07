@@ -72,7 +72,11 @@ namespace Happyhour.View
             string zipCode = Zipcode_TextBox.Text;
             string city = Place_TextBox.Text;
             string country = Country_TextBox.Text;
-            //string openinghours = Openinghours_TextBox.Text;
+            string openingTime = OpeningTime_TextBox.Text;
+            string closingTime = ClosingTime_TextBox.Text;
+
+            int selectedIndex = Days_ComboBox.SelectedIndex;
+            Object day = Days_ComboBox.SelectedItem;
 
             if (string.IsNullOrEmpty(name))
                 ErrorMessage_TextBlock.Text = "Er is geen naam opgegeven.";
@@ -86,8 +90,12 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "Er is geen plaats opgegeven.";
             else if (string.IsNullOrEmpty(country))
                 ErrorMessage_TextBlock.Text = "Er is geen land opgegeven.";
-           // else if (string.IsNullOrEmpty(openinghours))
-             //   ErrorMessage_TextBlock.Text = "Er zijn geen openingstijden opgegeven.";
+            else if (string.IsNullOrEmpty(day.ToString()))
+                ErrorMessage_TextBlock.Text = "Er is geen dag opgegeven.";
+            else if (string.IsNullOrEmpty(openingTime))
+                ErrorMessage_TextBlock.Text = "Er zijn geen openingstijden opgegeven.";
+            else if (string.IsNullOrEmpty(closingTime))
+                ErrorMessage_TextBlock.Text = "Er zijn geen sluitingstijden opgegeven.";
             else if (Rating_1.IsChecked == false &&
                      Rating_2.IsChecked == false &&
                      Rating_3.IsChecked == false &&
@@ -108,9 +116,9 @@ namespace Happyhour.View
                 // Wegschrijven naar xml bestand.
                 int rating = 0;
 
-                LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, rating);
+                LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, rating, selectedIndex, openingTime, closingTime);
                 p.id = pub.id;
-                LocationHandler.Instance.setPub(p);
+                LocationHandler.Instance.addPub(p);
 
                 Frame.Navigate(typeof(View.PubMenu));
             }

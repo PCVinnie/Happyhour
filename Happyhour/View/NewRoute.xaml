@@ -58,8 +58,8 @@
                         <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Foreground="White" Text="Van kroeg: "/>
                         <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Foreground="White" Text="Naar kroeg: "/>
 
-                        <TextBox x:Name="Name_TextBox" Grid.Row="1" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
-                        <ComboBox x:Name="fromPub_ComboBox" Grid.Row="2" Grid.Column="1" Margin="5,5,0,0" Width="210">
+                        <TextBox x:Name="Name_TextBox" Grid.Row="1" Grid.Column="1" Width="210" Margin="5,5,25,5" Text="{Binding name}"/>
+                            <ComboBox x:Name="fromPub_ComboBox" Grid.Row="2" Grid.Column="1" Margin="5,5,0,0" Width="210">
                             <ComboBoxItem>Item 1</ComboBoxItem>
                             <ComboBoxItem>Item 2</ComboBoxItem>
                             <ComboBoxItem>Item 3</ComboBoxItem>
