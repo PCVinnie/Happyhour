@@ -19,6 +19,9 @@ using Windows.Services.Maps;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Documents;
 using Windows.UI;
+using Happyhour.Control;
+using Happyhour.Model;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,12 +32,15 @@ namespace Happyhour.View
     /// </summary>
     public sealed partial class Map : Page
     {
+        ObservableCollection<PubRoute> routeList;
         public Map()
         {
             this.InitializeComponent();
 
             AddMapIcon();
             GetRouteAndDirections();
+
+            routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
         }
 
         /*

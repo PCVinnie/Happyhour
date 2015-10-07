@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Happyhour.Control;
+using Happyhour.Model;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -118,6 +120,59 @@ namespace Happyhour
                 }
             }
             return locations;
+        }
+
+        public List<PubRoute> readRouteXMLFile(List<LocationData> pubList)
+        {
+            if (pubList.Count != 0)
+            {
+                XElement element;
+                List<PubRoute> routes = new List<PubRoute>();
+                PubRoute route = null;
+                LocationData pubdata = new LocationData();
+
+                using (XmlReader reader = XmlReader.Create("Assets/XML/PubRoutes.xml"))
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.IsStartElement())
+                        {
+                            switch (reader.Name.ToString().ToUpper())
+                            {
+                                case "ROUTE":
+                                    route = new PubRoute();
+                                    break;
+                                case "NAME":
+                                    element = XElement.ReadFrom(reader) as XElement;
+                                    route.name = element.Value.ToString();
+                                    break;
+                                case "PUB":
+                                    pubdata = new LocationData();
+                                    break;
+                                case "ID":
+                                    element = XElement.ReadFrom(reader) as XElement;
+                                    int id = -1;
+                                    int.TryParse(element.Value.ToString(), out id);
+                                    foreach (LocationData data in pubList)
+                                    {
+                                        if (data.id == id)
+                                        {
+                                            pubdata = data;
+                                            break;
+                                        }
+                                    }
+                                    route.addPubToList(pubdata);
+                                    break;
+                            }
+                        }
+                        else if (reader.NodeType == XmlNodeType.EndElement && reader.Name.ToString().ToUpper() == "ROUTE")
+                            routes.Add(route);
+                    }
+                }
+                return routes;
+            }
+            else
+                return null;
         }
 
         private void readPubTimes(XmlReader reader, Boolean isOpentime, LocationData location)

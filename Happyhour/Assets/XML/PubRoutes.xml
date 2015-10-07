@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<routes>
+  <route>
+    <name>BredaAchterhoek</name>
+    <pub>
+      <id>0</id>
+    </pub>
+    <pub>
+      <id>1</id>
+    </pub>
+  </route>
+<route>
+    <name>Dordrechtse Slechte Buurt</name>
+    <pub>
+      <id>0</id>
+    </pub>
+    <pub>
+      <id>1</id>
+    </pub>
+  </route>
+<route>
+    <name>Amsterdam De Kaas</name>
+    <pub>
+      <id>0</id>
+    </pub>
+    <pub>
+      <id>1</id>
+    </pub>
+  </route>
+</routes>

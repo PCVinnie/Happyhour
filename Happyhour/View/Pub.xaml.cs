@@ -33,6 +33,7 @@ namespace Happyhour.View
 
             pubList = new ObservableCollection<LocationData>(locationHandler.pubList);
             PubsListView.ItemsSource = pubList;
+            
         }
 
         private void PubMenu_Click(object sender, RoutedEventArgs e)
