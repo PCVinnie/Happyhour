@@ -22,6 +22,7 @@ using Windows.UI;
 using Happyhour.Control;
 using Happyhour.Model;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -46,6 +47,15 @@ namespace Happyhour.View
         /*
         /   Voor het toevoegen van icon's aan de map.
         */
+        private void AddMapIcon(LocationData location)
+        {
+            MapIcon MapIcon1 = new MapIcon();
+            MapIcon1.Location = new Geopoint(location.position);
+            MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
+            MapIcon1.Title = location.name;
+            InputMap.MapElements.Add(MapIcon1);
+        }
+
         private void AddMapIcon()
         {
             MapIcon MapIcon1 = new MapIcon();
@@ -121,6 +131,16 @@ namespace Happyhour.View
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private void RoutesListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PubRoute selectedRoute = (PubRoute)RoutesListView.SelectedItem;
+            Debug.WriteLine(selectedRoute.name);
+            foreach(LocationData loc in selectedRoute.pubs)
+            {
+                AddMapIcon(loc);
+            }
         }
     }
 }
