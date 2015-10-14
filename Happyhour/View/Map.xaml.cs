@@ -44,7 +44,7 @@ namespace Happyhour.View
         public Map()
         {
             this.InitializeComponent();
-           
+            GeofenceMonitor.Current.Geofences.Clear();
             geolocator = new Geolocator();
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
             getCurrentLocation();
@@ -260,16 +260,14 @@ namespace Happyhour.View
             }
         }
 
-        /*
         private void DrawGeofences()
         {
             Windows.UI.Xaml.Shapes.Ellipse fence = new Windows.UI.Xaml.Shapes.Ellipse();
 
-            MapControl.Children.Add(fence);
-            MapControl.SetLocation(fence, point);
-            MapControl.SetNormalizedAnchorPoint(fence, new Point(0.5, 0.5));
+            //MapControl.Children.Add(fence);
+            //MapControl.SetLocation(fence, point);
+            //MapControl.SetNormalizedAnchorPoint(fence, new Point(0.5, 0.5));
         }
-        */
 
             /*
         private void drawGeofence(Geocoordinate coor)
@@ -295,6 +293,7 @@ namespace Happyhour.View
         {
             InputMap.MapElements.Clear();
             InputMap.Routes.Clear();
+            GeofenceMonitor.Current.Geofences.Clear();
             selectedRoute = (PubRoute)RoutesListView.SelectedItem;
             Debug.WriteLine(selectedRoute.name);
             Summary.Text = "Route is aan het inladen....";
