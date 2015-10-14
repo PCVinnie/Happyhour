@@ -38,9 +38,6 @@ namespace Happyhour.View
         {
             this.InitializeComponent();
 
-            //AddMapIcon();
-            //GetRouteAndDirections();
-
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
         }
 
@@ -118,7 +115,6 @@ namespace Happyhour.View
         {
             Frame.Navigate(typeof(MainPage));
         }
-
 
         private void RoutesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
