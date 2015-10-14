@@ -133,11 +133,12 @@ namespace Happyhour.View
             Frame.Navigate(typeof(MainPage));
         }
 
-        private void RoutesListView_ItemClick(object sender, ItemClickEventArgs e)
+
+        private void RoutesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             PubRoute selectedRoute = (PubRoute)RoutesListView.SelectedItem;
             Debug.WriteLine(selectedRoute.name);
-            foreach(LocationData loc in selectedRoute.pubs)
+            foreach (LocationData loc in selectedRoute.pubs)
             {
                 AddMapIcon(loc);
             }
