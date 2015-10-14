@@ -94,8 +94,8 @@ namespace Happyhour
                                 break;
                             case "RATING":
                                 element = XElement.ReadFrom(reader) as XElement;
-                                Double rating;
-                                Double.TryParse(element.Value.ToString(), out rating);
+                                int rating;
+                                int.TryParse(element.Value.ToString(), out rating);
                                 location.rating = rating;
                                 break;
                             case "OPENTIMES":

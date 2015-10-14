@@ -34,6 +34,7 @@ namespace Happyhour.View
     public sealed partial class Map : Page
     {
         ObservableCollection<PubRoute> routeList;
+        LocationData pub;
         public Map()
         {
             this.InitializeComponent();
@@ -74,10 +75,10 @@ namespace Happyhour.View
         */
         private async void GetRouteAndDirections()
         {
-            // Start at Microsoft in Redmond, Washington.
+            // Start point
             BasicGeoposition startLocation = new BasicGeoposition();
-            startLocation.Latitude = 47.643;
-            startLocation.Longitude = -122.131;
+            startLocation.Longitude = pub.longitude;
+            startLocation.Latitude = pub.latitude;
             Geopoint startPoint = new Geopoint(startLocation);
 
             // End at the city of Seattle, Washington.

@@ -43,7 +43,9 @@ namespace Happyhour.View
             Place_TextBox.Text = pub.city;
             Zipcode_TextBox.Text = pub.zipcode;
             Country_TextBox.Text = pub.country;
-            Rating_ComboBox.SelectedIndex = (int)pub.rating;
+            Rating_ComboBox.SelectedIndex = pub.rating;
+            Longitude_TextBox.Text = pub.longitude.ToString();
+            Latitude_TextBox.Text = pub.latitude.ToString();
         }
 
         public void inputData()
@@ -56,6 +58,8 @@ namespace Happyhour.View
             string country = Country_TextBox.Text;
             string openingTime = OpeningTime_TextBox.Text;
             string closingTime = ClosingTime_TextBox.Text;
+            string longitude = Longitude_TextBox.Text;
+            string latitude = Latitude_TextBox.Text;
 
             int selectedRatingIndex = Rating_ComboBox.SelectedIndex;
             Object rating = Rating_ComboBox.SelectedItem;
@@ -82,6 +86,10 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "Er zijn geen sluitingstijden opgegeven.";
             else if (string.IsNullOrEmpty(rating.ToString()))
                 ErrorMessage_TextBlock.Text = "Er is geen rating opgegeven.";
+            else if (string.IsNullOrEmpty(longitude.ToString()))
+                ErrorMessage_TextBlock.Text = "Er is geen longitude opgegeven.";
+            else if (string.IsNullOrEmpty(latitude.ToString()))
+                ErrorMessage_TextBlock.Text = "Er is geen latitude opgegeven.";
             else if (Happyhour_1.IsChecked == false &&
                      Happyhour_2.IsChecked == false &&
                      Happyhour_3.IsChecked == false &&
@@ -93,7 +101,7 @@ namespace Happyhour.View
             else {
                 ErrorMessage_TextBlock.Text = "";
 
-                LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, selectedDayIndex, openingTime, closingTime);
+                LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, selectedDayIndex, openingTime, closingTime, Convert.ToDouble(longitude), Convert.ToDouble(latitude));
                 p.id = pub.id;
                 LocationHandler.Instance.addPub(p);
 
