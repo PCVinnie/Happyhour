@@ -197,6 +197,7 @@ namespace Happyhour.View
             {
                 if (startIsGPS)
                 {
+                    Summary.Text = "";
                     Summary.Inlines.Add(new Run()
                     {
                         Text = "Totale geschatte tijd in minuten: " + routeResult.Route.EstimatedDuration.TotalMinutes.ToString()
@@ -277,6 +278,7 @@ namespace Happyhour.View
 
             if(currentLocation != null)
             {
+                AddMapIcon(currentLocation, "U bent hier");
                 getRouteWithCurrentLocation(currentLocation.Point, selectedRoute.pubs[0]);
             }
         }
