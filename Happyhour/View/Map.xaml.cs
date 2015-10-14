@@ -24,6 +24,7 @@ using Happyhour.Model;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Windows.UI.Core;
+using Windows.Devices.Geolocation.Geofencing;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -43,7 +44,7 @@ namespace Happyhour.View
         public Map()
         {
             this.InitializeComponent();
-
+           
             geolocator = new Geolocator();
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
             getCurrentLocation();
@@ -86,6 +87,14 @@ namespace Happyhour.View
             MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
             MapIcon1.Title = location.name;
             InputMap.MapElements.Add(MapIcon1);
+
+            // Geofence
+            BasicGeoposition pos = new BasicGeoposition();
+            pos.Latitude = location.position.Latitude;
+            pos.Longitude = location.position.Longitude;
+            Geocircle circle = new Geocircle(pos, 5);
+            var geofence = new Windows.Devices.Geolocation.Geofencing.Geofence(location.name, circle);
+            GeofenceMonitor.Current.Geofences.Add(geofence);
         }
 
         private void AddMapIcon(Geocoordinate coordinate, string name)
@@ -251,6 +260,27 @@ namespace Happyhour.View
             }
         }
 
+        /*
+        private void DrawGeofences()
+        {
+            Windows.UI.Xaml.Shapes.Ellipse fence = new Windows.UI.Xaml.Shapes.Ellipse();
+
+            MapControl.Children.Add(fence);
+            MapControl.SetLocation(fence, point);
+            MapControl.SetNormalizedAnchorPoint(fence, new Point(0.5, 0.5));
+        }
+        */
+
+            /*
+        private void drawGeofence(Geocoordinate coor)
+        {
+            var circle = new MapPolygon
+            {
+                FillColor = Colors.Red
+                
+            };
+        }
+        */
         private void NewRoute_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NewRoute));
