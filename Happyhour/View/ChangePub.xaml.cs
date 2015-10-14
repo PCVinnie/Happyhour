@@ -43,25 +43,7 @@ namespace Happyhour.View
             Place_TextBox.Text = pub.city;
             Zipcode_TextBox.Text = pub.zipcode;
             Country_TextBox.Text = pub.country;
-
-            switch(pub.rating.ToString())
-            {
-                case "1":
-                    Rating_1.IsChecked = true;
-                    break;
-                case "2":
-                    Rating_2.IsChecked = true;
-                    break;
-                case "3":
-                    Rating_3.IsChecked = true;
-                    break;
-                case "4":
-                    Rating_4.IsChecked = true;
-                    break;
-                case "5":
-                    Rating_5.IsChecked = true;
-                    break;
-            }
+            Rating_ComboBox.SelectedIndex = (int)pub.rating;
         }
 
         public void inputData()
@@ -75,7 +57,9 @@ namespace Happyhour.View
             string openingTime = OpeningTime_TextBox.Text;
             string closingTime = ClosingTime_TextBox.Text;
 
-            int selectedIndex = Days_ComboBox.SelectedIndex;
+            int selectedRatingIndex = Rating_ComboBox.SelectedIndex;
+            Object rating = Rating_ComboBox.SelectedItem;
+            int selectedDayIndex = Days_ComboBox.SelectedIndex;
             Object day = Days_ComboBox.SelectedItem;
 
             if (string.IsNullOrEmpty(name))
@@ -96,12 +80,8 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "Er zijn geen openingstijden opgegeven.";
             else if (string.IsNullOrEmpty(closingTime))
                 ErrorMessage_TextBlock.Text = "Er zijn geen sluitingstijden opgegeven.";
-            else if (Rating_1.IsChecked == false &&
-                     Rating_2.IsChecked == false &&
-                     Rating_3.IsChecked == false &&
-                     Rating_4.IsChecked == false &&
-                     Rating_5.IsChecked == false)
-                ErrorMessage_TextBlock.Text = "Er is geen waardering opgegeven.";
+            else if (string.IsNullOrEmpty(rating.ToString()))
+                ErrorMessage_TextBlock.Text = "Er is geen rating opgegeven.";
             else if (Happyhour_1.IsChecked == false &&
                      Happyhour_2.IsChecked == false &&
                      Happyhour_3.IsChecked == false &&
@@ -113,10 +93,7 @@ namespace Happyhour.View
             else {
                 ErrorMessage_TextBlock.Text = "";
 
-                // Wegschrijven naar xml bestand.
-                int rating = 0;
-
-                LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, rating, selectedIndex, openingTime, closingTime);
+                LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, selectedDayIndex, openingTime, closingTime);
                 p.id = pub.id;
                 LocationHandler.Instance.addPub(p);
 

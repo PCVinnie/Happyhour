@@ -49,6 +49,8 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Aanpassen"/>
@@ -60,9 +62,9 @@
                         <TextBlock Grid.Row="5" Grid.Column="0" Margin="5" Foreground="White" Text="Plaats: "/>
                         <TextBlock Grid.Row="6" Grid.Column="0" Margin="5" Foreground="White" Text="Land: "/>
                         <TextBlock Grid.Row="7" Grid.Column="0" Margin="5" Foreground="White" Text="Openingstijden: "/>
-                        <TextBlock Grid.Row="8" Grid.Column="0" Margin="5" Foreground="White" Text="Waardering: "/>
-                        <TextBlock Grid.Row="9" Grid.Column="0" Margin="5" Foreground="White" Text="Happyhour: "/>
-
+                        <TextBlock Grid.Row="10" Grid.Column="0" Margin="5" Foreground="White" Text="Waardering: "/>
+                        <TextBlock Grid.Row="11" Grid.Column="0" Margin="5" Foreground="White" Text="Happyhour: "/>
+                        
                         <TextBox x:Name="Name_TextBox" Grid.Row="1" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
                         <TextBox x:Name="Street_TextBox" Grid.Row="2" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
                         <TextBox x:Name="Housenumber_TextBox" Grid.Row="3" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
@@ -93,44 +95,42 @@
                             <TextBox x:Name="ClosingTime_TextBox" Grid.Row="0" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
                         </Grid>
 
-                        <!-- Rating -->
-                        <Grid Grid.Row="8" Grid.Column="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <RadioButton x:Name="Rating_1" Grid.Row="0" Grid.Column="0" Content="1" Foreground="White"/>
-                            <RadioButton x:Name="Rating_2" Grid.Row="0" Grid.Column="1" Content="2" Foreground="White"/>
-                            <RadioButton x:Name="Rating_3" Grid.Row="1" Grid.Column="0" Content="3" Foreground="White"/>
-                            <RadioButton x:Name="Rating_4" Grid.Row="1" Grid.Column="1" Content="4" Foreground="White"/>
-                            <RadioButton x:Name="Rating_5" Grid.Row="2" Grid.Column="0" Content="5" Foreground="White"/>
-                        </Grid>
+                        <TextBlock Text="Longitude:" Grid.Row="8" Grid.Column="0" Margin="5" Foreground="White"/>
+                        <TextBlock Text="Latitude:" Grid.Row="9" Grid.Column="0" Margin="5" Foreground="White"/>
+                        <TextBox x:Name="Longitude_TextBox" Grid.Row="8" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
+                        <TextBox x:Name="Latitude_TextBox" Grid.Row="9" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
 
-                        <!-- Happyhour -->
-                        <Grid Grid.Row="9" Grid.Column="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <CheckBox x:Name="Happyhour_1" Grid.Row="0" Grid.Column="0" Content="Ma" Foreground="White"/>
-                            <CheckBox x:Name="Happyhour_2" Grid.Row="0" Grid.Column="1" Content="Di" Foreground="White"/>
-                            <CheckBox x:Name="Happyhour_3" Grid.Row="1" Grid.Column="0" Content="Wo" Foreground="White"/>
-                            <CheckBox x:Name="Happyhour_4" Grid.Row="1" Grid.Column="1" Content="Do" Foreground="White"/>
-                            <CheckBox x:Name="Happyhour_5" Grid.Row="2" Grid.Column="0" Content="Vr" Foreground="White"/>
-                            <CheckBox x:Name="Happyhour_6" Grid.Row="2" Grid.Column="1" Content="Za" Foreground="White"/>
-                            <CheckBox x:Name="Happyhour_7" Grid.Row="3" Grid.Column="0" Content="Zo" Foreground="White"/>
-                        </Grid>
+                        <ComboBox x:Name="Rating_ComboBox" Grid.Row="10" Grid.Column="1" SelectedIndex="0" Width="210" Margin="5,5,0,0">
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                            <ComboBoxItem>4</ComboBoxItem>
+                            <ComboBoxItem>5</ComboBoxItem>
+                        </ComboBox>
+
+                        <!-- ScrollViewer -->
+                        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="11" Grid.Column="1" Width="210" Height="100" Margin="5,5,0,0">
+                            <!-- Happyhour -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox x:Name="Happyhour_1" Grid.Row="0" Grid.Column="0" Content="Ma" Foreground="White"/>
+                                <CheckBox x:Name="Happyhour_2" Grid.Row="0" Grid.Column="1" Content="Di" Foreground="White"/>
+                                <CheckBox x:Name="Happyhour_3" Grid.Row="1" Grid.Column="0" Content="Wo" Foreground="White"/>
+                                <CheckBox x:Name="Happyhour_4" Grid.Row="1" Grid.Column="1" Content="Do" Foreground="White"/>
+                                <CheckBox x:Name="Happyhour_5" Grid.Row="2" Grid.Column="0" Content="Vr" Foreground="White"/>
+                                <CheckBox x:Name="Happyhour_6" Grid.Row="2" Grid.Column="1" Content="Za" Foreground="White"/>
+                                <CheckBox x:Name="Happyhour_7" Grid.Row="3" Grid.Column="0" Content="Zo" Foreground="White"/>
+                            </Grid>
+                        </ScrollViewer>
                     </Grid>
 
                     <!-- Buttons -->
