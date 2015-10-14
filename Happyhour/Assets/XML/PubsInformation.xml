@@ -64,4 +64,36 @@
       <sunday>2100</sunday>
     </closetimes>
   </pub>
+<pub>
+    <id>2</id>
+    <name>Cafe Sla</name>
+    <street>Pastraat</street>
+    <streetnumber>7</streetnumber>
+    <zipcode>0040AB</zipcode>
+    <city>Amsterdam</city>
+    <country>Nederland</country>
+    <rating>4</rating>
+    <position>
+      <latitude>52.088116</latitude>
+      <longitude>5.113492</longitude>
+    </position>
+    <opentimes>
+      <monday>closed</monday>
+      <tuesday>1000</tuesday>
+      <wednesday>closed</wednesday>
+      <thursday>1300</thursday>
+      <friday>1600</friday>
+      <saterday>1000</saterday>
+      <sunday>1000</sunday>
+    </opentimes>
+    <closetimes>
+      <monday>closed</monday>
+      <tuesday>1900</tuesday>
+      <wednesday>closed</wednesday>
+      <thursday>2330</thursday>
+      <friday>2330</friday>
+      <saterday>2330</saterday>
+      <sunday>2100</sunday>
+    </closetimes>
+  </pub>
 </pubs>

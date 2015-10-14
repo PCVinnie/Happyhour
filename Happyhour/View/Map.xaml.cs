@@ -39,8 +39,8 @@ namespace Happyhour.View
         {
             this.InitializeComponent();
 
-            AddMapIcon();
-            GetRouteAndDirections();
+            //AddMapIcon();
+            //GetRouteAndDirections();
 
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
         }
@@ -124,6 +124,56 @@ namespace Happyhour.View
             }
         }
 
+        private async void GetRouteAndDirections(LocationData startLoc, LocationData endLoc, bool startIsGPS)
+        {
+            BasicGeoposition startLocation = startLoc.position;
+            Geopoint startPoint = new Geopoint(startLocation);
+
+            BasicGeoposition endLocation = endLoc.position;
+            Geopoint endPoint = new Geopoint(endLocation);
+
+            // Get the route between the points.
+            MapRouteFinderResult routeResult =
+                await MapRouteFinder.GetDrivingRouteAsync(
+                startPoint,
+                endPoint,
+                MapRouteOptimization.Time,
+                MapRouteRestrictions.None);
+
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
+                if (startIsGPS)
+                {
+                    Summary.Inlines.Add(new Run()
+                    {
+                        Text = "Totale geschatte tijd in minuten: " + routeResult.Route.EstimatedDuration.TotalMinutes.ToString()
+                    });
+                    Summary.Inlines.Add(new LineBreak());
+                    Summary.Inlines.Add(new Run()
+                    {
+                        Text = "Totale lengte in kilometers: "
+                            + (routeResult.Route.LengthInMeters / 1000).ToString()
+                    });
+                }
+            }
+            else
+            {
+                Summary.Text = "Er is een probleem opgetreden: " + routeResult.Status.ToString();
+            }
+
+            // Tekent de route op de map.
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
+                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                viewOfRoute.RouteColor = Colors.Orange;
+                viewOfRoute.OutlineColor = Colors.Black;
+
+                InputMap.Routes.Add(viewOfRoute);
+
+                await InputMap.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+            }
+        }
+
         private void NewRoute_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NewRoute));
@@ -134,15 +184,20 @@ namespace Happyhour.View
             Frame.Navigate(typeof(MainPage));
         }
 
-        private void RoutesListView_ItemClick(object sender, ItemClickEventArgs e)
+
+        private void RoutesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int index = RoutesListView.SelectedIndex;
-            /*PubRoute selectedRoute = (PubRoute)RoutesListView.SelectedItem;
+            InputMap.MapElements.Clear();
+            InputMap.Routes.Clear();
+            PubRoute selectedRoute = (PubRoute)RoutesListView.SelectedItem;
             Debug.WriteLine(selectedRoute.name);
-            foreach(LocationData loc in selectedRoute.pubs)
+
+            for(int index = 0; index < selectedRoute.pubs.Count; index++)
             {
-                AddMapIcon(loc);
-            }*/
+                AddMapIcon(selectedRoute.pubs[index]);
+                if (index > 0)
+                    GetRouteAndDirections(selectedRoute.pubs[index - 1], selectedRoute.pubs[index], false);
+            }
         }
     }
 }
