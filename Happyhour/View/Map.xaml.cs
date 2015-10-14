@@ -48,6 +48,7 @@ namespace Happyhour.View
             geolocator = new Geolocator();
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
             getCurrentLocation();
+            //GeofenceMonitor.Current.GeofenceStateChanged += OnGeofenceStateChanged;
         }
 
         async private void PositionChanged(Geolocator sender, PositionChangedEventArgs e)
@@ -271,16 +272,54 @@ namespace Happyhour.View
         }
         */
 
-            /*
-        private void drawGeofence(Geocoordinate coor)
+        /*
+    private void drawGeofence(Geocoordinate coor)
+    {
+        var circle = new MapPolygon
         {
-            var circle = new MapPolygon
+            FillColor = Colors.Red
+
+        };
+    }
+    */
+
+        public async void OnGeofenceStateChanged(GeofenceMonitor sender, object e)
+        {
+            var reports = sender.ReadReports();
+
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                FillColor = Colors.Red
-                
-            };
+                foreach (GeofenceStateChangeReport report in reports)
+                {
+                    GeofenceState state = report.NewState;
+
+                    Geofence geofence = report.Geofence;
+
+                    if (state == GeofenceState.Removed)
+                    {
+                        // remove the geofence from the geofences collection
+                        GeofenceMonitor.Current.Geofences.Remove(geofence);
+                    }
+                    else if (state == GeofenceState.Entered)
+                    {
+                        // Your app takes action based on the entered event
+
+                        // NOTE: You might want to write your app to take particular
+                        // action based on whether the app has internet connectivity.
+
+                    }
+                    else if (state == GeofenceState.Exited)
+                    {
+                        // Your app takes action based on the exited event
+
+                        // NOTE: You might want to write your app to take particular
+                        // action based on whether the app has internet connectivity.
+
+                    }
+                }
+            });
         }
-        */
+
         private void NewRoute_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NewRoute));
