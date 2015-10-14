@@ -39,7 +39,11 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" FontWeight="Bold" FontSize="18" Text="Kroegentocht"/>
 
                     <!--BING Maps-->
-                    <maps:MapControl x:Name="InputMap" Grid.Row="1" Grid.Column="0" Width="330" Height="370" MapServiceToken="oYYcEWGPrYWLXl4w93yO~3lyv7GrrXTMi4V1Y3zz3PA~AuYFV2yvgpzaVAZ6cj_wKLFzD5641epPZNwBvcsD7ZENxzKeUgbVaZHNKv9dffjU" />
+                    <maps:MapControl x:Name="InputMap" Grid.Row="1" Grid.Column="0" Width="330" Height="370" MapServiceToken="oYYcEWGPrYWLXl4w93yO~3lyv7GrrXTMi4V1Y3zz3PA~AuYFV2yvgpzaVAZ6cj_wKLFzD5641epPZNwBvcsD7ZENxzKeUgbVaZHNKv9dffjU">
+                        <maps:MapItemsControl>
+                            <TextBox Text="Test" maps:MapControl.Location="{Binding }"/>
+                        </maps:MapItemsControl>
+                    </maps:MapControl>
                     <TextBlock x:Name="Summary" Width="300" Height="50" Margin="0,0,30,0" Grid.Row="2" Grid.Column="0" Foreground="White"/>
                     
                     
