@@ -22,6 +22,7 @@ using Windows.UI;
 using Happyhour.Control;
 using Happyhour.Model;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -121,6 +122,12 @@ namespace Happyhour.View
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private void RoutesListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PubRoute selectedRoute = (PubRoute)RoutesListView.SelectedItem;
+            Debug.WriteLine(selectedRoute.name);
         }
     }
 }
