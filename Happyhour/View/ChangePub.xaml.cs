@@ -103,7 +103,7 @@ namespace Happyhour.View
 
                 LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, selectedDayIndex, openingTime, closingTime, Convert.ToDouble(longitude), Convert.ToDouble(latitude));
                 p.id = pub.id;
-                LocationHandler.Instance.addPub(p);
+                LocationHandler.Instance.setPub(p);
 
                 Frame.Navigate(typeof(View.PubMenu));
             }

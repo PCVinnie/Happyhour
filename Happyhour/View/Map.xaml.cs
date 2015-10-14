@@ -23,6 +23,7 @@ using Happyhour.Control;
 using Happyhour.Model;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -34,11 +35,45 @@ namespace Happyhour.View
     public sealed partial class Map : Page
     {
         ObservableCollection<PubRoute> routeList;
+        Geocoordinate currentLocation;
+        Geolocator geolocator;
+        Geoposition pos;
+
+        PubRoute selectedRoute;
         public Map()
         {
             this.InitializeComponent();
 
+            geolocator = new Geolocator();
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
+            getCurrentLocation();
+        }
+
+        async private void PositionChanged(Geolocator sender, PositionChangedEventArgs e)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                currentLocation = pos.Coordinate;
+                bool isInList = false;
+
+                for (int i = 0; i < InputMap.MapElements.Count; i++)
+                {
+                    MapIcon icon = (MapIcon)InputMap.MapElements[0];
+                    if(icon.Title.Equals("U bent hier"))
+                    {
+                        isInList = true;
+                        icon.Location = currentLocation.Point;
+                    }
+                }
+
+                if(!isInList)
+                    AddMapIcon(currentLocation, "U bent hier");
+
+                if(selectedRoute != null)
+                {
+                    getRouteWithCurrentLocation(currentLocation.Point, selectedRoute.pubs[0]);
+                }
+            });
         }
 
         /*
@@ -53,10 +88,91 @@ namespace Happyhour.View
             InputMap.MapElements.Add(MapIcon1);
         }
 
+        private void AddMapIcon(Geocoordinate coordinate, string name)
+        {
+            MapIcon MapIcon1 = new MapIcon();
+            MapIcon1.Location = coordinate.Point;
+            MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
+            MapIcon1.Title = name;
+            InputMap.MapElements.Add(MapIcon1);
+        }
+
+        private void AddMapIcon()
+        {
+            MapIcon MapIcon1 = new MapIcon();
+            MapIcon1.Location = new Geopoint(new BasicGeoposition()
+            {
+                Latitude = 47.620,
+                Longitude = -122.349
+            });
+            MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
+            MapIcon1.Title = "Space Needle";
+            InputMap.MapElements.Add(MapIcon1);
+        }
+
         /*
         /   Voor het bepalen van de route en richtingen.
         */
-        private async void GetRouteAndDirections(LocationData startLoc, LocationData endLoc, bool startIsGPS)
+        private async void GetRouteAndDirections()
+        {
+            // Start at Microsoft in Redmond, Washington.
+            BasicGeoposition startLocation = new BasicGeoposition();
+            startLocation.Latitude = 47.643;
+            startLocation.Longitude = -122.131;
+            Geopoint startPoint = new Geopoint(startLocation);
+
+            // End at the city of Seattle, Washington.
+            BasicGeoposition endLocation = new BasicGeoposition();
+            endLocation.Latitude = 47.604;
+            endLocation.Longitude = -122.329;
+            Geopoint endPoint = new Geopoint(endLocation);
+
+            // Get the route between the points.
+            MapRouteFinderResult routeResult =
+                await MapRouteFinder.GetDrivingRouteAsync(
+                startPoint,
+                endPoint,
+                MapRouteOptimization.Time,
+                MapRouteRestrictions.None);
+
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
+                Summary.Inlines.Add(new Run()
+                {
+                    Text = "Totale geschatte tijd in minuten: " + routeResult.Route.EstimatedDuration.TotalMinutes.ToString()
+                });
+                Summary.Inlines.Add(new LineBreak());
+                Summary.Inlines.Add(new Run()
+                {
+                    Text = "Totale lengte in kilometers: "
+                        + (routeResult.Route.LengthInMeters / 1000).ToString()
+                });
+            } else {
+                Summary.Text = "Er is een probleem opgetreden: " + routeResult.Status.ToString();
+            }
+
+            // Tekent de route op de map.
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
+                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                viewOfRoute.RouteColor = Colors.Orange;
+                viewOfRoute.OutlineColor = Colors.Black;
+                
+                InputMap.Routes.Add(viewOfRoute);
+
+                await InputMap.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+            }
+        }
+
+        private async void getRouteWithCurrentLocation(Geopoint startLoc, LocationData endLoc)
+        {
+            BasicGeoposition endLocation = endLoc.position;
+            Geopoint endPoint = new Geopoint(endLocation);
+
+            GetRouteAndDirections(startLoc, endPoint, true);
+        }
+
+        private async void getRouteWithPubs(LocationData startLoc, LocationData endLoc)
         {
             BasicGeoposition startLocation = startLoc.position;
             Geopoint startPoint = new Geopoint(startLocation);
@@ -64,6 +180,11 @@ namespace Happyhour.View
             BasicGeoposition endLocation = endLoc.position;
             Geopoint endPoint = new Geopoint(endLocation);
 
+            GetRouteAndDirections(startPoint, endPoint, false);
+        }
+
+        private async void GetRouteAndDirections(Geopoint startPoint, Geopoint endPoint, bool startIsGPS)
+        {
             // Get the route between the points.
             MapRouteFinderResult routeResult =
                 await MapRouteFinder.GetDrivingRouteAsync(
@@ -106,6 +227,29 @@ namespace Happyhour.View
             }
         }
 
+        private async void getCurrentLocation()
+        {
+
+            var accessStatus = await Geolocator.RequestAccessAsync();
+
+            switch(accessStatus)
+            {
+                case GeolocationAccessStatus.Allowed:
+                    //Summary.Text = "Allowed";
+                    pos = await geolocator.GetGeopositionAsync();
+                    //geolocator.PositionChanged += PositionChanged;
+                    currentLocation = pos.Coordinate;
+                    AddMapIcon(currentLocation, "U bent hier");
+                    break;
+                case GeolocationAccessStatus.Denied:
+                    //Summary.Text = "Denied";
+                    break;
+                case GeolocationAccessStatus.Unspecified:
+                    //Summary.Text = "Er is een probleem opgetreden";
+                    break;
+            }
+        }
+
         private void NewRoute_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NewRoute));
@@ -120,14 +264,20 @@ namespace Happyhour.View
         {
             InputMap.MapElements.Clear();
             InputMap.Routes.Clear();
-            PubRoute selectedRoute = (PubRoute)RoutesListView.SelectedItem;
+            selectedRoute = (PubRoute)RoutesListView.SelectedItem;
             Debug.WriteLine(selectedRoute.name);
+            Summary.Text = "Route is aan het inladen....";
 
             for(int index = 0; index < selectedRoute.pubs.Count; index++)
             {
                 AddMapIcon(selectedRoute.pubs[index]);
                 if (index > 0)
-                    GetRouteAndDirections(selectedRoute.pubs[index - 1], selectedRoute.pubs[index], false);
+                    getRouteWithPubs(selectedRoute.pubs[index - 1], selectedRoute.pubs[index]);
+            }
+
+            if(currentLocation != null)
+            {
+                getRouteWithCurrentLocation(currentLocation.Point, selectedRoute.pubs[0]);
             }
         }
     }
