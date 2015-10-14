@@ -39,7 +39,10 @@ namespace Happyhour.View
             string openingTime = OpeningTime_TextBox.Text;
             string closingTime = ClosingTime_TextBox.Text;
 
-            int selectedIndex = Days_ComboBox.SelectedIndex;
+
+            int selectedRatingIndex = Rating_ComboBox.SelectedIndex;
+            Object rating = Rating_ComboBox.SelectedItem;
+            int selectedDayIndex = Days_ComboBox.SelectedIndex;
             Object day = Days_ComboBox.SelectedItem;
 
             if (string.IsNullOrEmpty(name))
@@ -60,12 +63,8 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "Er zijn geen openingstijden opgegeven.";
             else if (string.IsNullOrEmpty(closingTime))
                 ErrorMessage_TextBlock.Text = "Er zijn geen sluitingstijden opgegeven.";
-            else if (Rating_1.IsChecked == false &&
-                     Rating_2.IsChecked == false &&
-                     Rating_3.IsChecked == false &&
-                     Rating_4.IsChecked == false &&
-                     Rating_5.IsChecked == false)
-                ErrorMessage_TextBlock.Text = "Er is geen waardering opgegeven.";
+            else if (string.IsNullOrEmpty(rating.ToString()))
+                ErrorMessage_TextBlock.Text = "Er is geen rating opgegeven.";
             else if (Happyhour_1.IsChecked == false &&
                      Happyhour_2.IsChecked == false &&
                      Happyhour_3.IsChecked == false &&
@@ -78,9 +77,7 @@ namespace Happyhour.View
             {
                 ErrorMessage_TextBlock.Text = "";
 
-                int rating = 0;
-
-                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, rating, selectedIndex, openingTime, closingTime);
+                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, selectedDayIndex, openingTime, closingTime);
                 LocationHandler.Instance.addPub(pub);
 
                 Frame.Navigate(typeof(View.PubMenu));
