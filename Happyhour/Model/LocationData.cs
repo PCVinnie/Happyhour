@@ -14,7 +14,10 @@ public class LocationData
 
     private List<ClockTime> openTimes;
     private List<ClockTime> closeTimes;
-    public double rating { get; set; }
+
+    public double longitude { get; set; }
+    public double latitude { get; set; }
+    public int rating { get; set; }
 
     public BasicGeoposition position;
 
@@ -28,6 +31,8 @@ public class LocationData
         city = "Amsterdam";
         country = "Nederland";
         happyHour = "";
+        longitude = 0.0;
+        latitude = 0.0;
         rating = 0;
 
         position = new BasicGeoposition();
@@ -35,7 +40,7 @@ public class LocationData
         closeTimes = new List<ClockTime>();
     }
 
-    public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating, int day, string openingtime, string closingtime)
+    public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating, int day, string openingtime, string closingtime, double longitude, double latitude)
     {
         id = -1;
         this.name = name;
@@ -45,6 +50,8 @@ public class LocationData
         this.city = city;
         this.country = country;
         this.rating = rating;
+        this.longitude = longitude;
+        this.latitude = latitude;
         happyHour = "";
 
         position = new BasicGeoposition();

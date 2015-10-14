@@ -32,13 +32,18 @@ namespace Happyhour
                 XElement streetNumber = new XElement("streetNumber", l.streetNumber);
                 XElement zipcode = new XElement("zipcode", l.zipcode);
                 XElement city = new XElement("city", l.city);
+                XElement position = new XElement("position");
+                XElement longitude = new XElement("longitude", l.longitude);
+                XElement latitude = new XElement("latitude", l.latitude);
                 pub.Add(id);
                 pub.Add(name);
                 pub.Add(street);
                 pub.Add(streetNumber);
                 pub.Add(zipcode);
                 pub.Add(city);
-
+                position.Add(longitude);
+                position.Add(latitude);
+                pub.Add(position);
                 doc.Root.Add(pub);
             }
 
@@ -94,8 +99,8 @@ namespace Happyhour
                                 break;
                             case "RATING":
                                 element = XElement.ReadFrom(reader) as XElement;
-                                Double rating;
-                                Double.TryParse(element.Value.ToString(), out rating);
+                                int rating;
+                                int.TryParse(element.Value.ToString(), out rating);
                                 location.rating = rating;
                                 break;
                             case "OPENTIMES":
