@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // BING MAPS
 using Windows.Devices.Geolocation;
@@ -262,23 +252,19 @@ namespace Happyhour.View
 
         private void DrawGeofences()
         {
-            Windows.UI.Xaml.Shapes.Ellipse fence = new Windows.UI.Xaml.Shapes.Ellipse();
-
-            //MapControl.Children.Add(fence);
-            //MapControl.SetLocation(fence, point);
-            //MapControl.SetNormalizedAnchorPoint(fence, new Point(0.5, 0.5));
+            
         }
 
-            /*
-        private void drawGeofence(Geocoordinate coor)
+        /*
+    private void drawGeofence(Geocoordinate coor)
+    {
+        var circle = new MapPolygon
         {
-            var circle = new MapPolygon
-            {
-                FillColor = Colors.Red
-                
-            };
-        }
-        */
+            FillColor = Colors.Red
+
+        };
+    }
+    */
         private void NewRoute_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NewRoute));
