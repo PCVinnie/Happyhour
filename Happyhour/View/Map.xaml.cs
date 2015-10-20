@@ -60,11 +60,11 @@ namespace Happyhour.View
                     if(icon.Title.Equals("U bent hier"))
                     {
                         isInList = true;
-                        icon.Location = currentLocation.Point;
+                        InputMap.MapElements.Remove(icon);
                     }
                 }
 
-                if(!isInList)
+                if(isInList)
                     AddMapIcon(currentLocation, "U bent hier");
 
                 if(selectedRoute != null)
