@@ -38,7 +38,7 @@ namespace Happyhour.View
             this.InitializeComponent();
             GeofenceMonitor.Current.Geofences.Clear();
             geolocator = new Geolocator();
-            geolocator.MovementThreshold = 10;
+            //geolocator.MovementThreshold = 10;
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
             getCurrentLocation();
             GeofenceMonitor.Current.GeofenceStateChanged += OnGeofenceStateChanged;
@@ -89,7 +89,7 @@ namespace Happyhour.View
             BasicGeoposition pos = new BasicGeoposition();
             pos.Latitude = location.position.Latitude;
             pos.Longitude = location.position.Longitude;
-            Geocircle circle = new Geocircle(pos, 20);
+            Geocircle circle = new Geocircle(pos, 35);
             MonitoredGeofenceStates monitoredStates =
                 MonitoredGeofenceStates.Entered |
                 MonitoredGeofenceStates.Exited |

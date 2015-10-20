@@ -52,11 +52,10 @@
                     </ScrollViewer>-->
 
 
-                    <ListView x:Name="RoutesListView" SelectionChanged="RoutesListView_SelectionChanged" Grid.Row="3" Grid.Column="0" Height="100" Width="300" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,5,30,0">
-                        <!--ItemsSource="{x:Bind routeList}"-->
+                    <ListView x:Name="RoutesListView" SelectionChanged="RoutesListView_SelectionChanged" Grid.Row="3" Grid.Column="0" Height="100" Width="300" ItemsSource="{x:Bind routeList}" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,5,30,0">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="modal:PubRoute">
-                                <TextBlock x:Name="NameBlock" Width="220" Margin="0,5,5,5" Foreground="White"/> <!--Text="{x:Bind name}"--> 
+                                <TextBlock x:Name="NameBlock" Width="220" Margin="0,5,5,5" Foreground="White" Text="{x:Bind name}"/> 
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
