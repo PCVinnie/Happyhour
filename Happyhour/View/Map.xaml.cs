@@ -32,11 +32,13 @@ namespace Happyhour.View
         PubRoute selectedRoute;
         LocationData geofencePub;
         int visitedPubs = 0;
+        int counter = 0;
         public Map()
         {
             this.InitializeComponent();
             GeofenceMonitor.Current.Geofences.Clear();
             geolocator = new Geolocator();
+            geolocator.MovementThreshold = 10;
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
             getCurrentLocation();
             GeofenceMonitor.Current.GeofenceStateChanged += OnGeofenceStateChanged;
@@ -46,12 +48,15 @@ namespace Happyhour.View
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                currentLocation = pos.Coordinate;
+                currentLocation = e.Position.Coordinate;
                 bool isInList = false;
+                //Summary.Text = "Updating," + counter;
+
+                counter++;
 
                 for (int i = 0; i < InputMap.MapElements.Count; i++)
                 {
-                    MapIcon icon = (MapIcon)InputMap.MapElements[0];
+                    MapIcon icon = (MapIcon)InputMap.MapElements[i];
                     if(icon.Title.Equals("U bent hier"))
                     {
                         isInList = true;
@@ -84,7 +89,7 @@ namespace Happyhour.View
             BasicGeoposition pos = new BasicGeoposition();
             pos.Latitude = location.position.Latitude;
             pos.Longitude = location.position.Longitude;
-            Geocircle circle = new Geocircle(pos, 40);
+            Geocircle circle = new Geocircle(pos, 20);
             MonitoredGeofenceStates monitoredStates =
                 MonitoredGeofenceStates.Entered |
                 MonitoredGeofenceStates.Exited |
@@ -140,7 +145,7 @@ namespace Happyhour.View
                 if (startIsGPS)
                 {
                     Summary.Text = "";
-                    /*Summary.Inlines.Add(new Run()
+                    Summary.Inlines.Add(new Run()
                     {
                         Text = "Totale geschatte tijd in minuten: " + routeResult.Route.EstimatedDuration.TotalMinutes.ToString()
                     });
@@ -149,7 +154,7 @@ namespace Happyhour.View
                     {
                         Text = "Totale lengte in kilometers: "
                             + (routeResult.Route.LengthInMeters / 1000).ToString()
-                    });*/
+                    });
                 }
             }
             else
@@ -178,12 +183,12 @@ namespace Happyhour.View
             switch(accessStatus)
             {
                 case GeolocationAccessStatus.Allowed:
-                    //Summary.Text = "Allowed";
+                    Summary.Text = "Locatie bepalen, check internet verbinding";
                     pos = await geolocator.GetGeopositionAsync();
-                    geolocator.PositionChanged += PositionChanged;
                     currentLocation = pos.Coordinate;
                     AddMapIcon(currentLocation, "U bent hier");
                     Summary.Text = "Locatie bekend, kies een route";
+                    geolocator.PositionChanged += PositionChanged;
                     break;
                 case GeolocationAccessStatus.Denied:
                     //Summary.Text = "Denied";
@@ -265,6 +270,7 @@ namespace Happyhour.View
         {
             GeofenceMonitor.Current.Geofences.Clear();
             GeofenceMonitor.Current.GeofenceStateChanged -= OnGeofenceStateChanged;
+            geolocator.PositionChanged -= PositionChanged;
             Frame.Navigate(typeof(NewRoute));
         }
 
@@ -272,6 +278,7 @@ namespace Happyhour.View
         {
             GeofenceMonitor.Current.Geofences.Clear();
             GeofenceMonitor.Current.GeofenceStateChanged -= OnGeofenceStateChanged;
+            geolocator.PositionChanged -= PositionChanged;
             Frame.Navigate(typeof(MainPage));
         }
 
