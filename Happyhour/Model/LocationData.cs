@@ -10,14 +10,14 @@ public class LocationData
     public string zipcode { get; set; }
     public string city { get; set; }
     public string country { get; set; }
-    public string happyHour { get; set; }
 
-    private List<ClockTime> openTimes;
-    private List<ClockTime> closeTimes;
+    public List<ClockTime> openTimes { get; set; }
+    public List<ClockTime> closeTimes { get; set; }
 
     public double longitude { get; set; }
     public double latitude { get; set; }
     public int rating { get; set; }
+    public List<bool> happyhourDays { get; set; }
 
     public BasicGeoposition position;
 
@@ -30,7 +30,6 @@ public class LocationData
         zipcode = "0000AA";
         city = "Amsterdam";
         country = "Nederland";
-        happyHour = "";
         longitude = 0.0;
         latitude = 0.0;
         rating = 0;
@@ -38,9 +37,11 @@ public class LocationData
         position = new BasicGeoposition();
         openTimes = new List<ClockTime>();
         closeTimes = new List<ClockTime>();
+        happyhourDays = new List<bool>();
     }
 
-    public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating, int day, string openingtime, string closingtime, double longitude, double latitude)
+    public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating,
+        int day, List<string> openingtime, List<string> closingtime, double longitude, double latitude, List<bool> happyhourDays)
     {
         id = -1;
         this.name = name;
@@ -52,14 +53,17 @@ public class LocationData
         this.rating = rating;
         this.longitude = longitude;
         this.latitude = latitude;
-        happyHour = "";
+        this.happyhourDays = happyhourDays;
 
         position = new BasicGeoposition();
         openTimes = new List<ClockTime>();
         closeTimes = new List<ClockTime>();
 
-        openTimes.Add(new ClockTime(splitStringToInt(openingtime)[0], splitStringToInt(openingtime)[1], day, true));
-        closeTimes.Add(new ClockTime(splitStringToInt(closingtime)[0], splitStringToInt(closingtime)[1], day, true));
+        foreach (string time in openingtime)
+            openTimes.Add(new ClockTime(splitStringToInt(time)[0], splitStringToInt(time)[1], day, true));
+
+        foreach (string time in closingtime)
+            closeTimes.Add(new ClockTime(splitStringToInt(time)[0], splitStringToInt(time)[1], day, true));
     }
 
     public string addOpenTime(int day, int hour, int minutes)
@@ -166,6 +170,11 @@ public class LocationData
         }
 
         return null;
+    }
+
+    public void addHappyhourDays(bool day)
+    {
+        happyhourDays.Add(day);
     }
 
     public string getOpeningTime()

@@ -82,7 +82,28 @@ namespace Happyhour.View
             {
                 ErrorMessage_TextBlock.Text = "";
 
-                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, selectedDayIndex, openingTime, closingTime, Convert.ToDouble(longitude), Convert.ToDouble(latitude));
+                List<bool> happyhourDays = new List<bool>();
+                happyhourDays.Add((bool)Happyhour_1.IsChecked);
+                happyhourDays.Add((bool)Happyhour_2.IsChecked);
+                happyhourDays.Add((bool)Happyhour_3.IsChecked);
+                happyhourDays.Add((bool)Happyhour_4.IsChecked);
+                happyhourDays.Add((bool)Happyhour_5.IsChecked);
+                happyhourDays.Add((bool)Happyhour_6.IsChecked);
+                happyhourDays.Add((bool)Happyhour_7.IsChecked);
+
+                List<string> openTimes = new List<string>();
+                for (int i = 0; i < 7; i++)
+                    openTimes.Add("00:00");
+
+                openTimes[selectedDayIndex] = openingTime.ToString();
+
+                List<string> closeTimes = new List<string>();
+                for (int i = 0; i < 7; i++)
+                    closeTimes.Add("00:00");
+
+                closeTimes[selectedDayIndex] = closingTime.ToString();
+
+                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, selectedDayIndex, openTimes, closeTimes, Convert.ToDouble(longitude), Convert.ToDouble(latitude), happyhourDays);
                 LocationHandler.Instance.addPub(pub);
 
                 Frame.Navigate(typeof(View.PubMenu));
