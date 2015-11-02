@@ -32,86 +32,98 @@ namespace Happyhour
                 XElement streetNumber = new XElement("streetNumber", l.streetNumber);
                 XElement zipcode = new XElement("zipcode", l.zipcode);
                 XElement city = new XElement("city", l.city);
-                //XElement country = new XElement("country", l.country);
-                //XElement rating = new XElement("rating", l.rating);
+                XElement country = new XElement("country", l.country);
+                XElement rating = new XElement("rating", l.rating);
   
-                /*
+                
                 XElement opentimes = new XElement("opentimes");
-                XElement opentimesMonday = new XElement("opentimesMonday", l.openTimes[0]);
-                XElement opentimesTuesday = new XElement("opentimesTuesday", l.openTimes[1]);
-                XElement opentimesWednesday = new XElement("opentimesWednesday", l.openTimes[2]);
-                XElement opentimesThursday = new XElement("opentimesThursday", l.openTimes[3]);
-                XElement opentimesFriday = new XElement("opentimesFriday", l.openTimes[4]);
-                XElement opentimesSaterday = new XElement("opentimesSaterday", l.openTimes[5]);
-                XElement opentimesSunday = new XElement("opentimesSunday", l.openTimes[6]);
- 
+                if (l.openTimes.Count > 0)
+                {
+                    XElement opentimesMonday = new XElement("opentimesMonday", l.openTimes[0]);
+                    XElement opentimesTuesday = new XElement("opentimesTuesday", l.openTimes[1]);
+                    XElement opentimesWednesday = new XElement("opentimesWednesday", l.openTimes[2]);
+                    XElement opentimesThursday = new XElement("opentimesThursday", l.openTimes[3]);
+                    XElement opentimesFriday = new XElement("opentimesFriday", l.openTimes[4]);
+                    XElement opentimesSaterday = new XElement("opentimesSaterday", l.openTimes[5]);
+                    XElement opentimesSunday = new XElement("opentimesSunday", l.openTimes[6]);
+
+                    opentimes.Add(opentimesMonday);
+                    opentimes.Add(opentimesTuesday);
+                    opentimes.Add(opentimesWednesday);
+                    opentimes.Add(opentimesThursday);
+                    opentimes.Add(opentimesFriday);
+                    opentimes.Add(opentimesSaterday);
+                    opentimes.Add(opentimesSunday);
+                }
+
                 XElement closetimes = new XElement("closetimes");
-                XElement closetimesMonday = new XElement("closetimesMonday", l.closeTimes[0]);
-                XElement closetimesTuesday = new XElement("closetimesTuesday", l.closeTimes[1]);
-                XElement closetimesWednesday = new XElement("closetimesWednesday", l.closeTimes[2]);
-                XElement closetimesThursday = new XElement("closetimesThursday", l.closeTimes[3]);
-                XElement closetimesFriday = new XElement("closetimesFriday", l.closeTimes[4]);
-                XElement closetimesSaterday = new XElement("closetimesSaterday", l.closeTimes[5]);
-                XElement closetimesSunday = new XElement("closetimesSunday", l.closeTimes[6]);
-                */
+                if (l.closeTimes.Count > 0)
+                {
+                    XElement closetimesMonday = new XElement("closetimesMonday", l.closeTimes[0]);
+                    XElement closetimesTuesday = new XElement("closetimesTuesday", l.closeTimes[1]);
+                    XElement closetimesWednesday = new XElement("closetimesWednesday", l.closeTimes[2]);
+                    XElement closetimesThursday = new XElement("closetimesThursday", l.closeTimes[3]);
+                    XElement closetimesFriday = new XElement("closetimesFriday", l.closeTimes[4]);
+                    XElement closetimesSaterday = new XElement("closetimesSaterday", l.closeTimes[5]);
+                    XElement closetimesSunday = new XElement("closetimesSunday", l.closeTimes[6]);
+
+                    closetimes.Add(closetimesMonday);
+                    closetimes.Add(closetimesTuesday);
+                    closetimes.Add(closetimesWednesday);
+                    closetimes.Add(closetimesThursday);
+                    closetimes.Add(closetimesFriday);
+                    closetimes.Add(closetimesSaterday);
+                    closetimes.Add(closetimesSunday);
+                }
+                
                 XElement position = new XElement("position");
                 XElement longitude = new XElement("longitude", l.longitude);
                 XElement latitude = new XElement("latitude", l.latitude);
-                /*
+
                 XElement happyhourDays = new XElement("happyhourDays");
-                XElement happyhourMonday = new XElement("happyhourMonday", l.happyhourDays[0]);
-                XElement happyhourTuesday = new XElement("happyhourTuesday", l.happyhourDays[1]);
-                XElement happyhourWednesday = new XElement("happyhourWednesday", l.happyhourDays[2]);
-                XElement happyhourThursday = new XElement("happyhourThursday", l.happyhourDays[3]);
-                XElement happyhourFriday = new XElement("happyhourFriday", l.happyhourDays[4]);
-                XElement happyhourSaterday = new XElement("happyhourSaterday", l.happyhourDays[5]);
-                XElement happyhourSunday = new XElement("happyhourSunday", l.happyhourDays[6]);
-                */
+                if (l.closeTimes.Count > 0)
+                {
+                    
+                    XElement happyhourMonday = new XElement("happyhourMonday", l.happyhourDays[0]);
+                    XElement happyhourTuesday = new XElement("happyhourTuesday", l.happyhourDays[1]);
+                    XElement happyhourWednesday = new XElement("happyhourWednesday", l.happyhourDays[2]);
+                    XElement happyhourThursday = new XElement("happyhourThursday", l.happyhourDays[3]);
+                    XElement happyhourFriday = new XElement("happyhourFriday", l.happyhourDays[4]);
+                    XElement happyhourSaterday = new XElement("happyhourSaterday", l.happyhourDays[5]);
+                    XElement happyhourSunday = new XElement("happyhourSunday", l.happyhourDays[6]);
+
+                    happyhourDays.Add(happyhourMonday);
+                    happyhourDays.Add(happyhourTuesday);
+                    happyhourDays.Add(happyhourWednesday);
+                    happyhourDays.Add(happyhourThursday);
+                    happyhourDays.Add(happyhourSaterday);
+                    happyhourDays.Add(happyhourSunday);
+                }
+                
                 pub.Add(id);
                 pub.Add(name);
                 pub.Add(street);
                 pub.Add(streetNumber);
                 pub.Add(zipcode);
                 pub.Add(city);
-                //pub.Add(country);
-                //pub.Add(rating);
+                pub.Add(country);
+                pub.Add(rating);
 
-                /*   
-                opentimes.Add(opentimesMonday);
-                opentimes.Add(opentimesTuesday);
-                opentimes.Add(opentimesWednesday);
-                opentimes.Add(opentimesThursday);
-                opentimes.Add(opentimesFriday);
-                opentimes.Add(opentimesSaterday);
-                opentimes.Add(opentimesSunday);
                 pub.Add(opentimes);
 
-                closetimes.Add(closetimesMonday);
-                closetimes.Add(closetimesTuesday);
-                closetimes.Add(closetimesWednesday);
-                closetimes.Add(closetimesThursday);
-                closetimes.Add(closetimesFriday);
-                closetimes.Add(closetimesSaterday);
-                closetimes.Add(closetimesSunday);
                 pub.Add(closetimes);
-                */
+                
 
                 position.Add(longitude);
                 position.Add(latitude);
                 pub.Add(position);
 
-                //happyhourDays.Add(happyhourMonday);
-                //happyhourDays.Add(happyhourTuesday);
-                //happyhourDays.Add(happyhourWednesday);
-                //happyhourDays.Add(happyhourThursday);
-                //happyhourDays.Add(happyhourSaterday);
-                //happyhourDays.Add(happyhourSunday);
-                //pub.Add(happyhourDays);
+                pub.Add(happyhourDays);
 
                 doc.Root.Add(pub);
             }
 
-            //File.WriteAllText("Assets/XML/PubsInformation.xml", doc.ToString());
+            File.WriteAllText("Assets/XML/PubsInformation.xml", doc.ToString());
 
             Debug.WriteLine(File.ReadAllText("Assets/XML/PubsInformation.xml"));
         }
