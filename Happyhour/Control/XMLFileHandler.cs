@@ -83,7 +83,6 @@ namespace Happyhour
                 XElement happyhourDays = new XElement("happyhourDays");
                 if (l.closeTimes.Count > 0)
                 {
-                    
                     XElement happyhourMonday = new XElement("Monday", l.happyhourDays[0]);
                     XElement happyhourTuesday = new XElement("Tuesday", l.happyhourDays[1]);
                     XElement happyhourWednesday = new XElement("Wednesday", l.happyhourDays[2]);
@@ -108,7 +107,6 @@ namespace Happyhour
                 pub.Add(city);
                 pub.Add(country);
                 pub.Add(rating);
-
                 pub.Add(opentimes);
 
                 pub.Add(closetimes);
