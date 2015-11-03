@@ -50,7 +50,7 @@ public class LocationData
     }
 
     public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating,
-        int day, List<string> openingtime, List<string> closingtime, double longitude, double latitude, List<bool> happyhourDays)
+        List<string> openingtime, List<string> closingtime, double longitude, double latitude, List<bool> happyhourDays)
     {
         id = -1;
         this.name = name;
@@ -68,11 +68,11 @@ public class LocationData
         openTimes = new List<ClockTime>();
         closeTimes = new List<ClockTime>();
 
-        foreach (string time in openingtime)
-            openTimes.Add(new ClockTime(splitStringToInt(time)[0], splitStringToInt(time)[1], day, true));
+        for (int index = 0; index < openingtime.Count; index++)
+            openTimes.Add(new ClockTime(splitStringToInt(openingtime[index])[0], splitStringToInt(openingtime[index])[1], index, true));
 
-        foreach (string time in closingtime)
-            closeTimes.Add(new ClockTime(splitStringToInt(time)[0], splitStringToInt(time)[1], day, true));
+        for (int index = 0; index < closingtime.Count; index++)
+            closeTimes.Add(new ClockTime(splitStringToInt(closingtime[index])[0], splitStringToInt(closingtime[index])[1], index, true));
     }
 
     /*public string addOpenTime(int day, int hour, int minutes)

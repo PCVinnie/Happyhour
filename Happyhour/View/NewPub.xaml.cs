@@ -57,8 +57,6 @@ namespace Happyhour.View
 
             int selectedRatingIndex = Rating_ComboBox.SelectedIndex;
             Object rating = Rating_ComboBox.SelectedItem;
-            //int selectedDayIndex = Days_ComboBox.SelectedIndex;
-            //Object day = Days_ComboBox.SelectedItem;
 
             if (string.IsNullOrEmpty(name))
                 ErrorMessage_TextBlock.Text = "Er is geen naam opgegeven.";
@@ -118,18 +116,24 @@ namespace Happyhour.View
                 happyhourDays.Add((bool)Happyhour_7.IsChecked);
 
                 List<string> openTimes = new List<string>();
-                for (int i = 0; i < 7; i++)
-                    openTimes.Add("00:00");
-
-                //openTimes[selectedDayIndex] = openingTime.ToString();
+                openTimes.Add(openingTimeMa);
+                openTimes.Add(openingTimeDi);
+                openTimes.Add(openingTimeWo);
+                openTimes.Add(openingTimeDo);
+                openTimes.Add(openingTimeVr);
+                openTimes.Add(openingTimeZa);
+                openTimes.Add(openingTimeZo);
 
                 List<string> closeTimes = new List<string>();
-                for (int i = 0; i < 7; i++)
-                    closeTimes.Add("00:00");
+                closeTimes.Add(closingTimeMa);
+                closeTimes.Add(closingTimeDi);
+                closeTimes.Add(closingTimeWo);
+                closeTimes.Add(closingTimeDo);
+                closeTimes.Add(closingTimeVr);
+                closeTimes.Add(closingTimeZa);
+                closeTimes.Add(closingTimeZo);
 
-                //closeTimes[selectedDayIndex] = closingTime.ToString();
-
-                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, 0, openTimes, closeTimes, Convert.ToDouble(longitude), Convert.ToDouble(latitude), happyhourDays);
+                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, openTimes, closeTimes, Convert.ToDouble(longitude), Convert.ToDouble(latitude), happyhourDays);
                 LocationHandler.Instance.addPub(pub);
 
                 Frame.Navigate(typeof(View.PubMenu));
