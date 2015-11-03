@@ -92,7 +92,7 @@ namespace Happyhour
                 }
 
                 XElement closetimes = new XElement("closetimes");
-                if (l.closeTimes.Count > 0)
+                if (l.pubdays.Count > 0)
                 {
                     string time = "";
                     if (l.pubdays[0].isClosed)
@@ -151,7 +151,7 @@ namespace Happyhour
                 XElement latitude = new XElement("latitude", l.latitude);
 
                 XElement happyhourDays = new XElement("happyhourDays");
-                if (l.closeTimes.Count > 0)
+                if (l.pubdays.Count > 0)
                 {
                     XElement happyhourMonday = new XElement("Monday", l.pubdays[0].happyhour);
                     XElement happyhourTuesday = new XElement("Tuesday", l.pubdays[1].happyhour);
@@ -507,6 +507,16 @@ namespace Happyhour
             {
                 Int32.TryParse((hoursminutes[0].ToString() + hoursminutes[1].ToString()), out time.hour);
                 Int32.TryParse((hoursminutes[2].ToString() + hoursminutes[3].ToString()), out time.minutes);
+
+                if (time.hour < 10)
+                    time.stringhour = "0" + time.hour;
+                else
+                    time.stringhour = time.hour.ToString();
+
+                if (time.minutes < 10)
+                    time.stringminutes = "0" + time.minutes;
+                else
+                    time.stringminutes = time.minutes.ToString();
             }
 
             return closed;

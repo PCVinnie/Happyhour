@@ -3,13 +3,16 @@
     public int hour;
     public int minutes;
 
+    public string stringhour;
+    public string stringminutes;
+
     public ClockTime()
     {
         hour = 0;
         minutes = 0;
     }
 
-    public ClockTime(int hour, int minutes, int day, bool closed)
+    public ClockTime(int hour, int minutes)
     {
         this.hour = hour;
         this.minutes = minutes;
@@ -17,7 +20,12 @@
 
     public string getTimeForSaving()
     {
-        return (hour + "" + minutes);
+        return (stringhour + "" + stringminutes);
+    }
+
+    public string getTimeForGui()
+    {
+        return (stringhour + ":" + stringminutes);
     }
 
     public string getString()

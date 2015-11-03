@@ -38,8 +38,8 @@ public class LocationData
         rating = 0;
 
         position = new BasicGeoposition();
-        openTimes = new List<ClockTime>();
-        closeTimes = new List<ClockTime>();
+        //openTimes = new List<ClockTime>();
+        //closeTimes = new List<ClockTime>();
         happyhourDays = new List<bool>();
 
         pubdays = new List<PubDay>();
@@ -50,7 +50,7 @@ public class LocationData
     }
 
     public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating,
-        List<string> openingtime, List<string> closingtime, double longitude, double latitude, List<bool> happyhourDays)
+        double longitude, double latitude, List<bool> happyhourDays)
     {
         id = -1;
         this.name = name;
@@ -65,14 +65,22 @@ public class LocationData
         this.happyhourDays = happyhourDays;
 
         position = new BasicGeoposition();
-        openTimes = new List<ClockTime>();
-        closeTimes = new List<ClockTime>();
+        position.Longitude = longitude;
+        position.Latitude = latitude;
 
-        for (int index = 0; index < openingtime.Count; index++)
-            openTimes.Add(new ClockTime(splitStringToInt(openingtime[index])[0], splitStringToInt(openingtime[index])[1], index, true));
+        pubdays = new List<PubDay>();
+        for (int i = 0; i < 7; i++)
+        {
+            pubdays.Add(new PubDay(i));
+        }
+        //openTimes = new List<ClockTime>();
+        //closeTimes = new List<ClockTime>();
 
-        for (int index = 0; index < closingtime.Count; index++)
-            closeTimes.Add(new ClockTime(splitStringToInt(closingtime[index])[0], splitStringToInt(closingtime[index])[1], index, true));
+        //for (int index = 0; index < openingtime.Count; index++)
+        //openTimes.Add(new ClockTime(splitStringToInt(openingtime[index])[0], splitStringToInt(openingtime[index])[1]));
+
+        //for (int index = 0; index < closingtime.Count; index++)
+        //closeTimes.Add(new ClockTime(splitStringToInt(closingtime[index])[0], splitStringToInt(closingtime[index])[1]));
     }
 
     /*public string addOpenTime(int day, int hour, int minutes)

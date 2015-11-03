@@ -133,10 +133,60 @@ namespace Happyhour.View
                 closeTimes.Add(closingTimeZa);
                 closeTimes.Add(closingTimeZo);
 
-                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, openTimes, closeTimes, Convert.ToDouble(longitude), Convert.ToDouble(latitude), happyhourDays);
+                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, Convert.ToDouble(longitude), Convert.ToDouble(latitude), happyhourDays);
+                fillTimes(pub, openTimes, closeTimes);
                 LocationHandler.Instance.addPub(pub);
 
                 Frame.Navigate(typeof(View.PubMenu));
+            }
+        }
+
+        private void fillTimes(LocationData data, List<string> openTimes, List<string> closeTimes)
+        {
+
+            for (int i = 0; i < 7; i++)
+            {
+                data.pubdays[i].open = new ClockTime();
+                if (openTimes[i].ToUpper() == "CLOSED")
+                    data.pubdays[i].isClosed = true;
+                else
+                {
+                    data.pubdays[i].open.hour = Int32.Parse((openTimes[i])[0] + "" + (openTimes[i])[1]);
+                    data.pubdays[i].open.minutes = Int32.Parse((openTimes[i])[3] + "" + (openTimes[i])[4]);
+
+                    if (data.pubdays[i].open.hour < 10)
+                        data.pubdays[i].open.stringhour = "0" + data.pubdays[i].open.hour;
+                    else
+                        data.pubdays[i].open.stringhour = data.pubdays[i].open.hour.ToString();
+
+                    if (data.pubdays[i].open.minutes < 10)
+                        data.pubdays[i].open.stringminutes = "0" + data.pubdays[i].open.minutes;
+                    else
+                        data.pubdays[i].open.stringminutes = data.pubdays[i].open.minutes.ToString();
+                }
+
+
+
+
+
+                data.pubdays[i].close = new ClockTime();
+                if (closeTimes[i].ToUpper() == "CLOSED")
+                    data.pubdays[i].isClosed = true;
+                else
+                {
+                    data.pubdays[i].close.hour = Int32.Parse((closeTimes[i])[0] + "" + (closeTimes[i])[1]);
+                    data.pubdays[i].close.minutes = Int32.Parse((closeTimes[i])[3] + "" + (closeTimes[i])[4]);
+
+                    if (data.pubdays[i].close.hour < 10)
+                        data.pubdays[i].close.stringhour = "0" + data.pubdays[i].close.hour;
+                    else
+                        data.pubdays[i].close.stringhour = data.pubdays[i].close.hour.ToString();
+
+                    if (data.pubdays[i].close.minutes < 10)
+                        data.pubdays[i].close.stringminutes = "0" + data.pubdays[i].close.minutes;
+                    else
+                        data.pubdays[i].close.stringminutes = data.pubdays[i].close.minutes.ToString();
+                }
             }
         }
 
