@@ -2,45 +2,17 @@
 {
     public int hour;
     public int minutes;
-    public int day;
-    public bool closed;
 
     public ClockTime()
     {
         hour = 0;
         minutes = 0;
-        day = 0;
-        closed = false;
     }
 
     public ClockTime(int hour, int minutes, int day, bool closed)
     {
         this.hour = hour;
         this.minutes = minutes;
-        this.day = day;
-        this.closed = closed;
-    }
-
-    public string getDay()
-    {
-        switch (day)
-        {
-            case 0:
-                return "Monday";
-            case 1:
-                return "Tuesday";
-            case 2:
-                return "Wednesday";
-            case 3:
-                return "Thursday";
-            case 4:
-                return "Friday";
-            case 5:
-                return "Saterday";
-            case 6:
-                return "Sunday";
-        }
-        return "";
     }
 
     public string getString()

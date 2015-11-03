@@ -194,8 +194,8 @@ namespace Happyhour
                                 Double.TryParse(element.Value.ToString(), out location.position.Latitude);
                                 break;
                             case "HAPPYHOURDAYS":
-                                element = XElement.ReadFrom(reader) as XElement;
-                                //location.addHappyhourDays(Convert.ToBoolean(element.Value.ToString()));
+                                //element = XElement.ReadFrom(reader) as XElement;
+                                readHappyhours(reader, location);
                                 break;
                         }
                     }
@@ -288,11 +288,63 @@ namespace Happyhour
                 return null;
         }
 
+        private void readHappyhours(XmlReader reader, LocationData location)
+        {
+            XElement element;
+            bool happyhour;
+            while (reader.Read() && reader.NodeType != XmlNodeType.EndElement)
+            {
+                if (reader.IsStartElement())
+                {
+                    switch (reader.Name.ToString().ToUpper())
+                    {
+                        case "MONDAY":
+                            element = XElement.ReadFrom(reader) as XElement;
+                            bool.TryParse(element.Value.ToString(), out happyhour);
+                            location.pubdays[0].happyhour = happyhour;
+                            break;
+                        case "TUESDAY":
+                            element = XElement.ReadFrom(reader) as XElement;
+                            bool.TryParse(element.Value.ToString(), out happyhour);
+                            location.pubdays[1].happyhour = happyhour;
+                            break;
+                        case "WEDNESDAY":
+                            element = XElement.ReadFrom(reader) as XElement;
+                            bool.TryParse(element.Value.ToString(), out happyhour);
+                            location.pubdays[2].happyhour = happyhour;
+                            break;
+                        case "THURSDAY":
+                            element = XElement.ReadFrom(reader) as XElement;
+                            bool.TryParse(element.Value.ToString(), out happyhour);
+                            location.pubdays[3].happyhour = happyhour;
+                            break;
+                        case "FRIDAY":
+                            element = XElement.ReadFrom(reader) as XElement;
+                            bool.TryParse(element.Value.ToString(), out happyhour);
+                            location.pubdays[4].happyhour = happyhour;
+                            break;
+                        case "SATERDAY":
+                            element = XElement.ReadFrom(reader) as XElement;
+                            bool.TryParse(element.Value.ToString(), out happyhour);
+                            location.pubdays[5].happyhour = happyhour;
+                            break;
+                        case "SUNDAY":
+                            element = XElement.ReadFrom(reader) as XElement;
+                            bool.TryParse(element.Value.ToString(), out happyhour);
+                            location.pubdays[6].happyhour = happyhour;
+                            break;
+
+                    }
+                }
+            }
+        }
+
         private void readPubTimes(XmlReader reader, Boolean isOpentime, LocationData location)
         {
             ClockTime time = new ClockTime();
             XElement element;
             string typeTime = "CLOSETIMES";
+            int day;
 
             if (isOpentime)
                 typeTime = "OPENTIMES";
@@ -305,63 +357,69 @@ namespace Happyhour
                     switch (reader.Name.ToString().ToUpper())
                     {
                         case "MONDAY":
-                            time.day = 0;
+                            day = 0;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillPubHoursAndMinutes(time, element);
+                            location.pubdays[day].isClosed = FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
-                                location.addOpenTime(time);
+                                location.pubdays[day].open = time;
+                                //location.addOpenTime(time);
                             else
-                                location.addCloseTime(time);
+                                //location.addCloseTime(time);
+                                location.pubdays[day].close = time;
                             break;
                         case "TUESDAY":
-                            time.day = 1;
+                            day = 1;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillPubHoursAndMinutes(time, element);
+                            location.pubdays[day].isClosed = FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
-                                location.addOpenTime(time);
+                                location.pubdays[day].open = time;
                             else
-                                location.addCloseTime(time);
+                                location.pubdays[day].close = time;
                             break;
                         case "WEDNESDAY":
-                            time.day = 2;
+                            day = 2;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillPubHoursAndMinutes(time, element);
+                            location.pubdays[day].isClosed = FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
-                                location.addOpenTime(time);
+                                location.pubdays[day].open = time;
                             else
-                                location.addCloseTime(time);
+                                location.pubdays[day].close = time;
                             break;
                         case "THURSDAY":
-                            time.day = 3;
+                            day = 3;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillPubHoursAndMinutes(time, element);
+                            location.pubdays[day].isClosed = FillPubHoursAndMinutes(time, element);
+                            if (isOpentime)
+                                location.pubdays[day].open = time;
+                            else
+                                location.pubdays[day].close = time;
                             break;
                         case "FRIDAY":
-                            time.day = 4;
+                            day = 4;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillPubHoursAndMinutes(time, element);
+                            location.pubdays[day].isClosed = FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
-                                location.addOpenTime(time);
+                                location.pubdays[day].open = time;
                             else
-                                location.addCloseTime(time);
+                                location.pubdays[day].close = time;
                             break;
                         case "SATERDAY":
-                            time.day = 5;
+                            day = 5;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillPubHoursAndMinutes(time, element);
+                            location.pubdays[day].isClosed = FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
-                                location.addOpenTime(time);
+                                location.pubdays[day].open = time;
                             else
-                                location.addCloseTime(time);
+                                location.pubdays[day].close = time;
                             break;
                         case "SUNDAY":
-                            time.day = 6;
+                            day = 6;
                             element = XElement.ReadFrom(reader) as XElement;
-                            FillPubHoursAndMinutes(time, element);
+                            location.pubdays[day].isClosed = FillPubHoursAndMinutes(time, element);
                             if (isOpentime)
-                                location.addOpenTime(time);
+                                location.pubdays[day].open = time;
                             else
-                                location.addCloseTime(time);
+                                location.pubdays[day].close = time;
                             break;
 
                     }
@@ -369,21 +427,21 @@ namespace Happyhour
             }
         }
 
-        public void readHappyhourDays()
+        private bool FillPubHoursAndMinutes(ClockTime time, XElement element)
         {
-
-        }
-
-        private void FillPubHoursAndMinutes(ClockTime time, XElement element)
-        {
+            bool closed = false;
             string hoursminutes = element.Value.ToString();
             if (hoursminutes == "closed")
-                time.closed = true;
+            {
+                closed = true;
+            }
             else
             {
                 Int32.TryParse((hoursminutes[0].ToString() + hoursminutes[1].ToString()), out time.hour);
                 Int32.TryParse((hoursminutes[2].ToString() + hoursminutes[3].ToString()), out time.minutes);
             }
+
+            return closed;
         }
     }
 }
