@@ -31,15 +31,24 @@
       <Saterday>2330</Saterday>
       <Sunday>2100</Sunday>
     </closetimes>
-    <happyhourDays>
-      <Monday>true</Monday>
-      <Tuesday>false</Tuesday>
-      <Wednesday>false</Wednesday>
-      <Thursday>false</Thursday>
-      <Friday>true</Friday>
-      <Saterday>true</Saterday>
-      <Sunday>false</Sunday>
-    </happyhourDays>
+    <happyhourfrom>
+      <Monday>closed</Monday>
+      <Tuesday>1000</Tuesday>
+      <Wednesday>closed</Wednesday>
+      <Thursday>1300</Thursday>
+      <Friday>1700</Friday>
+      <Saterday>1000</Saterday>
+      <Sunday>1000</Sunday>
+    </happyhourfrom>
+    <happyhourto>
+      <Monday>closed</Monday>
+      <Tuesday>1200</Tuesday>
+      <Wednesday>closed</Wednesday>
+      <Thursday>1600</Thursday>
+      <Friday>1700</Friday>
+      <Saterday>1800</Saterday>
+      <Sunday>1500</Sunday>
+    </happyhourto>
   </pub>
   <pub>
     <id>1</id>
@@ -72,15 +81,24 @@
       <Saterday>2330</Saterday>
       <Sunday>2100</Sunday>
     </closetimes>
-    <happyhourDays>
-      <Monday>true</Monday>
-      <Tuesday>false</Tuesday>
-      <Wednesday>false</Wednesday>
-      <Thursday>false</Thursday>
-      <Friday>true</Friday>
-      <Saterday>true</Saterday>
-      <Sunday>true</Sunday>
-    </happyhourDays>
+    <happyhourfrom>
+      <Monday>closed</Monday>
+      <Tuesday>1000</Tuesday>
+      <Wednesday>closed</Wednesday>
+      <Thursday>1300</Thursday>
+      <Friday>1700</Friday>
+      <Saterday>1000</Saterday>
+      <Sunday>1000</Sunday>
+    </happyhourfrom>
+    <happyhourto>
+      <Monday>closed</Monday>
+      <Tuesday>1200</Tuesday>
+      <Wednesday>closed</Wednesday>
+      <Thursday>1600</Thursday>
+      <Friday>1700</Friday>
+      <Saterday>1800</Saterday>
+      <Sunday>1500</Sunday>
+    </happyhourto>
   </pub>
 <pub>
     <id>2</id>
@@ -113,14 +131,23 @@
       <Saterday>2330</Saterday>
       <Sunday>2200</Sunday>
     </closetimes>
-    <happyhourDays>
-      <Monday>true</Monday>
-      <Tuesday>true</Tuesday>
-      <Wednesday>true</Wednesday>
-      <Thursday>false</Thursday>
-      <Friday>true</Friday>
-      <Saterday>true</Saterday>
-      <Sunday>false</Sunday>
-    </happyhourDays>
+    <happyhourfrom>
+      <Monday>closed</Monday>
+      <Tuesday>1000</Tuesday>
+      <Wednesday>closed</Wednesday>
+      <Thursday>1300</Thursday>
+      <Friday>1700</Friday>
+      <Saterday>1000</Saterday>
+      <Sunday>1000</Sunday>   
+    </happyhourfrom>
+    <happyhourto>
+      <Monday>closed</Monday>
+      <Tuesday>1200</Tuesday>
+      <Wednesday>closed</Wednesday>
+      <Thursday>1600</Thursday>
+      <Friday>1700</Friday>
+      <Saterday>1500</Saterday>
+      <Sunday>1500</Sunday>    
+    </happyhourto>
   </pub>
 </pubs>
