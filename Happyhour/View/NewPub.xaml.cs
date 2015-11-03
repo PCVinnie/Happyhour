@@ -36,15 +36,27 @@ namespace Happyhour.View
             string zipCode = Zipcode_TextBox.Text;
             string city = Place_TextBox.Text;
             string country = Country_TextBox.Text;
-            string openingTime = OpeningTime_TextBox.Text;
-            string closingTime = ClosingTime_TextBox.Text;
+
+            string openingTimeMa = OpeningTimeMa_TextBox.Text;
+            string closingTimeMa = ClosingTimeMa_TextBox.Text;
+            string openingTimeDi = OpeningTimeDi_TextBox.Text;
+            string closingTimeDi = ClosingTimeDi_TextBox.Text;
+            string openingTimeWo = OpeningTimeWo_TextBox.Text;
+            string closingTimeWo = ClosingTimeWo_TextBox.Text;
+            string openingTimeDo = OpeningTimeDo_TextBox.Text;
+            string closingTimeDo = ClosingTimeDo_TextBox.Text;
+            string openingTimeVr = OpeningTimeVr_TextBox.Text;
+            string closingTimeVr = ClosingTimeVr_TextBox.Text;
+            string openingTimeZa = OpeningTimeZa_TextBox.Text;
+            string closingTimeZa = ClosingTimeZa_TextBox.Text;
+            string openingTimeZo = OpeningTimeZo_TextBox.Text;
+            string closingTimeZo = ClosingTimeZo_TextBox.Text;
+
             string longitude = Longitude_TextBox.Text;
             string latitude = Latitude_TextBox.Text;
 
             int selectedRatingIndex = Rating_ComboBox.SelectedIndex;
             Object rating = Rating_ComboBox.SelectedItem;
-            int selectedDayIndex = Days_ComboBox.SelectedIndex;
-            Object day = Days_ComboBox.SelectedItem;
 
             if (string.IsNullOrEmpty(name))
                 ErrorMessage_TextBlock.Text = "Er is geen naam opgegeven.";
@@ -58,11 +70,23 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "Er is geen plaats opgegeven.";
             else if (string.IsNullOrEmpty(country))
                 ErrorMessage_TextBlock.Text = "Er is geen land opgegeven.";
-            else if (string.IsNullOrEmpty(day.ToString()))
+            else if (string.IsNullOrEmpty(OpeningTimeMa_TextBox.ToString()))
                 ErrorMessage_TextBlock.Text = "Er is geen dag opgegeven.";
-            else if (string.IsNullOrEmpty(openingTime))
+            else if (string.IsNullOrEmpty(openingTimeMa) &&
+                     string.IsNullOrEmpty(openingTimeDi) &&
+                     string.IsNullOrEmpty(openingTimeWo) &&
+                     string.IsNullOrEmpty(openingTimeDo) &&
+                     string.IsNullOrEmpty(openingTimeVr) &&
+                     string.IsNullOrEmpty(openingTimeZa) &&
+                     string.IsNullOrEmpty(openingTimeZo))
                 ErrorMessage_TextBlock.Text = "Er zijn geen openingstijden opgegeven.";
-            else if (string.IsNullOrEmpty(closingTime))
+            else if (string.IsNullOrEmpty(closingTimeMa) &&
+                     string.IsNullOrEmpty(closingTimeDi) &&
+                     string.IsNullOrEmpty(closingTimeWo) &&
+                     string.IsNullOrEmpty(closingTimeDo) &&
+                     string.IsNullOrEmpty(closingTimeVr) &&
+                     string.IsNullOrEmpty(closingTimeZa) &&
+                     string.IsNullOrEmpty(closingTimeZo))
                 ErrorMessage_TextBlock.Text = "Er zijn geen sluitingstijden opgegeven.";
             else if (string.IsNullOrEmpty(rating.ToString()))
                 ErrorMessage_TextBlock.Text = "Er is geen rating opgegeven.";
@@ -92,18 +116,24 @@ namespace Happyhour.View
                 happyhourDays.Add((bool)Happyhour_7.IsChecked);
 
                 List<string> openTimes = new List<string>();
-                for (int i = 0; i < 7; i++)
-                    openTimes.Add("00:00");
-
-                openTimes[selectedDayIndex] = openingTime.ToString();
+                openTimes.Add(openingTimeMa);
+                openTimes.Add(openingTimeDi);
+                openTimes.Add(openingTimeWo);
+                openTimes.Add(openingTimeDo);
+                openTimes.Add(openingTimeVr);
+                openTimes.Add(openingTimeZa);
+                openTimes.Add(openingTimeZo);
 
                 List<string> closeTimes = new List<string>();
-                for (int i = 0; i < 7; i++)
-                    closeTimes.Add("00:00");
+                closeTimes.Add(closingTimeMa);
+                closeTimes.Add(closingTimeDi);
+                closeTimes.Add(closingTimeWo);
+                closeTimes.Add(closingTimeDo);
+                closeTimes.Add(closingTimeVr);
+                closeTimes.Add(closingTimeZa);
+                closeTimes.Add(closingTimeZo);
 
-                closeTimes[selectedDayIndex] = closingTime.ToString();
-
-                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, selectedDayIndex, openTimes, closeTimes, Convert.ToDouble(longitude), Convert.ToDouble(latitude), happyhourDays);
+                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, openTimes, closeTimes, Convert.ToDouble(longitude), Convert.ToDouble(latitude), happyhourDays);
                 LocationHandler.Instance.addPub(pub);
 
                 Frame.Navigate(typeof(View.PubMenu));
