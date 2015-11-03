@@ -33,8 +33,8 @@ public class LocationData
         zipcode = "0000AA";
         city = "Amsterdam";
         country = "Nederland";
-        longitude = 0.0;
-        latitude = 0.0;
+        //longitude = 0.0;
+        //latitude = 0.0;
         rating = 0;
 
         position = new BasicGeoposition();
@@ -50,7 +50,7 @@ public class LocationData
     }
 
     public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating,
-        double longitude, double latitude, List<bool> happyhourDays)
+         double longitude, double latitude, List<string> happyhourFrom, List<string> happyhourTo)
     {
         id = -1;
         this.name = name;

@@ -55,6 +55,21 @@ namespace Happyhour.View
             string longitude = Longitude_TextBox.Text;
             string latitude = Latitude_TextBox.Text;
 
+            string happyhourFromMa = HappyhourFromMa_TextBox.Text;
+            string happyhourToMa = HappyhourFromMa_TextBox.Text;
+            string happyhourFromDi = HappyhourFromMa_TextBox.Text;
+            string happyhourToDi = HappyhourFromMa_TextBox.Text;
+            string happyhourFromWo = HappyhourFromMa_TextBox.Text;
+            string happyhourToWo = HappyhourFromMa_TextBox.Text;
+            string happyhourFromDo = HappyhourFromMa_TextBox.Text;
+            string happyhourToDo = HappyhourFromMa_TextBox.Text;
+            string happyhourFromVr = HappyhourFromMa_TextBox.Text;
+            string happyhourToVr = HappyhourFromMa_TextBox.Text;
+            string happyhourFromZa = HappyhourFromMa_TextBox.Text;
+            string happyhourToZa = HappyhourFromMa_TextBox.Text;
+            string happyhourFromZo = HappyhourFromMa_TextBox.Text;
+            string happyhourToZo = HappyhourFromMa_TextBox.Text;
+
             int selectedRatingIndex = Rating_ComboBox.SelectedIndex;
             Object rating = Rating_ComboBox.SelectedItem;
 
@@ -94,26 +109,43 @@ namespace Happyhour.View
                 ErrorMessage_TextBlock.Text = "Er is geen longitude opgegeven.";
             else if (string.IsNullOrEmpty(latitude.ToString()))
                 ErrorMessage_TextBlock.Text = "Er is geen latitude opgegeven.";
-            else if (Happyhour_1.IsChecked == false &&
-                     Happyhour_2.IsChecked == false &&
-                     Happyhour_3.IsChecked == false &&
-                     Happyhour_4.IsChecked == false &&
-                     Happyhour_5.IsChecked == false &&
-                     Happyhour_6.IsChecked == false &&
-                     Happyhour_7.IsChecked == false)
-                ErrorMessage_TextBlock.Text = "Er is geen dag opgegeven.";
+            else if (string.IsNullOrEmpty(happyhourFromMa) &&
+                     string.IsNullOrEmpty(happyhourFromDi) &&
+                     string.IsNullOrEmpty(happyhourFromWo) &&
+                     string.IsNullOrEmpty(happyhourFromDo) &&
+                     string.IsNullOrEmpty(happyhourFromVr) &&
+                     string.IsNullOrEmpty(happyhourFromZa) &&
+                     string.IsNullOrEmpty(happyhourFromZo))
+                ErrorMessage_TextBlock.Text = "Er is geen tijd opgegeven.";
+            else if (string.IsNullOrEmpty(happyhourToMa) &&
+                     string.IsNullOrEmpty(happyhourToDi) &&
+                     string.IsNullOrEmpty(happyhourToWo) &&
+                     string.IsNullOrEmpty(happyhourToDo) &&
+                     string.IsNullOrEmpty(happyhourToVr) &&
+                     string.IsNullOrEmpty(happyhourToZa) &&
+                     string.IsNullOrEmpty(happyhourToZo))
+                ErrorMessage_TextBlock.Text = "Er is geen tijd opgegeven.";
             else
             {
                 ErrorMessage_TextBlock.Text = "";
 
-                List<bool> happyhourDays = new List<bool>();
-                happyhourDays.Add((bool)Happyhour_1.IsChecked);
-                happyhourDays.Add((bool)Happyhour_2.IsChecked);
-                happyhourDays.Add((bool)Happyhour_3.IsChecked);
-                happyhourDays.Add((bool)Happyhour_4.IsChecked);
-                happyhourDays.Add((bool)Happyhour_5.IsChecked);
-                happyhourDays.Add((bool)Happyhour_6.IsChecked);
-                happyhourDays.Add((bool)Happyhour_7.IsChecked);
+                List<string> happyhourFrom = new List<string>();
+                happyhourFrom.Add(happyhourFromMa);
+                happyhourFrom.Add(happyhourFromDi);
+                happyhourFrom.Add(happyhourFromWo);
+                happyhourFrom.Add(happyhourFromDo);
+                happyhourFrom.Add(happyhourFromVr);
+                happyhourFrom.Add(happyhourFromZa);
+                happyhourFrom.Add(happyhourFromZo);
+
+                List<string> happyhourTo = new List<string>();
+                happyhourTo.Add(happyhourToMa);
+                happyhourTo.Add(happyhourToDi);
+                happyhourTo.Add(happyhourToWo);
+                happyhourTo.Add(happyhourToDo);
+                happyhourTo.Add(happyhourToVr);
+                happyhourTo.Add(happyhourToZa);
+                happyhourTo.Add(happyhourToZo);
 
                 List<string> openTimes = new List<string>();
                 openTimes.Add(openingTimeMa);
@@ -133,7 +165,8 @@ namespace Happyhour.View
                 closeTimes.Add(closingTimeZa);
                 closeTimes.Add(closingTimeZo);
 
-                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, Convert.ToDouble(longitude), Convert.ToDouble(latitude), happyhourDays);
+
+                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, Convert.ToDouble(longitude), Convert.ToDouble(latitude), happyhourFrom, happyhourTo);
                 fillTimes(pub, openTimes, closeTimes);
                 LocationHandler.Instance.addPub(pub);
 

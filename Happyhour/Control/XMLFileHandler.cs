@@ -150,7 +150,7 @@ namespace Happyhour
                 XElement longitude = new XElement("longitude", l.longitude);
                 XElement latitude = new XElement("latitude", l.latitude);
 
-                XElement happyhourDays = new XElement("happyhourDays");
+                /*XElement happyhourDays = new XElement("happyhourDays");
                 if (l.pubdays.Count > 0)
                 {
                     XElement happyhourMonday = new XElement("Monday", l.pubdays[0].happyhour);
@@ -167,7 +167,7 @@ namespace Happyhour
                     happyhourDays.Add(happyhourThursday);
                     happyhourDays.Add(happyhourSaterday);
                     happyhourDays.Add(happyhourSunday);
-                }
+                }*/
                 
                 pub.Add(id);
                 pub.Add(name);
@@ -186,7 +186,7 @@ namespace Happyhour
                 position.Add(latitude);
                 pub.Add(position);
 
-                pub.Add(happyhourDays);
+                //pub.Add(happyhourDays);
 
                 doc.Root.Add(pub);
             }
@@ -263,7 +263,7 @@ namespace Happyhour
                                 break;
                             case "HAPPYHOURDAYS":
                                 //element = XElement.ReadFrom(reader) as XElement;
-                                readHappyhours(reader, location);
+                                //readHappyhours(reader, location);
                                 break;
                         }
                     }
@@ -356,7 +356,7 @@ namespace Happyhour
                 return null;
         }
 
-        private void readHappyhours(XmlReader reader, LocationData location)
+        /*private void readHappyhours(XmlReader reader, LocationData location)
         {
             XElement element;
             bool happyhour;
@@ -405,7 +405,7 @@ namespace Happyhour
                     }
                 }
             }
-        }
+        }*/
 
         private void readPubTimes(XmlReader reader, Boolean isOpentime, LocationData location)
         {

@@ -267,11 +267,11 @@ namespace Happyhour.View
 
                         if (geofencePub != null)
                         {
-                            string happyhourText = "Happyhour: No";
+                            //string happyhourText = "Happyhour: No";
                             String day = DateTime.Now.DayOfWeek.ToString();
                             PubDay pubday = geofencePub.getDay(day);
-                            if(pubday.happyhour)
-                                happyhourText = "Happyhour: Yes";
+                           // if(pubday.happyhour)
+                                //happyhourText = "Happyhour: Yes";
 
                             Summary.Text = "";
                             Hyperlink link = new Hyperlink();
@@ -285,7 +285,7 @@ namespace Happyhour.View
                             {
                                 Summary.Inlines.Add(new Run()
                                 {
-                                    Text = "Open: yes, " + happyhourText
+                                    Text = "Open: yes"
                                 });
                             }
                             else
