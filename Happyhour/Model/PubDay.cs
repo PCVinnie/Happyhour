@@ -10,21 +10,22 @@ namespace Happyhour.Model
     {
         public ClockTime open;
         public ClockTime close;
+        public ClockTime happyhourFrom;
+        public ClockTime happyhourTo;
         int day;
-        public bool isClosed;
-        public Boolean happyhour;
 
         public PubDay(int day)
         {
             this.day = day;
         }
 
-        public PubDay(ClockTime open, ClockTime close, int day, Boolean happyhour)
+        public PubDay(ClockTime open, ClockTime close, int day, ClockTime happyhourFrom, ClockTime happyhourTo)
         {
             this.open = open;
             this.close = close;
             this.day = day;
-            this.happyhour = happyhour;
+            this.happyhourFrom = happyhourFrom;
+            this.happyhourTo = happyhourTo;
         }
 
         public bool isNowOpen()
