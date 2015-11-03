@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Happyhour.Model;
+using System.Collections.Generic;
 using Windows.Devices.Geolocation;
 
 public class LocationData
@@ -13,6 +14,8 @@ public class LocationData
 
     public List<ClockTime> openTimes { get; set; }
     public List<ClockTime> closeTimes { get; set; }
+
+    public List<PubDay> pubdays { get; set; }
 
     public double longitude { get; set; }
     public double latitude { get; set; }
@@ -38,6 +41,12 @@ public class LocationData
         openTimes = new List<ClockTime>();
         closeTimes = new List<ClockTime>();
         happyhourDays = new List<bool>();
+
+        pubdays = new List<PubDay>();
+        for(int i = 0; i < 7; i++)
+        {
+            pubdays.Add(new PubDay(0));
+        }
     }
 
     public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating,
@@ -66,7 +75,7 @@ public class LocationData
             closeTimes.Add(new ClockTime(splitStringToInt(time)[0], splitStringToInt(time)[1], day, true));
     }
 
-    public string addOpenTime(int day, int hour, int minutes)
+    /*public string addOpenTime(int day, int hour, int minutes)
     {
         bool contains = false;
         foreach (ClockTime time in openTimes)
@@ -144,15 +153,15 @@ public class LocationData
         }
         else
             return "This day already has a close time";
-    }
+    }*/
 
     public string getOpenTimeOfDay(string day)
     {
-        foreach(ClockTime time in openTimes)
+        foreach(PubDay time in pubdays)
         {
             if(day == time.getDay())
             {
-                return time.getString();
+                return time.open.getString();
             }
         }
 
@@ -161,11 +170,11 @@ public class LocationData
 
     public string getCloseTimeOfDay(string day)
     {
-        foreach (ClockTime time in closeTimes)
+        foreach (PubDay time in pubdays)
         {
             if (day == time.getDay())
             {
-                return time.getString();
+                return time.close.getString();
             }
         }
 
