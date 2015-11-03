@@ -40,8 +40,25 @@ namespace Happyhour.View
             geolocator = new Geolocator();
             //geolocator.MovementThreshold = 10;
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
+
+            isPubOpen(routeList[0].pubs[0]);
             getCurrentLocation();
             GeofenceMonitor.Current.GeofenceStateChanged += OnGeofenceStateChanged;
+        }
+
+        private bool isPubOpen(LocationData data)
+        {
+            bool open = true;
+            String day = DateTime.Now.DayOfWeek.ToString();
+            PubDay pubday = data.getDay(day);
+            if (pubday.isClosed)
+                open = false;
+            else 
+            {
+                bool timeopen = pubday.isNowOpen(); 
+            }
+
+            return open;
         }
 
         async private void PositionChanged(Geolocator sender, PositionChangedEventArgs e)
@@ -248,8 +265,38 @@ namespace Happyhour.View
                                 geofencePub = data;
                         }
 
-                        if(geofencePub != null)
-                            Summary.Text = geofencePub.name + ", rating: " + geofencePub.rating;
+                        if (geofencePub != null)
+                        {
+                            string happyhourText = "Happyhour: No";
+                            String day = DateTime.Now.DayOfWeek.ToString();
+                            PubDay pubday = geofencePub.getDay(day);
+                            if(pubday.happyhour)
+                                happyhourText = "Happyhour: Yes";
+
+                            Summary.Text = "";
+                            Hyperlink link = new Hyperlink();
+                            link.Inlines.Add(new Run()
+                            {
+                                Text = geofencePub.name,
+                            });
+                            Summary.Inlines.Add(new LineBreak());
+
+                            if (isPubOpen(geofencePub))
+                            {
+                                Summary.Inlines.Add(new Run()
+                                {
+                                    Text = "Open: yes, " + happyhourText
+                                });
+                            }
+                            else
+                            {
+                                Summary.Inlines.Add(new Run()
+                                {
+                                    Text = "Open: no",
+                                });
+                            }
+                            Summary.Inlines.Add(link);                               
+                        }
 
                     }
                     else if (state == GeofenceState.Exited)

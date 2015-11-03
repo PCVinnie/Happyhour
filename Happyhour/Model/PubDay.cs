@@ -27,6 +27,18 @@ namespace Happyhour.Model
             this.happyhour = happyhour;
         }
 
+        public bool isNowOpen()
+        {
+            TimeSpan start = new TimeSpan(open.hour, open.minutes, 0);
+            TimeSpan end = new TimeSpan(close.hour, close.minutes, 0);
+            TimeSpan now = DateTime.Now.TimeOfDay;
+
+            if (start < end)
+                return start <= now && now <= end;
+
+            return !(end < now && now < start);
+        }
+
         public string getDay()
         {
             switch (day)

@@ -45,7 +45,7 @@ public class LocationData
         pubdays = new List<PubDay>();
         for(int i = 0; i < 7; i++)
         {
-            pubdays.Add(new PubDay(0));
+            pubdays.Add(new PubDay(i));
         }
     }
 
@@ -154,6 +154,18 @@ public class LocationData
         else
             return "This day already has a close time";
     }*/
+
+    public PubDay getDay(string dayString)
+    {
+        PubDay pubday = null;
+        foreach (PubDay day in pubdays)
+        {
+            if (day.getDay() == dayString)
+                pubday = day;
+        }
+
+        return pubday;
+    }
 
     public string getOpenTimeOfDay(string day)
     {
