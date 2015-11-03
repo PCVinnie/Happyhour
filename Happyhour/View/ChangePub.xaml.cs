@@ -44,20 +44,20 @@ namespace Happyhour.View
             Zipcode_TextBox.Text = pub.zipcode;
             Country_TextBox.Text = pub.country;
 
-            OpeningTimeMa_TextBox.Text = pub.openTimes[0].hour.ToString() + ":" + pub.openTimes[0].minutes.ToString();
-            ClosingTimeMa_TextBox.Text = pub.closeTimes[0].hour.ToString() + ":" + pub.closeTimes[0].minutes.ToString();
-            OpeningTimeDi_TextBox.Text = pub.openTimes[1].hour.ToString() + ":" + pub.openTimes[1].minutes.ToString();
-            ClosingTimeDi_TextBox.Text = pub.closeTimes[1].hour.ToString() + ":" + pub.closeTimes[1].minutes.ToString();
-            OpeningTimeWo_TextBox.Text = pub.openTimes[2].hour.ToString() + ":" + pub.openTimes[2].minutes.ToString();
-            ClosingTimeWo_TextBox.Text = pub.closeTimes[2].hour.ToString() + ":" + pub.closeTimes[2].minutes.ToString();
-            OpeningTimeDo_TextBox.Text = pub.openTimes[3].hour.ToString() + ":" + pub.openTimes[3].minutes.ToString();
-            ClosingTimeDo_TextBox.Text = pub.closeTimes[3].hour.ToString() + ":" + pub.closeTimes[3].minutes.ToString();
-            OpeningTimeVr_TextBox.Text = pub.openTimes[4].hour.ToString() + ":" + pub.openTimes[4].minutes.ToString();
-            ClosingTimeVr_TextBox.Text = pub.closeTimes[4].hour.ToString() + ":" + pub.closeTimes[4].minutes.ToString();
-            OpeningTimeZa_TextBox.Text = pub.openTimes[5].hour.ToString() + ":" + pub.openTimes[5].minutes.ToString();
-            ClosingTimeZa_TextBox.Text = pub.closeTimes[5].hour.ToString() + ":" + pub.closeTimes[5].minutes.ToString();
-            OpeningTimeZo_TextBox.Text = pub.openTimes[6].hour.ToString() + ":" + pub.openTimes[6].minutes.ToString();
-            ClosingTimeZo_TextBox.Text = pub.closeTimes[6].hour.ToString() + ":" + pub.closeTimes[6].minutes.ToString();
+            OpeningTimeMa_TextBox.Text = pub.pubdays[0].open.hour.ToString() + ":" + pub.pubdays[0].open.minutes.ToString();
+            ClosingTimeMa_TextBox.Text = pub.pubdays[0].close.hour.ToString() + ":" + pub.pubdays[0].close.minutes.ToString();
+            OpeningTimeDi_TextBox.Text = pub.pubdays[1].open.hour.ToString() + ":" + pub.pubdays[1].open.minutes.ToString();
+            ClosingTimeDi_TextBox.Text = pub.pubdays[1].close.hour.ToString() + ":" + pub.pubdays[1].close.minutes.ToString();
+            OpeningTimeWo_TextBox.Text = pub.pubdays[2].open.hour.ToString() + ":" + pub.pubdays[2].open.minutes.ToString();
+            ClosingTimeWo_TextBox.Text = pub.pubdays[2].close.hour.ToString() + ":" + pub.pubdays[2].close.minutes.ToString();
+            OpeningTimeDo_TextBox.Text = pub.pubdays[3].open.hour.ToString() + ":" + pub.pubdays[3].open.minutes.ToString();
+            ClosingTimeDo_TextBox.Text = pub.pubdays[3].close.hour.ToString() + ":" + pub.pubdays[3].close.minutes.ToString();
+            OpeningTimeVr_TextBox.Text = pub.pubdays[4].open.hour.ToString() + ":" + pub.pubdays[4].open.minutes.ToString();
+            ClosingTimeVr_TextBox.Text = pub.pubdays[4].close.hour.ToString() + ":" + pub.pubdays[4].close.minutes.ToString();
+            OpeningTimeZa_TextBox.Text = pub.pubdays[5].open.hour.ToString() + ":" + pub.pubdays[5].open.minutes.ToString();
+            ClosingTimeZa_TextBox.Text = pub.pubdays[5].close.hour.ToString() + ":" + pub.pubdays[5].close.minutes.ToString();
+            OpeningTimeZo_TextBox.Text = pub.pubdays[6].open.hour.ToString() + ":" + pub.pubdays[6].open.minutes.ToString();
+            ClosingTimeZo_TextBox.Text = pub.pubdays[6].close.hour.ToString() + ":" + pub.pubdays[6].close.minutes.ToString();
 
             Rating_ComboBox.SelectedIndex = pub.rating;
             Longitude_TextBox.Text = pub.longitude.ToString();
