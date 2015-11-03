@@ -15,6 +15,11 @@
         this.minutes = minutes;
     }
 
+    public string getTimeForSaving()
+    {
+        return (hour + "" + minutes);
+    }
+
     public string getString()
     {
         string hourString;
