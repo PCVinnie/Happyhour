@@ -50,7 +50,7 @@ public class LocationData
     }
 
     public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating,
-        List<string> openingtime, List<string> closingtime, double longitude, double latitude, List<bool> happyhourDays)
+        List<string> openingtime, List<string> closingtime, double longitude, double latitude, List<string> happyhourFrom, List<string> happyhourTo)
     {
         id = -1;
         this.name = name;
