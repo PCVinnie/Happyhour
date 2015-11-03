@@ -39,13 +39,13 @@ namespace Happyhour
                 XElement opentimes = new XElement("opentimes");
                 if (l.openTimes.Count > 0)
                 {
-                    XElement opentimesMonday = new XElement("opentimesMonday", l.openTimes[0]);
-                    XElement opentimesTuesday = new XElement("opentimesTuesday", l.openTimes[1]);
-                    XElement opentimesWednesday = new XElement("opentimesWednesday", l.openTimes[2]);
-                    XElement opentimesThursday = new XElement("opentimesThursday", l.openTimes[3]);
-                    XElement opentimesFriday = new XElement("opentimesFriday", l.openTimes[4]);
-                    XElement opentimesSaterday = new XElement("opentimesSaterday", l.openTimes[5]);
-                    XElement opentimesSunday = new XElement("opentimesSunday", l.openTimes[6]);
+                    XElement opentimesMonday = new XElement("Monday", l.openTimes[0]);
+                    XElement opentimesTuesday = new XElement("Tuesday", l.openTimes[1]);
+                    XElement opentimesWednesday = new XElement("Wednesday", l.openTimes[2]);
+                    XElement opentimesThursday = new XElement("Thursday", l.openTimes[3]);
+                    XElement opentimesFriday = new XElement("Friday", l.openTimes[4]);
+                    XElement opentimesSaterday = new XElement("Saterday", l.openTimes[5]);
+                    XElement opentimesSunday = new XElement("Sunday", l.openTimes[6]);
 
                     opentimes.Add(opentimesMonday);
                     opentimes.Add(opentimesTuesday);
@@ -59,13 +59,13 @@ namespace Happyhour
                 XElement closetimes = new XElement("closetimes");
                 if (l.closeTimes.Count > 0)
                 {
-                    XElement closetimesMonday = new XElement("closetimesMonday", l.closeTimes[0]);
-                    XElement closetimesTuesday = new XElement("closetimesTuesday", l.closeTimes[1]);
-                    XElement closetimesWednesday = new XElement("closetimesWednesday", l.closeTimes[2]);
-                    XElement closetimesThursday = new XElement("closetimesThursday", l.closeTimes[3]);
-                    XElement closetimesFriday = new XElement("closetimesFriday", l.closeTimes[4]);
-                    XElement closetimesSaterday = new XElement("closetimesSaterday", l.closeTimes[5]);
-                    XElement closetimesSunday = new XElement("closetimesSunday", l.closeTimes[6]);
+                    XElement closetimesMonday = new XElement("Monday", l.closeTimes[0]);
+                    XElement closetimesTuesday = new XElement("Tuesday", l.closeTimes[1]);
+                    XElement closetimesWednesday = new XElement("Wednesday", l.closeTimes[2]);
+                    XElement closetimesThursday = new XElement("Thursday", l.closeTimes[3]);
+                    XElement closetimesFriday = new XElement("Friday", l.closeTimes[4]);
+                    XElement closetimesSaterday = new XElement("Saterday", l.closeTimes[5]);
+                    XElement closetimesSunday = new XElement("Sunday", l.closeTimes[6]);
 
                     closetimes.Add(closetimesMonday);
                     closetimes.Add(closetimesTuesday);
@@ -84,13 +84,13 @@ namespace Happyhour
                 if (l.closeTimes.Count > 0)
                 {
                     
-                    XElement happyhourMonday = new XElement("happyhourMonday", l.happyhourDays[0]);
-                    XElement happyhourTuesday = new XElement("happyhourTuesday", l.happyhourDays[1]);
-                    XElement happyhourWednesday = new XElement("happyhourWednesday", l.happyhourDays[2]);
-                    XElement happyhourThursday = new XElement("happyhourThursday", l.happyhourDays[3]);
-                    XElement happyhourFriday = new XElement("happyhourFriday", l.happyhourDays[4]);
-                    XElement happyhourSaterday = new XElement("happyhourSaterday", l.happyhourDays[5]);
-                    XElement happyhourSunday = new XElement("happyhourSunday", l.happyhourDays[6]);
+                    XElement happyhourMonday = new XElement("Monday", l.happyhourDays[0]);
+                    XElement happyhourTuesday = new XElement("Tuesday", l.happyhourDays[1]);
+                    XElement happyhourWednesday = new XElement("Wednesday", l.happyhourDays[2]);
+                    XElement happyhourThursday = new XElement("Thursday", l.happyhourDays[3]);
+                    XElement happyhourFriday = new XElement("Friday", l.happyhourDays[4]);
+                    XElement happyhourSaterday = new XElement("Saterday", l.happyhourDays[5]);
+                    XElement happyhourSunday = new XElement("Sunday", l.happyhourDays[6]);
 
                     happyhourDays.Add(happyhourMonday);
                     happyhourDays.Add(happyhourTuesday);
