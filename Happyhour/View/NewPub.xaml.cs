@@ -56,19 +56,19 @@ namespace Happyhour.View
             string latitude = Latitude_TextBox.Text;
 
             string happyhourFromMa = HappyhourFromMa_TextBox.Text;
-            string happyhourToMa = HappyhourFromMa_TextBox.Text;
-            string happyhourFromDi = HappyhourFromMa_TextBox.Text;
-            string happyhourToDi = HappyhourFromMa_TextBox.Text;
-            string happyhourFromWo = HappyhourFromMa_TextBox.Text;
-            string happyhourToWo = HappyhourFromMa_TextBox.Text;
-            string happyhourFromDo = HappyhourFromMa_TextBox.Text;
-            string happyhourToDo = HappyhourFromMa_TextBox.Text;
-            string happyhourFromVr = HappyhourFromMa_TextBox.Text;
-            string happyhourToVr = HappyhourFromMa_TextBox.Text;
-            string happyhourFromZa = HappyhourFromMa_TextBox.Text;
-            string happyhourToZa = HappyhourFromMa_TextBox.Text;
-            string happyhourFromZo = HappyhourFromMa_TextBox.Text;
-            string happyhourToZo = HappyhourFromMa_TextBox.Text;
+            string happyhourToMa = HappyhourToMa_TextBox.Text;
+            string happyhourFromDi = HappyhourFromDi_TextBox.Text;
+            string happyhourToDi = HappyhourToDi_TextBox.Text;
+            string happyhourFromWo = HappyhourFromWo_TextBox.Text;
+            string happyhourToWo = HappyhourToWo_TextBox.Text;
+            string happyhourFromDo = HappyhourFromDo_TextBox.Text;
+            string happyhourToDo = HappyhourToDo_TextBox.Text;
+            string happyhourFromVr = HappyhourFromVr_TextBox.Text;
+            string happyhourToVr = HappyhourToVr_TextBox.Text;
+            string happyhourFromZa = HappyhourFromZa_TextBox.Text;
+            string happyhourToZa = HappyhourToZa_TextBox.Text;
+            string happyhourFromZo = HappyhourFromZo_TextBox.Text;
+            string happyhourToZo = HappyhourToZo_TextBox.Text;
 
             int selectedRatingIndex = Rating_ComboBox.SelectedIndex;
             Object rating = Rating_ComboBox.SelectedItem;
@@ -168,7 +168,7 @@ namespace Happyhour.View
 
                 LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, Convert.ToDouble(longitude), Convert.ToDouble(latitude));
                 fillTimes(pub, openTimes, closeTimes);
-                fillHappyTimes(p, happyhourFrom, happyhourTo);
+                fillHappyTimes(pub, happyhourFrom, happyhourTo);
                 LocationHandler.Instance.addPub(pub);
 
                 Frame.Navigate(typeof(View.PubMenu));

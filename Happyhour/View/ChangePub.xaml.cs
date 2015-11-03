@@ -60,6 +60,21 @@ namespace Happyhour.View
             OpeningTimeZo_TextBox.Text = pub.pubdays[6].isClosed ? "Closed" : pub.pubdays[6].open.getTimeForGui();
             ClosingTimeZo_TextBox.Text = pub.pubdays[6].isClosed ? "Closed" : pub.pubdays[6].close.getTimeForGui();
 
+            HappyhourFromMa_TextBox.Text = pub.pubdays[0].isClosed ? "Closed" : pub.pubdays[0].happyhourFrom.getTimeForGui();
+            HappyhourToMa_TextBox.Text = pub.pubdays[0].isClosed ? "Closed" : pub.pubdays[0].happyhourTo.getTimeForGui();
+            HappyhourFromDi_TextBox.Text = pub.pubdays[1].isClosed ? "Closed" : pub.pubdays[1].happyhourFrom.getTimeForGui();
+            HappyhourToDi_TextBox.Text = pub.pubdays[1].isClosed ? "Closed" : pub.pubdays[1].happyhourTo.getTimeForGui();
+            HappyhourFromWo_TextBox.Text = pub.pubdays[2].isClosed ? "Closed" : pub.pubdays[2].happyhourFrom.getTimeForGui();
+            HappyhourToWo_TextBox.Text = pub.pubdays[2].isClosed ? "Closed" : pub.pubdays[2].happyhourTo.getTimeForGui();
+            HappyhourFromDo_TextBox.Text = pub.pubdays[3].isClosed ? "Closed" : pub.pubdays[3].happyhourFrom.getTimeForGui();
+            HappyhourToDo_TextBox.Text = pub.pubdays[3].isClosed ? "Closed" : pub.pubdays[3].happyhourTo.getTimeForGui();
+            HappyhourFromVr_TextBox.Text = pub.pubdays[4].isClosed ? "Closed" : pub.pubdays[4].happyhourFrom.getTimeForGui();
+            HappyhourToVr_TextBox.Text = pub.pubdays[4].isClosed ? "Closed" : pub.pubdays[4].happyhourTo.getTimeForGui();
+            HappyhourFromZa_TextBox.Text = pub.pubdays[5].isClosed ? "Closed" : pub.pubdays[5].happyhourFrom.getTimeForGui();
+            HappyhourToZa_TextBox.Text = pub.pubdays[5].isClosed ? "Closed" : pub.pubdays[5].happyhourTo.getTimeForGui();
+            HappyhourFromZo_TextBox.Text = pub.pubdays[6].isClosed ? "Closed" : pub.pubdays[6].happyhourFrom.getTimeForGui();
+            HappyhourToZo_TextBox.Text = pub.pubdays[6].isClosed ? "Closed" : pub.pubdays[6].happyhourTo.getTimeForGui();
+
             Rating_ComboBox.SelectedIndex = pub.rating;
             Longitude_TextBox.Text = pub.position.Longitude.ToString();
             Latitude_TextBox.Text = pub.position.Latitude.ToString();
@@ -93,19 +108,19 @@ namespace Happyhour.View
             string latitude = Latitude_TextBox.Text;
 
             string happyhourFromMa = HappyhourFromMa_TextBox.Text;
-            string happyhourToMa = HappyhourFromMa_TextBox.Text;
-            string happyhourFromDi = HappyhourFromMa_TextBox.Text;
-            string happyhourToDi = HappyhourFromMa_TextBox.Text;
-            string happyhourFromWo = HappyhourFromMa_TextBox.Text;
-            string happyhourToWo = HappyhourFromMa_TextBox.Text;
-            string happyhourFromDo = HappyhourFromMa_TextBox.Text;
-            string happyhourToDo = HappyhourFromMa_TextBox.Text;
-            string happyhourFromVr = HappyhourFromMa_TextBox.Text;
-            string happyhourToVr = HappyhourFromMa_TextBox.Text;
-            string happyhourFromZa = HappyhourFromMa_TextBox.Text;
-            string happyhourToZa = HappyhourFromMa_TextBox.Text;
-            string happyhourFromZo = HappyhourFromMa_TextBox.Text;
-            string happyhourToZo = HappyhourFromMa_TextBox.Text;
+            string happyhourToMa = HappyhourToMa_TextBox.Text;
+            string happyhourFromDi = HappyhourFromDi_TextBox.Text;
+            string happyhourToDi = HappyhourToDi_TextBox.Text;
+            string happyhourFromWo = HappyhourFromWo_TextBox.Text;
+            string happyhourToWo = HappyhourToWo_TextBox.Text;
+            string happyhourFromDo = HappyhourFromDo_TextBox.Text;
+            string happyhourToDo = HappyhourToDo_TextBox.Text;
+            string happyhourFromVr = HappyhourFromVr_TextBox.Text;
+            string happyhourToVr = HappyhourToVr_TextBox.Text;
+            string happyhourFromZa = HappyhourFromZa_TextBox.Text;
+            string happyhourToZa = HappyhourToZa_TextBox.Text;
+            string happyhourFromZo = HappyhourFromZo_TextBox.Text;
+            string happyhourToZo = HappyhourToZo_TextBox.Text;
 
             int selectedRatingIndex = Rating_ComboBox.SelectedIndex;
             Object rating = Rating_ComboBox.SelectedItem;
