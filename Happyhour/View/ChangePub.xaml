@@ -13,9 +13,9 @@
             <ImageBrush ImageSource="../Assets/Images/background.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
         <!-- ScrollViewer -->
-        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="360" Height="640">
             <!-- Stackpanel -->
-            <StackPanel MinWidth="360" MinHeight="640" MaxWidth="380" MaxHeight="680" Padding="10">
+            <StackPanel MinWidth="360" MaxWidth="380" Padding="10">
                 <!-- Stackpanel background-->
                 <StackPanel.Background>
                     <SolidColorBrush Color="#DCDCDC" Opacity="0.2"/>
@@ -71,7 +71,7 @@
                         <TextBox x:Name="Zipcode_TextBox" Grid.Row="4" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
                         <TextBox x:Name="Place_TextBox" Grid.Row="5" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
                         <TextBox x:Name="Country_TextBox" Grid.Row="6" Grid.Column="1" Width="210" Margin="5,5,25,5"/>
-                        
+
                         <!-- Openinghours -->
                         <Grid Grid.Row="7" Grid.Column="1">
                             <Grid.ColumnDefinitions>
@@ -81,18 +81,34 @@
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ComboBox x:Name="Days_ComboBox" Grid.Row="0" Grid.Column="0" SelectedIndex="0" Margin="5,5,0,0">
-                                <ComboBoxItem>Ma</ComboBoxItem>
-                                <ComboBoxItem>Di</ComboBoxItem>
-                                <ComboBoxItem>Wo</ComboBoxItem>
-                                <ComboBoxItem>Do</ComboBoxItem>
-                                <ComboBoxItem>Vr</ComboBoxItem>
-                                <ComboBoxItem>Za</ComboBoxItem>
-                                <ComboBoxItem>Zo</ComboBoxItem>
-                            </ComboBox>
-                            <TextBox x:Name="OpeningTime_TextBox" Grid.Row="0" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
-                            <TextBox x:Name="ClosingTime_TextBox" Grid.Row="0" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBlock x:Name="Days_Ma" Grid.Row="0" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Ma"/>
+                            <TextBlock x:Name="Days_Di" Grid.Row="1" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Di"/>
+                            <TextBlock x:Name="Days_Wo" Grid.Row="2" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Wo"/>
+                            <TextBlock x:Name="Days_Do" Grid.Row="3" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Do"/>
+                            <TextBlock x:Name="Days_Vr" Grid.Row="4" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Vr"/>
+                            <TextBlock x:Name="Days_Za" Grid.Row="5" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Za"/>
+                            <TextBlock x:Name="Days_Zo" Grid.Row="6" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Ma"/>
+                            <TextBox x:Name="OpeningTimeMa_TextBox" Grid.Row="0" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="ClosingTimeMa_TextBox"  Grid.Row="0" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="OpeningTimeDi_TextBox" Grid.Row="1" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="ClosingTimeDi_TextBox"  Grid.Row="1" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="OpeningTimeWo_TextBox" Grid.Row="2" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="ClosingTimeWo_TextBox"  Grid.Row="2" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="OpeningTimeDo_TextBox" Grid.Row="3" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="ClosingTimeDo_TextBox"  Grid.Row="3" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="OpeningTimeVr_TextBox" Grid.Row="4" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="ClosingTimeVr_TextBox"  Grid.Row="4" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="OpeningTimeZa_TextBox" Grid.Row="5" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="ClosingTimeZa_TextBox"  Grid.Row="5" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="OpeningTimeZo_TextBox" Grid.Row="6" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
+                            <TextBox x:Name="ClosingTimeZo_TextBox"  Grid.Row="6" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
                         </Grid>
 
                         <TextBlock Text="Longitude:" Grid.Row="8" Grid.Column="0" Margin="5" Foreground="White"/>
