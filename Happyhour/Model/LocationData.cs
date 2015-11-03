@@ -22,6 +22,10 @@ public class LocationData
     public int rating { get; set; }
     public List<bool> happyhourDays { get; set; }
 
+    public List<ClockTime> happyhourFrom { get; set; }
+
+    public List<ClockTime> happyhourTo { get; set; }
+
     public BasicGeoposition position;
 
     public LocationData()
@@ -50,7 +54,7 @@ public class LocationData
     }
 
     public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating,
-         double longitude, double latitude, List<string> happyhourFrom, List<string> happyhourTo)
+         double longitude, double latitude)
     {
         id = -1;
         this.name = name;
@@ -67,6 +71,9 @@ public class LocationData
         position = new BasicGeoposition();
         position.Longitude = longitude;
         position.Latitude = latitude;
+
+        //this.happyhourFrom = happyhourFrom;
+        //this.happyhourTo = happyhourTo;
 
         pubdays = new List<PubDay>();
         for (int i = 0; i < 7; i++)
