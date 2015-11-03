@@ -95,7 +95,7 @@
                             <TextBlock x:Name="Days_Do" Grid.Row="3" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Do"/>
                             <TextBlock x:Name="Days_Vr" Grid.Row="4" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Vr"/>
                             <TextBlock x:Name="Days_Za" Grid.Row="5" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Za"/>
-                            <TextBlock x:Name="Days_Zo" Grid.Row="6" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Ma"/>
+                            <TextBlock x:Name="Days_Zo" Grid.Row="6" Grid.Column="0" Foreground="White" Margin="5,5,0,0" Text="Zo"/>
                             <TextBox x:Name="OpeningTimeMa_TextBox" Grid.Row="0" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
                             <TextBox x:Name="ClosingTimeMa_TextBox"  Grid.Row="0" Grid.Column="2" Width="60" Margin="5,5,0,0" Text="00:00"/>
                             <TextBox x:Name="OpeningTimeDi_TextBox" Grid.Row="1" Grid.Column="1" Width="60" Margin="5,5,0,0" Text="00:00"/>
