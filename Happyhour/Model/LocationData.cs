@@ -1,4 +1,5 @@
-﻿using Happyhour.Model;
+﻿using Happyhour;
+using Happyhour.Model;
 using System.Collections.Generic;
 using Windows.Devices.Geolocation;
 
@@ -11,22 +12,18 @@ public class LocationData
     public string zipcode { get; set; }
     public string city { get; set; }
     public string country { get; set; }
-
-    public List<ClockTime> openTimes { get; set; }
-    public List<ClockTime> closeTimes { get; set; }
+    public string time { get; set; }
 
     public List<PubDay> pubdays { get; set; }
 
     public double longitude { get; set; }
     public double latitude { get; set; }
     public int rating { get; set; }
-    public List<bool> happyhourDays { get; set; }
-
-    public List<ClockTime> happyhourFrom { get; set; }
-
-    public List<ClockTime> happyhourTo { get; set; }
+    public string happyhour { get; set; }
 
     public BasicGeoposition position;
+
+    string[] days = { "Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo" };
 
     public LocationData()
     {
@@ -42,19 +39,21 @@ public class LocationData
         rating = 0;
 
         position = new BasicGeoposition();
-        //openTimes = new List<ClockTime>();
-        //closeTimes = new List<ClockTime>();
-        happyhourDays = new List<bool>();
 
         pubdays = new List<PubDay>();
-        for(int i = 0; i < 7; i++)
-        {
+        for(int i = 0; i < 7; i++) {
             pubdays.Add(new PubDay(i));
         }
+
+        List<string> time = new List<string>();
+        for (int i = 0; i < 7; i++)
+            time.Add("00:00");
+
+        //getOpenAndClosingTime(time, time, time, time);
     }
 
     public LocationData(string name, string street, string streetNumber, string zipcode, string city, string country, int rating,
-         double longitude, double latitude)
+         double longitude, double latitude, List<string> openTimes, List<string> closeTimes, List<string> happyhourFrom, List<string> happyhourTo)
     {
         id = -1;
         this.name = name;
@@ -66,109 +65,30 @@ public class LocationData
         this.rating = rating;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.happyhourDays = happyhourDays;
 
         position = new BasicGeoposition();
         position.Longitude = longitude;
         position.Latitude = latitude;
 
-        //this.happyhourFrom = happyhourFrom;
-        //this.happyhourTo = happyhourTo;
-
         pubdays = new List<PubDay>();
-        for (int i = 0; i < 7; i++)
-        {
+        for (int i = 0; i < 7; i++) {
             pubdays.Add(new PubDay(i));
         }
-        //openTimes = new List<ClockTime>();
-        //closeTimes = new List<ClockTime>();
 
-        //for (int index = 0; index < openingtime.Count; index++)
-        //openTimes.Add(new ClockTime(splitStringToInt(openingtime[index])[0], splitStringToInt(openingtime[index])[1]));
-
-        //for (int index = 0; index < closingtime.Count; index++)
-        //closeTimes.Add(new ClockTime(splitStringToInt(closingtime[index])[0], splitStringToInt(closingtime[index])[1]));
+        //getOpenAndClosingTime(openTimes, closeTimes, happyhourFrom, happyhourTo);
     }
-
-    /*public string addOpenTime(int day, int hour, int minutes)
+    
+    /*
+    public void getOpenAndClosingTime(List<string> openTimes, List<string> closeTimes, List<string> happyhourFrom, List<string> happyhourTo)
     {
-        bool contains = false;
-        foreach (ClockTime time in openTimes)
-        {
-            if(time.day == day)
-            {
-                contains = true;
-            }
-        }
+        XMLFileHandler xmlFileHandler = new XMLFileHandler();
+        for (int i = 0; i < openTimes.Count; i++)
+            time += days[i] + " " + openTimes[i] + " - " + closeTimes[i] + "\n";
 
-        if (!contains)
-        {
-            openTimes.Add(new ClockTime(hour, minutes, day, false));
-            return "Added new open time";
-        }
-        else
-            return "This day already has a open time";
+        for (int i = 0; i < happyhourFrom.Count; i++)
+            happyhour += days[i] + " " + xmlFileHandler.readPubXMLFile()[i].pubdays[i].happyhourFrom + " - " + pubdays[i].happyhourTo.hour + "\n";
     }
-
-    public string addOpenTime(ClockTime time)
-    {
-        bool contains = false;
-        foreach (ClockTime t in openTimes)
-        {
-            if (time.day == t.day)
-            {
-                contains = true;
-            }
-        }
-
-        if (!contains)
-        {
-            openTimes.Add(time);
-            return "Added new open time";
-        }
-        else
-            return "This day already has a open time";
-    }
-
-    public string addCloseTime(int day, int hour, int minutes)
-    {
-        bool contains = false;
-        foreach (ClockTime time in closeTimes)
-        {
-            if (time.day == day)
-            {
-                contains = true;
-            }
-        }
-
-        if (!contains)
-        {
-            closeTimes.Add(new ClockTime(hour, minutes, day, false));
-            return "Added new close time";
-        }
-        else
-            return "This day already has a close time";
-    }
-
-    public string addCloseTime(ClockTime time)
-    {
-        bool contains = false;
-        foreach (ClockTime t in closeTimes)
-        {
-            if (time.day == t.day)
-            {
-                contains = true;
-            }
-        }
-
-        if (!contains)
-        {
-            closeTimes.Add(time);
-            return "Added new close time";
-        }
-        else
-            return "This day already has a close time";
-    }*/
+    */
 
     public PubDay getDay(string dayString)
     {
@@ -206,35 +126,6 @@ public class LocationData
         }
 
         return null;
-    }
-
-    public void addHappyhourDays(bool day)
-    {
-        happyhourDays.Add(day);
-    }
-
-    public string getOpeningTime()
-    {
-        string openingTime = "test";
-
-        foreach (ClockTime op in openTimes)
-        {
-           openingTime += op.getString() + "\n";
-        }
-
-        return openingTime;
-    }
-
-    public string getClosingTime()
-    {
-        string closingTime = "test";
-
-        foreach (ClockTime op in closeTimes)
-        {
-            closingTime += op.getString() + "\n";
-        }
-
-        return closingTime;
     }
 
     public int[] splitStringToInt(string value)

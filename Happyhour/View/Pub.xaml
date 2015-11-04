@@ -57,7 +57,7 @@
                         <ListView x:Name="PubsListView" Height="470" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,25,0">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel BorderThickness="1" BorderBrush="Gray"  Width="288" Height="100" Margin="10,10,0,0">
+                                    <StackPanel BorderThickness="1" BorderBrush="Gray" Width="288" Height="100" Margin="10,10,0,0">
                                         <Grid Grid.Row="1" Grid.Column="0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -69,18 +69,14 @@
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
 
-                                            <TextBlock x:Name="NameBlock" Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="{Binding name}" />
-                                            <TextBlock x:Name="OtherInfoBlock" Grid.Row="1" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White">
-
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="{Binding name}" />
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White">
                                                 <Run Text="{Binding street}"/>
                                                 <Run Text="{Binding streetNumber}"/>
                                                 <Run Text="{Binding zipcode}"/>
                                                 <Run Text="{Binding city}"/>
                                             </TextBlock>
-                                            <TextBlock Grid.Row="2" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="Openingstijden: ">
-                                                <Run Text="{Binding getOpeningTime}"/>
-                                                <Run Text="{Binding getClosingTime}"/>
-                                            </TextBlock>
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="{Binding time}" />
                                         </Grid>
                                     </StackPanel>
                                 </DataTemplate>

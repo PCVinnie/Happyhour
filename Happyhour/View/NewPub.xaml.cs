@@ -166,7 +166,7 @@ namespace Happyhour.View
                 closeTimes.Add(closingTimeZo);
 
 
-                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, Convert.ToDouble(longitude), Convert.ToDouble(latitude));
+                LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, Convert.ToDouble(longitude), Convert.ToDouble(latitude), openTimes, closeTimes, happyhourFrom, happyhourTo);
                 fillTimes(pub, openTimes, closeTimes);
                 fillHappyTimes(pub, happyhourFrom, happyhourTo);
                 LocationHandler.Instance.addPub(pub);

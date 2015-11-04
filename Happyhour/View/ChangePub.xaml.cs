@@ -196,7 +196,6 @@ namespace Happyhour.View
                 happyhourTo.Add(happyhourToZa);
                 happyhourTo.Add(happyhourToZo);
 
-
                 List<string> openTimes = new List<string>();
                 openTimes.Add(openingTimeMa);
                 openTimes.Add(openingTimeDi);
@@ -215,7 +214,7 @@ namespace Happyhour.View
                 closeTimes.Add(closingTimeZa);
                 closeTimes.Add(closingTimeZo);
 
-                LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, Convert.ToDouble(longitude), Convert.ToDouble(latitude));
+                LocationData p = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, Convert.ToDouble(longitude), Convert.ToDouble(latitude), openTimes, closeTimes, happyhourFrom, happyhourTo);
                 p.id = pub.id;
 
                 fillTimes(p, openTimes, closeTimes);

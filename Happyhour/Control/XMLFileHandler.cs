@@ -1,16 +1,10 @@
-﻿using Happyhour.Control;
-using Happyhour.Model;
+﻿using Happyhour.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
-using Windows.Storage;
 
 namespace Happyhour
 {
@@ -260,25 +254,6 @@ namespace Happyhour
                     happyTo.Add(closetimesSunday);
                 }
 
-                /*XElement happyhourDays = new XElement("happyhourDays");
-                if (l.pubdays.Count > 0)
-                {
-                    XElement happyhourMonday = new XElement("Monday", l.pubdays[0].happyhour);
-                    XElement happyhourTuesday = new XElement("Tuesday", l.pubdays[1].happyhour);
-                    XElement happyhourWednesday = new XElement("Wednesday", l.pubdays[2].happyhour);
-                    XElement happyhourThursday = new XElement("Thursday", l.pubdays[3].happyhour);
-                    XElement happyhourFriday = new XElement("Friday", l.pubdays[4].happyhour);
-                    XElement happyhourSaterday = new XElement("Saterday", l.pubdays[5].happyhour);
-                    XElement happyhourSunday = new XElement("Sunday", l.pubdays[6].happyhour);
-
-                    happyhourDays.Add(happyhourMonday);
-                    happyhourDays.Add(happyhourTuesday);
-                    happyhourDays.Add(happyhourWednesday);
-                    happyhourDays.Add(happyhourThursday);
-                    happyhourDays.Add(happyhourSaterday);
-                    happyhourDays.Add(happyhourSunday);
-                }*/
-
                 pub.Add(id);
                 pub.Add(name);
                 pub.Add(street);
@@ -295,8 +270,6 @@ namespace Happyhour
                 position.Add(longitude);
                 position.Add(latitude);
                 pub.Add(position);
-
-                //pub.Add(happyhourDays);
 
                 doc.Root.Add(pub);
             }
@@ -471,57 +444,6 @@ namespace Happyhour
             else
                 return null;
         }
-
-        /*private void readHappyhours(XmlReader reader, LocationData location)
-        {
-            XElement element;
-            bool happyhour;
-            while (reader.Read() && reader.NodeType != XmlNodeType.EndElement)
-            {
-                if (reader.IsStartElement())
-                {
-                    switch (reader.Name.ToString().ToUpper())
-                    {
-                        case "MONDAY":
-                            element = XElement.ReadFrom(reader) as XElement;
-                            bool.TryParse(element.Value.ToString(), out happyhour);
-                            location.pubdays[0].happyhour = happyhour;
-                            break;
-                        case "TUESDAY":
-                            element = XElement.ReadFrom(reader) as XElement;
-                            bool.TryParse(element.Value.ToString(), out happyhour);
-                            location.pubdays[1].happyhour = happyhour;
-                            break;
-                        case "WEDNESDAY":
-                            element = XElement.ReadFrom(reader) as XElement;
-                            bool.TryParse(element.Value.ToString(), out happyhour);
-                            location.pubdays[2].happyhour = happyhour;
-                            break;
-                        case "THURSDAY":
-                            element = XElement.ReadFrom(reader) as XElement;
-                            bool.TryParse(element.Value.ToString(), out happyhour);
-                            location.pubdays[3].happyhour = happyhour;
-                            break;
-                        case "FRIDAY":
-                            element = XElement.ReadFrom(reader) as XElement;
-                            bool.TryParse(element.Value.ToString(), out happyhour);
-                            location.pubdays[4].happyhour = happyhour;
-                            break;
-                        case "SATERDAY":
-                            element = XElement.ReadFrom(reader) as XElement;
-                            bool.TryParse(element.Value.ToString(), out happyhour);
-                            location.pubdays[5].happyhour = happyhour;
-                            break;
-                        case "SUNDAY":
-                            element = XElement.ReadFrom(reader) as XElement;
-                            bool.TryParse(element.Value.ToString(), out happyhour);
-                            location.pubdays[6].happyhour = happyhour;
-                            break;
-
-                    }
-                }
-            }
-        }*/
 
         private void readHappyTimes(XmlReader reader, Boolean isfrom, LocationData location)
         {
