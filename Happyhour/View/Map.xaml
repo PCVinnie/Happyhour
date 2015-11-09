@@ -8,7 +8,9 @@
     xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d"
     xmlns:modal="using:Happyhour.Model">
-    
+    <Page.DataContext>
+        <modal:PubRoute/>
+    </Page.DataContext>
 
     <Grid>
         <Grid.Background>
