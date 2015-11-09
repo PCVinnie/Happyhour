@@ -17,6 +17,8 @@ using Windows.UI.Core;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.UI.Xaml.Media;
 
+
+
 namespace Happyhour.View
 {
     /// <summary>
@@ -44,6 +46,7 @@ namespace Happyhour.View
             isPubOpen(routeList[0].pubs[0]);
             getCurrentLocation();
             GeofenceMonitor.Current.GeofenceStateChanged += OnGeofenceStateChanged;
+
         }
 
         private bool isPubOpen(LocationData data)

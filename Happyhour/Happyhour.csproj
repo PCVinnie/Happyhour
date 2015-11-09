@@ -112,6 +112,9 @@
     <Compile Include="View\Credits.xaml.cs">
       <DependentUpon>Credits.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Facebook.xaml.cs">
+      <DependentUpon>Facebook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NewRoute.xaml.cs">
       <DependentUpon>NewRoute.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,7 @@
   <ItemGroup>
     <Content Include="Assets\Images\background.png" />
     <Content Include="Assets\Images\bar.png" />
+    <Content Include="Assets\Images\facebook.png" />
     <Content Include="Assets\Images\happyhour.png" />
     <Content Include="Assets\Images\information.png" />
     <Content Include="Assets\Images\logo.png" />
@@ -177,6 +181,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Facebook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\NewRoute.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,7 +214,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FBWinSDK\FBSDK-UWP\FBSDK-UWP\FBSDK-UWP.vcxproj">
+      <Project>{973a943b-ff77-4267-8f30-f5fe2b7f5583}</Project>
+      <Name>Facebook</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Bing.Maps.Xaml, Version=1.313.0825.0">
       <Name>Bing Maps for C#, C++, or Visual Basic</Name>

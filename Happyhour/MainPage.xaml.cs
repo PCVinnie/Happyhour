@@ -14,6 +14,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Windows.Security.Authentication.Web;
+using Facebook;
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace Happyhour
@@ -45,6 +48,42 @@ namespace Happyhour
         private void Credits_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(View.Credits));
+        }
+
+        private async void Facebook_Click(object sender, RoutedEventArgs e)
+        {
+            string SID = WebAuthenticationBroker.GetCurrentApplicationCallbackUri().ToString();
+
+            // Get active session
+            FBSession sess = FBSession.ActiveSession;
+            sess.FBAppId = "438902522960732";
+            sess.WinAppId = "3779de4318934fee8f4d5d3a4411481a";
+
+            // Add permissions required by the app
+            List<String> permissionList = new List<String>();
+            permissionList.Add("public_profile");
+            permissionList.Add("user_friends");
+            permissionList.Add("user_likes");
+            permissionList.Add("user_groups");
+            permissionList.Add("user_location");
+            permissionList.Add("user_photos");
+            permissionList.Add("publish_actions");
+
+            FBPermissions permissions = new FBPermissions(permissionList);
+
+            // Login to Facebook
+            FBResult result = await sess.LoginAsync(permissions);
+
+            if (result.Succeeded)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            //Frame.Navigate(typeof(View.Facebook));
         }
     }
 }

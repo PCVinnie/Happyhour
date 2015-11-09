@@ -16,7 +16,7 @@
             <Image Source="../Assets/Images/logo.png" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" Height="100"/>
         
         <!-- Stackpanel-->
-        <StackPanel MaxWidth="330" MaxHeight="340">
+        <StackPanel MaxWidth="330" MaxHeight="370">
             <!-- Stackpanel background-->
             <StackPanel.Background>
                 <SolidColorBrush Color="#DCDCDC" Opacity="0.4"/>
@@ -29,6 +29,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -47,6 +48,10 @@
                 <!-- Information -->
                 <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Credits_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/information.png" />
+                </Button>
+                <!-- Facebook -->
+                <Button x:Name="Facebook" Grid.Row="2" Grid.Column="1" Width="150" Height="30" BorderThickness="0" Click="Facebook_Click">
+                    <Image Stretch="Fill" Source="../Assets/Images/facebook.png" />
                 </Button>
             </Grid>
         </StackPanel>

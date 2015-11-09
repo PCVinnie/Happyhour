@@ -79,15 +79,18 @@ public class LocationData
     }
     
     /*
+
     public void getOpenAndClosingTime(List<string> openTimes, List<string> closeTimes, List<string> happyhourFrom, List<string> happyhourTo)
     {
-        XMLFileHandler xmlFileHandler = new XMLFileHandler();
         for (int i = 0; i < openTimes.Count; i++)
             time += days[i] + " " + openTimes[i] + " - " + closeTimes[i] + "\n";
 
         for (int i = 0; i < happyhourFrom.Count; i++)
-            happyhour += days[i] + " " + xmlFileHandler.readPubXMLFile()[i].pubdays[i].happyhourFrom + " - " + pubdays[i].happyhourTo.hour + "\n";
+        {
+            happyhour += days[i] + " " + pubdays[i].happyhourTo.hour + " - " + pubdays[i].happyhourTo.hour + "\n";
+        }
     }
+
     */
 
     public PubDay getDay(string dayString)
