@@ -18,6 +18,11 @@ namespace Happyhour.Control
             LocationData d = new LocationData();
             pubList = xmlFileHandler.readPubXMLFile();
             routeList = xmlFileHandler.readRouteXMLFile(pubList);
+
+            foreach(LocationData location in pubList)
+            {
+                location.setPubdayTimes();
+            }
         }
 
         public static LocationHandler Instance

@@ -1,4 +1,5 @@
 ﻿using Happyhour.Control;
+using Happyhour.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;

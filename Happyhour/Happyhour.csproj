@@ -102,10 +102,10 @@
     </Compile>
     <Compile Include="Control\LocationHandler.cs" />
     <Compile Include="Model\ClockTime.cs" />
-    <Compile Include="Model\LocationData.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\LocationData.cs" />
     <Compile Include="Model\PubDay.cs" />
     <Compile Include="Model\PubRoute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

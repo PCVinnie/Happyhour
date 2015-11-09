@@ -1,4 +1,5 @@
 ﻿using Happyhour.Control;
+using Happyhour.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,6 +32,7 @@ namespace Happyhour.View
         {
             this.InitializeComponent();
             locationHandler = LocationHandler.Instance;
+            
 
             pubList = new ObservableCollection<LocationData>(locationHandler.pubList);
             PubsListView.ItemsSource = pubList;

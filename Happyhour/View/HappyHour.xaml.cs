@@ -1,4 +1,5 @@
 ﻿using Happyhour.Control;
+using Happyhour.Model;
 using System.Collections.ObjectModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
