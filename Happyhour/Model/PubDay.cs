@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Happyhour.Model
 {
-    public class PubDay
+    class PubDay
     {
         public ClockTime open;
         public ClockTime close;
@@ -14,6 +14,8 @@ namespace Happyhour.Model
         public ClockTime happyhourTo;
         int day;
         public bool isClosed;
+        public string timeString { get; set; }
+        public string happyhourString { get; set; }
 
         public PubDay(int day)
         {
@@ -61,6 +63,44 @@ namespace Happyhour.Model
                     return "Sunday";
             }
             return "";
+        }
+
+        public string getDayShort()
+        {
+            switch (day)
+            {
+                case 0:
+                    return "Mon";
+                case 1:
+                    return "Tue";
+                case 2:
+                    return "Wed";
+                case 3:
+                    return "Thu";
+                case 4:
+                    return "Fri";
+                case 5:
+                    return "Sat";
+                case 6:
+                    return "Sun";
+            }
+            return "";
+        }
+
+        public void setTimeString()
+        {
+            if (isClosed)
+                timeString = getDayShort() + ": Closed";
+            else
+                timeString = getDayShort() + ": " + open.getString() + " - " + close.getString();
+        }
+
+        public void setHappyhourString()
+        {
+            if (isClosed)
+                happyhourString = getDayShort() + ": Closed";
+            else
+                happyhourString = getDayShort() + ": " + happyhourFrom.getString() + " - " + happyhourTo.getString();
         }
     }
 }

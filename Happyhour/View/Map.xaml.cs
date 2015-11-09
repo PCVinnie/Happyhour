@@ -16,6 +16,7 @@ using System.Diagnostics;
 using Windows.UI.Core;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.UI.Xaml.Media;
+using System.Collections.Generic;
 
 
 
@@ -43,10 +44,29 @@ namespace Happyhour.View
             //geolocator.MovementThreshold = 10;
             routeList = new ObservableCollection<PubRoute>(LocationHandler.Instance.routeList);
 
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+
             isPubOpen(routeList[0].pubs[0]);
             getCurrentLocation();
             GeofenceMonitor.Current.GeofenceStateChanged += OnGeofenceStateChanged;
 
+        }
+
+        private void App_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+                return;
+
+            // Navigate back if possible, and if the event has not 
+            // already been handled .
+            if (rootFrame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
         }
 
         private bool isPubOpen(LocationData data)
@@ -76,11 +96,14 @@ namespace Happyhour.View
 
                 for (int i = 0; i < InputMap.MapElements.Count; i++)
                 {
-                    MapIcon icon = (MapIcon)InputMap.MapElements[i];
-                    if(icon.Title.Equals("U bent hier"))
+                    if (InputMap.MapElements[i] is MapIcon)
                     {
-                        isInList = true;
-                        InputMap.MapElements.Remove(icon);
+                        MapIcon icon = (MapIcon)InputMap.MapElements[i];
+                        if (icon.Title.Equals("U bent hier"))
+                        {
+                            isInList = true;
+                            InputMap.MapElements.Remove(icon);
+                        }
                     }
                 }
 
@@ -117,6 +140,8 @@ namespace Happyhour.View
             TimeSpan dwellTime = TimeSpan.FromSeconds(1);
             var geofence = new Windows.Devices.Geolocation.Geofencing.Geofence(location.name, circle, monitoredStates, false, dwellTime);
             GeofenceMonitor.Current.Geofences.Add(geofence);
+
+            drawGeofence(location, 35);
         }
 
         private void AddMapIcon(Geocoordinate coordinate, string name)
@@ -126,6 +151,64 @@ namespace Happyhour.View
             MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
             MapIcon1.Title = name;
             InputMap.MapElements.Add(MapIcon1);
+        }
+
+        private void drawGeofence(LocationData location, double radius)
+        {
+            var strokeColor = Colors.DarkBlue;
+            strokeColor.A = 100;
+            var fillColor = Colors.Blue;
+            fillColor.A = 50;
+
+            MapPolygon circlePolygon = new MapPolygon
+            {
+                FillColor = fillColor,
+                StrokeColor = strokeColor,
+                StrokeThickness = 3,
+                StrokeDashed = true,
+                ZIndex = 1,
+                Path = new Geopath(GetCirclePoints(location.position, radius))
+            };
+
+            InputMap.MapElements.Add(circlePolygon);
+        }
+
+        private BasicGeoposition GetAtDistanceBearing(BasicGeoposition point, double distance, double bearing)
+        {
+            double degreesToRadian = Math.PI / 180.0;
+            double radianToDegrees = 180.0 / Math.PI;
+            double earthRadius = 6378137.0;
+
+            double latA = point.Latitude * degreesToRadian;
+            double lonA = point.Longitude * degreesToRadian;
+            double angularDistance = distance / earthRadius;
+            double trueCourse = bearing * degreesToRadian;
+
+            double lat = Math.Asin(
+                Math.Sin(latA) * Math.Cos(angularDistance) +
+                Math.Cos(latA) * Math.Sin(angularDistance) * Math.Cos(trueCourse));
+
+            double dlon = Math.Atan2(
+                Math.Sin(trueCourse) * Math.Sin(angularDistance) * Math.Cos(latA),
+                Math.Cos(angularDistance) - Math.Sin(latA) * Math.Sin(lat));
+
+            double lon = ((lonA + dlon + Math.PI) % (Math.PI * 2)) - Math.PI;
+
+            BasicGeoposition result = new BasicGeoposition { Latitude = lat * radianToDegrees, Longitude = lon * radianToDegrees };
+
+            return result;
+        }
+
+        public IList<BasicGeoposition> GetCirclePoints(BasicGeoposition center, double radius)
+        {
+            int nrOfPoints = 50;
+            double angle = 360.0 / nrOfPoints;
+            List<BasicGeoposition> locations = new List<BasicGeoposition>();
+            for (int i = 0; i <= nrOfPoints; i++)
+            {
+                locations.Add(GetAtDistanceBearing(center, radius, angle * i));
+            }
+            return locations;
         }
 
         /*
