@@ -101,6 +101,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\FacebookHandler.cs" />
+    <Compile Include="Control\FBReturnObject.cs" />
     <Compile Include="Control\LocationHandler.cs" />
     <Compile Include="Model\ClockTime.cs" />
     <Compile Include="MainPage.xaml.cs">
