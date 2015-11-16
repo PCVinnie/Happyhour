@@ -29,12 +29,18 @@ namespace Happyhour
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private FacebookHandler fbHandler;
         public MainPage()
         {
             this.InitializeComponent();
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
 
-            Logout();
+            fbHandler = FacebookHandler.Instance;
+
+            fbHandler.Logout();
+
+            FacebookLogout.IsEnabled = false;
+            Facebook.IsEnabled = true;
         }
         private void Happyhour_Click(object sender, RoutedEventArgs e)
         {
@@ -56,81 +62,36 @@ namespace Happyhour
             Frame.Navigate(typeof(View.Credits));
         }
 
-        public static bool IsInternet()
-        {
-            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
-            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
-            return internet;
-        }
-
         private async void Facebook_Click(object sender, RoutedEventArgs e)
         {
-            string SID = WebAuthenticationBroker.GetCurrentApplicationCallbackUri().ToString();
-            if (IsInternet())
-            {
-                // Get active session
-                FBSession sess = FBSession.ActiveSession;
-                if (!sess.LoggedIn)
-                {
-                    sess.FBAppId = "438902522960732";
-                    sess.WinAppId = "3779de4318934fee8f4d5d3a4411481a";
+            await fbHandler.Login();
 
-                    // Add permissions required by the app
-                    List<String> permissionList = new List<String>();
-                    permissionList.Add("public_profile");
-                    permissionList.Add("user_friends");
-                    permissionList.Add("user_likes");
-                    //permissionList.Add("user_groups");
-                    permissionList.Add("user_location");
-                    //permissionList.Add("user_photos");
-                    permissionList.Add("publish_actions");
-
-                    FBPermissions permissions = new FBPermissions(permissionList);
-
-                    // Login to Facebook
-                    FBResult result = await sess.LoginAsync(permissions);
-
-                    if (result.Succeeded)
-                    {
-                        FBUser user = sess.User;
-                        string username = user.Name;
-                        string locale = user.Locale;
-
-                        FacebookUser.Text = user.Name;
-                    }
-                    else
-                    {
-
-                    }
-                }
-                else
-                {
-                    FBUser user = sess.User;
-                    string username = user.Name;
-                    string locale = user.Locale;
-
-                    FacebookUser.Text = user.Name;
-                }
-            }
-            else
+            if(fbHandler.noInternet)
             {
                 FacebookUser.Text = "No internet";
             }
 
-            //Frame.Navigate(typeof(View.Facebook));
+            if(fbHandler.fbUser != null)
+            {
+                FacebookUser.Text = "User: " + fbHandler.fbUser.Name;
+                FacebookLogout.IsEnabled = true;
+                Facebook.IsEnabled = false;
+            }
         }
 
-        private void FacebookLogout_Click(object sender, RoutedEventArgs e)
+        private async void FacebookLogout_Click(object sender, RoutedEventArgs e)
         {
-            Logout();
-        }
-
-        private async void Logout()
-        {
-            FBSession sess = FBSession.ActiveSession;
-            await sess.LogoutAsync();
-
+            await fbHandler.Logout();
             FacebookUser.Text = "No user logged in";
+
+            FacebookLogout.IsEnabled = false;
+            Facebook.IsEnabled = false;
+        }
+
+        private void FacebookMessageSend_Click(object sender, RoutedEventArgs e)
+        {
+            string text = FacebookMessage.Text;
+            fbHandler.sendMessage(text);
         }
     }
 }
