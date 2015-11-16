@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 
 using Windows.Security.Authentication.Web;
 using Facebook;
+using Facebook.Graph;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -31,6 +32,8 @@ namespace Happyhour
         {
             this.InitializeComponent();
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+
+            Logout();
         }
         private void Happyhour_Click(object sender, RoutedEventArgs e)
         {
@@ -58,34 +61,62 @@ namespace Happyhour
 
             // Get active session
             FBSession sess = FBSession.ActiveSession;
-            sess.FBAppId = "438902522960732";
-            sess.WinAppId = "3779de4318934fee8f4d5d3a4411481a";
-
-            // Add permissions required by the app
-            List<String> permissionList = new List<String>();
-            permissionList.Add("public_profile");
-            permissionList.Add("user_friends");
-            permissionList.Add("user_likes");
-            permissionList.Add("user_groups");
-            permissionList.Add("user_location");
-            permissionList.Add("user_photos");
-            permissionList.Add("publish_actions");
-
-            FBPermissions permissions = new FBPermissions(permissionList);
-
-            // Login to Facebook
-            FBResult result = await sess.LoginAsync(permissions);
-
-            if (result.Succeeded)
+            if (!sess.LoggedIn)
             {
+                sess.FBAppId = "438902522960732";
+                sess.WinAppId = "3779de4318934fee8f4d5d3a4411481a";
 
+                // Add permissions required by the app
+                List<String> permissionList = new List<String>();
+                permissionList.Add("public_profile");
+                permissionList.Add("user_friends");
+                permissionList.Add("user_likes");
+                //permissionList.Add("user_groups");
+                permissionList.Add("user_location");
+                //permissionList.Add("user_photos");
+                permissionList.Add("publish_actions");
+
+                FBPermissions permissions = new FBPermissions(permissionList);
+
+                // Login to Facebook
+                FBResult result = await sess.LoginAsync(permissions);
+
+                if (result.Succeeded)
+                {
+                    FBUser user = sess.User;
+                    string username = user.Name;
+                    string locale = user.Locale;
+
+                    FacebookUser.Text = user.Name;
+                }
+                else
+                {
+                  
+                }
             }
             else
             {
+                FBUser user = sess.User;
+                string username = user.Name;
+                string locale = user.Locale;
 
+                FacebookUser.Text = user.Name;
             }
 
             //Frame.Navigate(typeof(View.Facebook));
+        }
+
+        private void FacebookLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Logout();
+        }
+
+        private async void Logout()
+        {
+            FBSession sess = FBSession.ActiveSession;
+            await sess.LogoutAsync();
+
+            FacebookUser.Text = "No user logged in";
         }
     }
 }
