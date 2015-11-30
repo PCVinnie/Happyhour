@@ -35,7 +35,7 @@ namespace Happyhour.Control
             }
         }
 
-        public static bool IsInternet()
+        public static bool checkInternetConnection()
         {
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
@@ -44,7 +44,7 @@ namespace Happyhour.Control
 
         public async Task Login()
         {
-            if (IsInternet())
+            if (checkInternetConnection())
             {
                 // Get active session
                 sess = FBSession.ActiveSession;
@@ -71,6 +71,16 @@ namespace Happyhour.Control
                     if (result.Succeeded)
                     {
                         fbUser = sess.User;
+
+                        //Read the user information
+                        string userName = fbUser.Name;
+                        string userFirstname = fbUser.FirstName;
+                        string userLastname = fbUser.LastName;
+
+                        string userGender = fbUser.Gender;
+                        int userTimezone = fbUser.Timezone;
+
+                        FBProfilePictureData userPicture = fbUser.Picture;
                     }
                     else
                     {
