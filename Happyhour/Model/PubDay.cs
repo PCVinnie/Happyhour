@@ -17,6 +17,11 @@ namespace Happyhour.Model
         public string timeString { get; set; }
         public string happyhourString { get; set; }
 
+        public PubDay()
+        {
+            this.day = 0;
+        }
+
         public PubDay(int day)
         {
             this.day = day;

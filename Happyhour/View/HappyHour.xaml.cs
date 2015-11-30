@@ -23,7 +23,7 @@ namespace Happyhour.View
             locationHandler = LocationHandler.Instance;
 
             pubList = new ObservableCollection<LocationData>(locationHandler.pubList);
-            PubsListView.ItemsSource = pubList;
+            //PubsListView.ItemsSource = pubList;
 
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
 

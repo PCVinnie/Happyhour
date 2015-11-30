@@ -7,9 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:modal="using:Happyhour.Model">
-    <Page.DataContext>
-        <modal:LocationData/>
-    </Page.DataContext>
 
     <!-- Pub -->
     <Grid>
@@ -58,9 +55,9 @@
                         <StackPanel.Background>
                             <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
                         </StackPanel.Background>
-                        <ListView x:Name="PubsListView" Height="470" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,25,0">
+                        <ListView x:Name="PubsListView" ItemsSource="{x:Bind pubList}" Height="470" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,25,0">
                             <ListView.ItemTemplate>
-                                <DataTemplate>
+                                <DataTemplate x:DataType="modal:LocationData">
                                     <StackPanel BorderThickness="1" BorderBrush="Gray"  Width="288" Height="250" Margin="10,10,0,0">
                                         <Grid Grid.Row="1" Grid.Column="0">
                                             <Grid.ColumnDefinitions>
@@ -73,21 +70,21 @@
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <TextBlock Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="{Binding name}" />
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" Text="{x:Bind name}" />
                                             <TextBlock Grid.Row="1" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White">
-                                                <Run Text="{Binding street}"/>
-                                                <Run Text="{Binding streetNumber}"/>
-                                                <Run Text="{Binding zipcode}"/>
-                                                <Run Text="{Binding city}"/>
+                                                <Run Text="{x:Bind street}"/>
+                                                <Run Text="{x:Bind streetNumber}"/>
+                                                <Run Text="{x:Bind zipcode}"/>
+                                                <Run Text="{x:Bind city}"/>
                                             </TextBlock>
                                             <TextBlock Grid.Row="2" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White">
-                                                <Run Text="{Binding zipcode}"/>
-                                                <Run Text="{Binding city}"/>
+                                                <Run Text="{x:Bind zipcode}"/>
+                                                <Run Text="{x:Bind city}"/>
                                             </TextBlock>
-                                            <ItemsControl Grid.Row="3" Grid.Column="0" ItemsSource="{Binding pubdays}">
+                                            <ItemsControl Grid.Row="3" Grid.Column="0" ItemsSource="{x:Bind pubdays}">
                                                 <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock  Foreground="White" Text="{Binding happyhourString}" />
+                                                    <DataTemplate x:DataType="modal:PubDay">
+                                                        <TextBlock  Foreground="White" Text="{x:Bind happyhourString}" />
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
