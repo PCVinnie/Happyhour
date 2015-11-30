@@ -67,5 +67,45 @@ namespace Happyhour.View
         {
             Frame.Navigate(typeof(MainPage));
         }
+
+        private void autoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            if (args.ChosenSuggestion == null)
+            {
+                String searchtext = args.QueryText.ToUpper();
+                PubsListView.SelectedItem = null;
+                PubsListView.UpdateLayout();
+
+                foreach (LocationData data in pubList)
+                {
+                    String name = data.name.ToUpper();
+                    String city = data.city.ToUpper();
+
+                    if (name.Contains(searchtext))
+                    {
+                        var container = (SelectorItem)PubsListView.ContainerFromItem(data);
+                        if (container != null)
+                        {
+                            container.IsSelected = true;
+                            PubsListView.SelectedIndex = pubList.IndexOf(data);
+                            PubsListView.UpdateLayout();
+                            PubsListView.ScrollIntoView(PubsListView.SelectedItem);
+                            break;
+                        }
+                    }
+                    /*else if(city.Contains(searchtext))
+                    {
+                        var container = (SelectorItem)PubsListView.ContainerFromItem(data);
+                        if (container != null)
+                        {
+                            container.IsSelected = true;
+                            //PubsListView.SelectedIndex = pubList.IndexOf(data);
+                            PubsListView.UpdateLayout();
+                            PubsListView.ScrollIntoView(data);
+                        }
+                    }*/
+                }
+            }
+        }
     }
 }

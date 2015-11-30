@@ -48,8 +48,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <TextBox Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" />
-                        <Button Grid.Row="0" Grid.Column="1" Content="Zoeken" Foreground="White" />
+                        <AutoSuggestBox x:Name="autoSuggestBox" Grid.Row="0" Grid.Column="0" Width="300" Margin="0,5,5,5" Foreground="White" QueryIcon="Find"  QuerySubmitted="autoSuggestBox_QuerySubmitted"/>
                     </Grid>
 
                     <!-- Stackpanel-->
