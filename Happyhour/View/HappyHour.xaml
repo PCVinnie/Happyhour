@@ -45,8 +45,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <TextBox Grid.Row="0" Grid.Column="0" Width="220" Margin="0,5,5,5" Foreground="White" />
-                        <Button Grid.Row="0" Grid.Column="1" Content="Zoeken" Foreground="White" />
+                        <AutoSuggestBox x:Name="autoSuggestBox" Grid.Row="0" Grid.Column="0" Width="300" Margin="0,5,5,5" Foreground="White" QueryIcon="Find"  QuerySubmitted="autoSuggestBox_QuerySubmitted"/>
                     </Grid>
 
                     <!-- Stackpanel-->
@@ -55,7 +54,7 @@
                         <StackPanel.Background>
                             <SolidColorBrush Color="#DCDCDC" Opacity="0.6"/>
                         </StackPanel.Background>
-                        <ListView x:Name="PubsListView" ItemsSource="{x:Bind pubList}" Height="470" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,25,0">
+                        <ListView x:Name="PubsListView" ItemsSource="{x:Bind pubList}" Height="470" SelectionMode="Multiple" IsMultiSelectCheckBoxEnabled="False" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,25,0">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="modal:LocationData">
                                     <StackPanel BorderThickness="1" BorderBrush="Gray"  Width="288" Height="250" Margin="10,10,0,0">
@@ -94,7 +93,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackPanel>
-                    <Button Grid.Row="3" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>
+                    <!--<Button Grid.Row="3" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>-->
                 </Grid>
             </StackPanel>
         </ScrollViewer>

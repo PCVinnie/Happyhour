@@ -46,7 +46,7 @@
                         </ScrollViewer>
                     </StackPanel>
 
-                    <Button Grid.Row="2" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>
+                    <!--<Button Grid.Row="2" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click" Margin="5"/>-->
 
                 </Grid>
             </StackPanel>

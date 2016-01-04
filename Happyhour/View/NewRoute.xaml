@@ -101,7 +101,7 @@
                         </Grid.RowDefinitions>
 
                         <Button Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White" Content="Opslaan" Click="Save_Click" />
-                        <Button Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" Content="Annuleren" Click="Cancel_Click"/>
+                        <!--<Button Grid.Row="0" Grid.Column="1" Margin="5" Foreground="White" Content="Annuleren" Click="Cancel_Click"/>-->
                     </Grid>
                 </Grid>
             </StackPanel>

@@ -78,6 +78,15 @@ namespace Happyhour.View
 
                 foreach (LocationData data in pubList)
                 {
+                    var container = (SelectorItem)PubsListView.ContainerFromItem(data);
+                    if (container != null)
+                    {
+                        container.IsSelected = false;
+                    }
+                }
+
+                foreach (LocationData data in pubList)
+                {
                     String name = data.name.ToUpper();
                     String city = data.city.ToUpper();
 
@@ -87,13 +96,12 @@ namespace Happyhour.View
                         if (container != null)
                         {
                             container.IsSelected = true;
-                            PubsListView.SelectedIndex = pubList.IndexOf(data);
+                            //PubsListView.SelectedIndex = pubList.IndexOf(data);
                             PubsListView.UpdateLayout();
                             PubsListView.ScrollIntoView(PubsListView.SelectedItem);
-                            break;
                         }
                     }
-                    /*else if(city.Contains(searchtext))
+                    else if(city.Contains(searchtext))
                     {
                         var container = (SelectorItem)PubsListView.ContainerFromItem(data);
                         if (container != null)
@@ -103,7 +111,7 @@ namespace Happyhour.View
                             PubsListView.UpdateLayout();
                             PubsListView.ScrollIntoView(data);
                         }
-                    }*/
+                    }
                 }
             }
         }

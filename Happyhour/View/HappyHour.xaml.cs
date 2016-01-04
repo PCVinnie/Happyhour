@@ -1,9 +1,11 @@
 ﻿using Happyhour.Control;
 using Happyhour.Model;
+using System;
 using System.Collections.ObjectModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -48,6 +50,54 @@ namespace Happyhour.View
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private void autoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            if (args.ChosenSuggestion == null)
+            {
+                String searchtext = args.QueryText.ToUpper();
+                PubsListView.SelectedItem = null;
+                PubsListView.UpdateLayout();
+
+                foreach (LocationData data in pubList)
+                {
+                    var container = (SelectorItem)PubsListView.ContainerFromItem(data);
+                    if (container != null)
+                    {
+                        container.IsSelected = false;
+                    }
+                }
+
+                foreach (LocationData data in pubList)
+                {
+                    String name = data.name.ToUpper();
+                    String city = data.city.ToUpper();
+
+                    if (name.Contains(searchtext))
+                    {
+                        var container = (SelectorItem)PubsListView.ContainerFromItem(data);
+                        if (container != null)
+                        {
+                            container.IsSelected = true;
+                            //PubsListView.SelectedIndex = pubList.IndexOf(data);
+                            PubsListView.UpdateLayout();
+                            PubsListView.ScrollIntoView(PubsListView.SelectedItem);
+                        }
+                    }
+                    else if (city.Contains(searchtext))
+                    {
+                        var container = (SelectorItem)PubsListView.ContainerFromItem(data);
+                        if (container != null)
+                        {
+                            container.IsSelected = true;
+                            //PubsListView.SelectedIndex = pubList.IndexOf(data);
+                            PubsListView.UpdateLayout();
+                            PubsListView.ScrollIntoView(data);
+                        }
+                    }
+                }
+            }
         }
     }
 }

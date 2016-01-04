@@ -48,7 +48,7 @@
             </Grid>
             </StackPanel>
 
-            <Button Margin="5" Width="320" Foreground="White" Content="Terug" Click="Back_Click"/>
+            <!--<Button Margin="5" Width="320" Foreground="White" Content="Terug" Click="Back_Click"/>-->
         </StackPanel>
     </Grid>
 </Page>

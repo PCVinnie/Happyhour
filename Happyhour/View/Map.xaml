@@ -72,7 +72,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <Button Grid.Row="0" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click"/>
+                        <!--<Button Grid.Row="0" Grid.Column="0" Foreground="White" Content="Terug" Click="Back_Click"/>-->
                         <Button Grid.Row="0" Grid.Column="1" Foreground="White" Content="Route toevoegen" Margin="5" Click="NewRoute_Click"/>
                     </Grid>
                 </Grid>
