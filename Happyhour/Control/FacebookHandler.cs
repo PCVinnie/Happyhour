@@ -117,46 +117,8 @@ namespace Happyhour.Control
         {
             PropertySet postParams = new PropertySet();
             postParams.Add("message", text);
-
-            
+  
             string result = await FBClient.PostTaskAsync("/me/feed", postParams);
-        }
-
-        public async void sendMessage(string text)
-        {
-            sess = FBSession.ActiveSession;
-
-            if (sess.LoggedIn)
-            {
-                PropertySet parameters = new PropertySet();
-                // Set object type parameter
-                // Object type: scenario
-                string customObjectInstance = "{" +
-                                               "\"title\":\"Custom Story\"" +
-                                              "}";
-
-                parameters.Add("scenario", customObjectInstance);
-
-                // Get current user
-                FBUser user = sess.User;
-
-                // Set Graph api path for custom story (action:try)
-                string path = user.Id + "/happyhour:try";
-
-                FBJsonClassFactory fact = new FBJsonClassFactory((JsonText) => FBReturnObject.FromJson("Test"));
-                FBSingleValue sval = new FBSingleValue(path, parameters, fact);
-
-                FBResult result = await sval.PostAsync();
-
-                if (result.Succeeded)
-                {
-                    // Custom story published successfully
-                }
-                else
-                {
-                    // Failed to publish Custom story
-                }
-            }
         }
 
     }
