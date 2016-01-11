@@ -40,12 +40,14 @@ namespace Happyhour
             //fbHandler.Logout();
 
             FacebookLogout.IsEnabled = false;
+            FacebookLike.IsEnabled = false;
             Facebook.IsEnabled = true;
 
             if (fbHandler.isLoggedIn())
             {
                 FacebookUser.Text = fbHandler.fbUser.Name;
                 FacebookLogout.IsEnabled = true;
+                FacebookLike.IsEnabled = true;
                 Facebook.IsEnabled = false;
             }
         }
@@ -82,8 +84,14 @@ namespace Happyhour
             {
                 FacebookUser.Text = fbHandler.fbUser.Name;
                 FacebookLogout.IsEnabled = true;
+                FacebookLike.IsEnabled = true;
                 Facebook.IsEnabled = false;
             }
+        }
+
+        private async void FacebookLike_Click(object sender, RoutedEventArgs e)
+        {
+            fbHandler.LikeWebsite("http://www.avans.nl");
         }
 
         private async void FacebookLogout_Click(object sender, RoutedEventArgs e)
@@ -92,7 +100,8 @@ namespace Happyhour
             FacebookUser.Text = "Niet aangemeld";
 
             FacebookLogout.IsEnabled = false;
-            Facebook.IsEnabled = false;
+            FacebookLike.IsEnabled = false;
+            Facebook.IsEnabled = true;
         }
 
     }

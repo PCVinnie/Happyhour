@@ -59,7 +59,10 @@
                     <Image Stretch="Fill" Source="../Assets/Images/facebook.png" />
                 </Button>
                 <Button x:Name="FacebookLogout" Grid.Row="3" Grid.Column="1" Width="150" Height="30" BorderThickness="0" Content="Uitloggen" Click="FacebookLogout_Click"/>
-
+                <Button x:Name="FacebookLike" Grid.Row="4" Grid.Column="0" Width="65" Height="30" BorderThickness="0" Click="FacebookLike_Click">
+                    <Image Stretch="Fill" Source="../Assets/Images/facebooklike.png" />
+                </Button>
+                
             </Grid>
         </StackPanel>
     </Grid>

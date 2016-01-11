@@ -146,6 +146,7 @@
     <Content Include="Assets\Images\background.png" />
     <Content Include="Assets\Images\bar.png" />
     <Content Include="Assets\Images\facebook.png" />
+    <Content Include="Assets\Images\facebooklike.png" />
     <Content Include="Assets\Images\happyhour.png" />
     <Content Include="Assets\Images\information.png" />
     <Content Include="Assets\Images\logo.png" />
