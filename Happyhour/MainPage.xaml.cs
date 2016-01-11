@@ -90,8 +90,8 @@ namespace Happyhour
 
         private void FacebookMessageSend_Click(object sender, RoutedEventArgs e)
         {
-            //string text = FacebookMessage.Text;
-            //fbHandler.sendMessage(text);
+            string text = FacebookMessage.Text;
+            fbHandler.PostMessage(text);
         }
     }
 }

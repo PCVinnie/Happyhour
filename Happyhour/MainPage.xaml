@@ -59,8 +59,8 @@
                 <Button x:Name="FacebookLogout" Grid.Row="2" Grid.Column="1" Width="150" Height="30" BorderThickness="0" Content="Log out" Click="FacebookLogout_Click"/>
                 <TextBlock x:Name="FacebookUser" Grid.Row="3" Grid.Column="0" Width="150" Height="30" Text="No user logged in"/>
 
-                <TextBox x:Name="FacebookMessage" Grid.Row="4" Grid.Column="0" Width="150" Height="30" Visibility="Collapsed" />
-                <Button  x:Name="FacebookMessageSend" Grid.Row="5" Grid.Column="0" Width="150" Height="30" BorderThickness="0" Content="Send message" Click="FacebookMessageSend_Click" Visibility="Collapsed"/>
+                <TextBox x:Name="FacebookMessage" Grid.Row="4" Grid.Column="0" Width="150" Height="30"  />
+                <Button  x:Name="FacebookMessageSend" Grid.Row="5" Grid.Column="0" Width="150" Height="30" BorderThickness="0" Content="Send message" Click="FacebookMessageSend_Click" />
             </Grid>
         </StackPanel>
     </Grid>

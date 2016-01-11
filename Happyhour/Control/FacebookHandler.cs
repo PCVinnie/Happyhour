@@ -105,6 +105,15 @@ namespace Happyhour.Control
             await sess.LogoutAsync();
         }
 
+        public async void PostMessage(String text)
+        {
+            PropertySet postParams = new PropertySet();
+            postParams.Add("message", text);
+
+            
+            string result = await FBClient.PostTaskAsync("/me/feed", postParams);
+        }
+
         public async void sendMessage(string text)
         {
             sess = FBSession.ActiveSession;
