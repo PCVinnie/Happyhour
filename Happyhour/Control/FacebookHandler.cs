@@ -1,5 +1,6 @@
 ﻿using Facebook;
 using Facebook.Graph;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,6 +120,27 @@ namespace Happyhour.Control
             postParams.Add("message", text);
   
             string result = await FBClient.PostTaskAsync("/me/feed", postParams);
+
+            if(!result.Contains("error"))
+            {
+                Dictionary<String, String> dictio =  JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
+
+                string id = (String)dictio["id"];
+
+                LikeWebsite("www.avans.nl");
+            }
+            
+        }
+
+        public async void LikeWebsite(String website)
+        {
+            PropertySet postParams = new PropertySet();
+            postParams.Add("object", website);
+
+            string result = await FBClient.PostTaskAsync("/me/og.likes", postParams);
+            if (!result.Contains("error"))
+            {
+            }
         }
 
     }
