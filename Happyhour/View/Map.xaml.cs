@@ -31,6 +31,7 @@ namespace Happyhour.View
         Geocoordinate currentLocation;
         Geolocator geolocator;
         Geoposition pos;
+        private FacebookHandler fbHandler;
 
         PubRoute selectedRoute;
         LocationData geofencePub;
@@ -39,6 +40,11 @@ namespace Happyhour.View
         public Map()
         {
             this.InitializeComponent();
+            fbHandler = FacebookHandler.Instance;
+
+            if(!fbHandler.isLoggedIn())
+                FacebookMessageSend.IsEnabled = false;
+
             GeofenceMonitor.Current.Geofences.Clear();
             geolocator = new Geolocator();
             //geolocator.MovementThreshold = 10;
@@ -463,6 +469,20 @@ namespace Happyhour.View
 
                 RoutesListView.SelectedIndex = -1;
                 getCurrentLocation();
+            }
+        }
+
+        private void FacebookMessageSend_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedRoute != null)
+            {
+                String text = "Ik ben nu route " + selectedRoute.name + " aan het lopen met de app Happyhour";
+                fbHandler.PostMessage(text);
+                Summary.Text = "Route gedeeld met facebook";
+            }
+            else
+            {
+                Summary.Text = "Kies een route om deze te delen";
             }
         }
     }

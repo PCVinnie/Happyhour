@@ -23,6 +23,14 @@ namespace Happyhour.Control
             sess = FBSession.ActiveSession;
         }
 
+        public bool isLoggedIn()
+        {
+            if (fbUser == null)
+                return false;
+            else
+                return true;
+        }
+
         public static FacebookHandler Instance
         {
             get
