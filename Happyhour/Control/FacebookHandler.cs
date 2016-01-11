@@ -111,6 +111,7 @@ namespace Happyhour.Control
         public async Task Logout()
         {
             FBSession sess = FBSession.ActiveSession;
+            fbUser = null;
             await sess.LogoutAsync();
         }
 

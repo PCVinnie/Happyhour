@@ -37,10 +37,17 @@ namespace Happyhour
 
             fbHandler = FacebookHandler.Instance;
 
-            fbHandler.Logout();
+            //fbHandler.Logout();
 
             FacebookLogout.IsEnabled = false;
             Facebook.IsEnabled = true;
+
+            if (fbHandler.isLoggedIn())
+            {
+                FacebookUser.Text = fbHandler.fbUser.Name;
+                FacebookLogout.IsEnabled = true;
+                Facebook.IsEnabled = false;
+            }
         }
         private void Happyhour_Click(object sender, RoutedEventArgs e)
         {
