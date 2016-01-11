@@ -68,12 +68,12 @@ namespace Happyhour
 
             if(fbHandler.noInternet)
             {
-                FacebookUser.Text = "No internet";
+                FacebookUser.Text = "Geen internet";
             }
 
             if(fbHandler.fbUser != null)
             {
-                FacebookUser.Text = "User: " + fbHandler.fbUser.Name;
+                FacebookUser.Text = fbHandler.fbUser.Name;
                 FacebookLogout.IsEnabled = true;
                 Facebook.IsEnabled = false;
             }
@@ -82,16 +82,11 @@ namespace Happyhour
         private async void FacebookLogout_Click(object sender, RoutedEventArgs e)
         {
             await fbHandler.Logout();
-            FacebookUser.Text = "No user logged in";
+            FacebookUser.Text = "Niet aangemeld";
 
             FacebookLogout.IsEnabled = false;
             Facebook.IsEnabled = false;
         }
 
-        private void FacebookMessageSend_Click(object sender, RoutedEventArgs e)
-        {
-            string text = FacebookMessage.Text;
-            fbHandler.PostMessage(text);
-        }
     }
 }
