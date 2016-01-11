@@ -113,9 +113,6 @@
     <Compile Include="View\Credits.xaml.cs">
       <DependentUpon>Credits.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Facebook.xaml.cs">
-      <DependentUpon>Facebook.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\NewRoute.xaml.cs">
       <DependentUpon>NewRoute.xaml</DependentUpon>
     </Compile>
@@ -179,10 +176,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Credits.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Facebook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

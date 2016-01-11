@@ -36,31 +36,30 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
+                <!-- Message -->
+                <TextBlock x:Name="FacebookUser" Grid.Row="0" Grid.Column="1" Width="150" Height="30" Text="Niet aangemeld"/>
                 <!-- Happyhour -->
-                <Button x:Name="Happyhour" Grid.Row="0" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Happyhour_Click">
+                <Button x:Name="Happyhour" Grid.Row="1" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Happyhour_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/happyhour.png" />
                 </Button>
                 <!-- Kroegen -->
-                <Button x:Name="Pub" Grid.Row="0" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Pub_Click">
+                <Button x:Name="Pub" Grid.Row="1" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Pub_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/bar.png" />
                 </Button>
                 <!-- Route -->            
-                <Button x:Name="Route" Grid.Row="1" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Route_Click">
+                <Button x:Name="Route" Grid.Row="2" Grid.Column="0" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Route_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/route.png" />
                 </Button>
                 <!-- Information -->
-                <Button x:Name="Settings" Grid.Row="1" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Credits_Click">
+                <Button x:Name="Settings" Grid.Row="2" Grid.Column="1" Width="150" Height="150" Margin="5" BorderThickness="0" Click="Credits_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/information.png" />
                 </Button>
                 <!-- Facebook -->
-                <Button x:Name="Facebook" Grid.Row="2" Grid.Column="0" Width="150" Height="30" BorderThickness="0" Click="Facebook_Click">
+                <Button x:Name="Facebook" Grid.Row="3" Grid.Column="0" Width="150" Height="30" BorderThickness="0" Click="Facebook_Click">
                     <Image Stretch="Fill" Source="../Assets/Images/facebook.png" />
                 </Button>
-                <Button x:Name="FacebookLogout" Grid.Row="2" Grid.Column="1" Width="150" Height="30" BorderThickness="0" Content="Log out" Click="FacebookLogout_Click"/>
-                <TextBlock x:Name="FacebookUser" Grid.Row="3" Grid.Column="0" Width="150" Height="30" Text="No user logged in"/>
+                <Button x:Name="FacebookLogout" Grid.Row="3" Grid.Column="1" Width="150" Height="30" BorderThickness="0" Content="Uitloggen" Click="FacebookLogout_Click"/>
 
-                <TextBox x:Name="FacebookMessage" Grid.Row="4" Grid.Column="0" Width="150" Height="30" Visibility="Collapsed" />
-                <Button  x:Name="FacebookMessageSend" Grid.Row="5" Grid.Column="0" Width="150" Height="30" BorderThickness="0" Content="Send message" Click="FacebookMessageSend_Click" Visibility="Collapsed"/>
             </Grid>
         </StackPanel>
     </Grid>
