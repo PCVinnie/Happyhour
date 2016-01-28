@@ -265,6 +265,8 @@ namespace Happyhour
                 pub.Add(opentimes);
 
                 pub.Add(closetimes);
+                pub.Add(happyFrom);
+                pub.Add(happyTo);
                 
 
                 position.Add(longitude);

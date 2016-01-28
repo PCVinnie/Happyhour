@@ -43,7 +43,7 @@
             if (minutes < 10)
                 minutesString = "0" + minutes.ToString();
             else
-                minutesString = "0" + minutes.ToString();
+                minutesString =  minutes.ToString();
 
             return (hourString + ":" + minutesString);
         }

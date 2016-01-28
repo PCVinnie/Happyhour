@@ -190,6 +190,7 @@ namespace Happyhour.View
                 LocationData pub = new LocationData(name, street, houseNumber, zipCode, city, country, selectedRatingIndex, Convert.ToDouble(longitude), Convert.ToDouble(latitude), openTimes, closeTimes, happyhourFrom, happyhourTo);
                 fillTimes(pub, openTimes, closeTimes);
                 fillHappyTimes(pub, happyhourFrom, happyhourTo);
+                pub.setPubdayTimes();
                 LocationHandler.Instance.addPub(pub);
 
                 Frame.Navigate(typeof(View.PubMenu));
